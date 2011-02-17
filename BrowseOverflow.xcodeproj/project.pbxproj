@@ -22,6 +22,7 @@
 		98A548FA130D3ABF003C4F0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98A548F8130D3ABF003C4F0F /* InfoPlist.strings */; };
 		98A548FD130D3ABF003C4F0F /* BrowseOverflowTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */; };
 		98A548FF130D3ABF003C4F0F /* BrowseOverflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */; };
+		98A5490A130D72F9003C4F0F /* TopicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A54909130D72F9003C4F0F /* TopicTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowseOverflowTests-Prefix.pch"; sourceTree = "<group>"; };
 		98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowTests.h; sourceTree = "<group>"; };
 		98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowTests.m; sourceTree = "<group>"; };
+		98A54908130D72F9003C4F0F /* TopicTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTests.h; sourceTree = "<group>"; };
+		98A54909130D72F9003C4F0F /* TopicTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +144,8 @@
 				98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */,
 				98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */,
 				98A548F6130D3ABF003C4F0F /* Supporting Files */,
+				98A54908130D72F9003C4F0F /* TopicTests.h */,
+				98A54909130D72F9003C4F0F /* TopicTests.m */,
 			);
 			path = BrowseOverflowTests;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98A548FF130D3ABF003C4F0F /* BrowseOverflowTests.m in Sources */,
+				98A5490A130D72F9003C4F0F /* TopicTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
