@@ -39,20 +39,20 @@
 		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		98A548D7130D3ABC003C4F0F /* BrowseOverflow-Info.plist */ = {isa = PBXFileReference; path = "BrowseOverflow-Info.plist"; sourceTree = "<group>"; };
+		98A548D7130D3ABC003C4F0F /* BrowseOverflow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BrowseOverflow-Info.plist"; sourceTree = "<group>"; };
 		98A548D9130D3ABD003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		98A548DB130D3ABD003C4F0F /* BrowseOverflow-Prefix.pch */ = {isa = PBXFileReference; path = "BrowseOverflow-Prefix.pch"; sourceTree = "<group>"; };
+		98A548DB130D3ABD003C4F0F /* BrowseOverflow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowseOverflow-Prefix.pch"; sourceTree = "<group>"; };
 		98A548DC130D3ABD003C4F0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		98A548DE130D3ABD003C4F0F /* BrowseOverflowAppDelegate.h */ = {isa = PBXFileReference; path = BrowseOverflowAppDelegate.h; sourceTree = "<group>"; };
+		98A548DE130D3ABD003C4F0F /* BrowseOverflowAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowAppDelegate.h; sourceTree = "<group>"; };
 		98A548DF130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowAppDelegate.m; sourceTree = "<group>"; };
 		98A548E2130D3ABE003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		98A548E4130D3ABE003C4F0F /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		98A548E4130D3ABE003C4F0F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		98A548E5130D3ABE003C4F0F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		98A548E8130D3ABE003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 		98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowseOverflowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */ = {isa = PBXFileReference; path = "BrowseOverflowTests-Info.plist"; sourceTree = "<group>"; };
+		98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BrowseOverflowTests-Info.plist"; sourceTree = "<group>"; };
 		98A548F9130D3ABF003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */ = {isa = PBXFileReference; path = "BrowseOverflowTests-Prefix.pch"; sourceTree = "<group>"; };
+		98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowseOverflowTests-Prefix.pch"; sourceTree = "<group>"; };
 		98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowTests.h; sourceTree = "<group>"; };
 		98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
