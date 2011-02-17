@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
+		98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
+		98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
+		98A548DA130D3ABD003C4F0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98A548D8130D3ABD003C4F0F /* InfoPlist.strings */; };
+		98A548DD130D3ABD003C4F0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548DC130D3ABD003C4F0F /* main.m */; };
+		98A548E0130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548DF130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m */; };
+		98A548E3130D3ABE003C4F0F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98A548E1130D3ABE003C4F0F /* MainWindow.xib */; };
+		98A548E6130D3ABE003C4F0F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548E5130D3ABE003C4F0F /* RootViewController.m */; };
+		98A548E9130D3ABE003C4F0F /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98A548E7130D3ABE003C4F0F /* RootViewController.xib */; };
+		98A548F0130D3ABF003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
+		98A548F1130D3ABF003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
+		98A548F2130D3ABF003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
+		98A548FA130D3ABF003C4F0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 98A548F8130D3ABF003C4F0F /* InfoPlist.strings */; };
+		98A548FD130D3ABF003C4F0F /* BrowseOverflowTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */; };
+		98A548FF130D3ABF003C4F0F /* BrowseOverflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		98A548F3130D3ABF003C4F0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 98A548C2130D3ABB003C4F0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 98A548CA130D3ABC003C4F0F;
+			remoteInfo = BrowseOverflow;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		98A548D7130D3ABC003C4F0F /* BrowseOverflow-Info.plist */ = {isa = PBXFileReference; path = "BrowseOverflow-Info.plist"; sourceTree = "<group>"; };
+		98A548D9130D3ABD003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		98A548DB130D3ABD003C4F0F /* BrowseOverflow-Prefix.pch */ = {isa = PBXFileReference; path = "BrowseOverflow-Prefix.pch"; sourceTree = "<group>"; };
+		98A548DC130D3ABD003C4F0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		98A548DE130D3ABD003C4F0F /* BrowseOverflowAppDelegate.h */ = {isa = PBXFileReference; path = BrowseOverflowAppDelegate.h; sourceTree = "<group>"; };
+		98A548DF130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowAppDelegate.m; sourceTree = "<group>"; };
+		98A548E2130D3ABE003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		98A548E4130D3ABE003C4F0F /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		98A548E5130D3ABE003C4F0F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		98A548E8130D3ABE003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+		98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowseOverflowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */ = {isa = PBXFileReference; path = "BrowseOverflowTests-Info.plist"; sourceTree = "<group>"; };
+		98A548F9130D3ABF003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */ = {isa = PBXFileReference; path = "BrowseOverflowTests-Prefix.pch"; sourceTree = "<group>"; };
+		98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowTests.h; sourceTree = "<group>"; };
+		98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		98A548C8130D3ABC003C4F0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */,
+				98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */,
+				98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98A548EB130D3ABF003C4F0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548F0130D3ABF003C4F0F /* UIKit.framework in Frameworks */,
+				98A548F1130D3ABF003C4F0F /* Foundation.framework in Frameworks */,
+				98A548F2130D3ABF003C4F0F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		98A548C0130D3ABB003C4F0F = {
+			isa = PBXGroup;
+			children = (
+				98A548D5130D3ABC003C4F0F /* BrowseOverflow */,
+				98A548F5130D3ABF003C4F0F /* BrowseOverflowTests */,
+				98A548CE130D3ABC003C4F0F /* Frameworks */,
+				98A548CC130D3ABC003C4F0F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		98A548CC130D3ABC003C4F0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */,
+				98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		98A548CE130D3ABC003C4F0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				98A548CF130D3ABC003C4F0F /* UIKit.framework */,
+				98A548D1130D3ABC003C4F0F /* Foundation.framework */,
+				98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		98A548D5130D3ABC003C4F0F /* BrowseOverflow */ = {
+			isa = PBXGroup;
+			children = (
+				98A548DE130D3ABD003C4F0F /* BrowseOverflowAppDelegate.h */,
+				98A548DF130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m */,
+				98A548E1130D3ABE003C4F0F /* MainWindow.xib */,
+				98A548E4130D3ABE003C4F0F /* RootViewController.h */,
+				98A548E5130D3ABE003C4F0F /* RootViewController.m */,
+				98A548E7130D3ABE003C4F0F /* RootViewController.xib */,
+				98A548D6130D3ABC003C4F0F /* Supporting Files */,
+			);
+			path = BrowseOverflow;
+			sourceTree = "<group>";
+		};
+		98A548D6130D3ABC003C4F0F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98A548D7130D3ABC003C4F0F /* BrowseOverflow-Info.plist */,
+				98A548D8130D3ABD003C4F0F /* InfoPlist.strings */,
+				98A548DB130D3ABD003C4F0F /* BrowseOverflow-Prefix.pch */,
+				98A548DC130D3ABD003C4F0F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98A548F5130D3ABF003C4F0F /* BrowseOverflowTests */ = {
+			isa = PBXGroup;
+			children = (
+				98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */,
+				98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */,
+				98A548F6130D3ABF003C4F0F /* Supporting Files */,
+			);
+			path = BrowseOverflowTests;
+			sourceTree = "<group>";
+		};
+		98A548F6130D3ABF003C4F0F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */,
+				98A548F8130D3ABF003C4F0F /* InfoPlist.strings */,
+				98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		98A548CA130D3ABC003C4F0F /* BrowseOverflow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98A54902130D3ABF003C4F0F /* Build configuration list for PBXNativeTarget "BrowseOverflow" */;
+			buildPhases = (
+				98A548C7130D3ABC003C4F0F /* Sources */,
+				98A548C8130D3ABC003C4F0F /* Frameworks */,
+				98A548C9130D3ABC003C4F0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrowseOverflow;
+			productName = BrowseOverflow;
+			productReference = 98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		98A548EE130D3ABF003C4F0F /* BrowseOverflowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98A54905130D3ABF003C4F0F /* Build configuration list for PBXNativeTarget "BrowseOverflowTests" */;
+			buildPhases = (
+				98A548EA130D3ABF003C4F0F /* Sources */,
+				98A548EB130D3ABF003C4F0F /* Frameworks */,
+				98A548EC130D3ABF003C4F0F /* Resources */,
+				98A548ED130D3ABF003C4F0F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98A548F4130D3ABF003C4F0F /* PBXTargetDependency */,
+			);
+			name = BrowseOverflowTests;
+			productName = BrowseOverflowTests;
+			productReference = 98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		98A548C2130D3ABB003C4F0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Fuzzy Aliens Ltd.";
+			};
+			buildConfigurationList = 98A548C5130D3ABB003C4F0F /* Build configuration list for PBXProject "BrowseOverflow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 98A548C0130D3ABB003C4F0F;
+			productRefGroup = 98A548CC130D3ABC003C4F0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				98A548CA130D3ABC003C4F0F /* BrowseOverflow */,
+				98A548EE130D3ABF003C4F0F /* BrowseOverflowTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		98A548C9130D3ABC003C4F0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548DA130D3ABD003C4F0F /* InfoPlist.strings in Resources */,
+				98A548E3130D3ABE003C4F0F /* MainWindow.xib in Resources */,
+				98A548E9130D3ABE003C4F0F /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98A548EC130D3ABF003C4F0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548FA130D3ABF003C4F0F /* InfoPlist.strings in Resources */,
+				98A548FD130D3ABF003C4F0F /* BrowseOverflowTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		98A548ED130D3ABF003C4F0F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		98A548C7130D3ABC003C4F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548DD130D3ABD003C4F0F /* main.m in Sources */,
+				98A548E0130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m in Sources */,
+				98A548E6130D3ABE003C4F0F /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		98A548EA130D3ABF003C4F0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98A548FF130D3ABF003C4F0F /* BrowseOverflowTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98A548F4130D3ABF003C4F0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 98A548CA130D3ABC003C4F0F /* BrowseOverflow */;
+			targetProxy = 98A548F3130D3ABF003C4F0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		98A548D8130D3ABD003C4F0F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98A548D9130D3ABD003C4F0F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		98A548E1130D3ABE003C4F0F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98A548E2130D3ABE003C4F0F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		98A548E7130D3ABE003C4F0F /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98A548E8130D3ABE003C4F0F /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+		98A548F8130D3ABF003C4F0F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				98A548F9130D3ABF003C4F0F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		98A54900130D3ABF003C4F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		98A54901130D3ABF003C4F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		98A54903130D3ABF003C4F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrowseOverflow/BrowseOverflow-Prefix.pch";
+				INFOPLIST_FILE = "BrowseOverflow/BrowseOverflow-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		98A54904130D3ABF003C4F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrowseOverflow/BrowseOverflow-Prefix.pch";
+				INFOPLIST_FILE = "BrowseOverflow/BrowseOverflow-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		98A54906130D3ABF003C4F0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BrowseOverflow.app/BrowseOverflow";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
+				INFOPLIST_FILE = "BrowseOverflowTests/BrowseOverflowTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		98A54907130D3ABF003C4F0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BrowseOverflow.app/BrowseOverflow";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
+				INFOPLIST_FILE = "BrowseOverflowTests/BrowseOverflowTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		98A548C5130D3ABB003C4F0F /* Build configuration list for PBXProject "BrowseOverflow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98A54900130D3ABF003C4F0F /* Debug */,
+				98A54901130D3ABF003C4F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		98A54902130D3ABF003C4F0F /* Build configuration list for PBXNativeTarget "BrowseOverflow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98A54903130D3ABF003C4F0F /* Debug */,
+				98A54904130D3ABF003C4F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		98A54905130D3ABF003C4F0F /* Build configuration list for PBXNativeTarget "BrowseOverflowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98A54906130D3ABF003C4F0F /* Debug */,
+				98A54907130D3ABF003C4F0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 98A548C2130D3ABB003C4F0F /* Project object */;
+}
