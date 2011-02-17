@@ -7,7 +7,7 @@
 //
 
 #import "TopicTests.h"
-
+#import "Topic.h"
 
 @implementation TopicTests
 
