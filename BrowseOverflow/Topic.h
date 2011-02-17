@@ -13,4 +13,8 @@
     
 }
 
+@property (readonly) NSString *name;
+
+- (id)initWithName: (NSString *)newName;
+
 @end

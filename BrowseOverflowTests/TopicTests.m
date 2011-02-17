@@ -17,4 +17,10 @@
     [newTopic release];
 }
 
+- (void)testThatTopicCanBeNamed {
+    Topic *namedTopic = [[Topic alloc] initWithName: @"iPhone"];
+    STAssertEqualObjects(namedTopic.name, @"iPhone", @"the Topic should have the name I gave it");
+    [namedTopic release];
+}
+
 @end
