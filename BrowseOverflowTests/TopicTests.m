@@ -23,4 +23,10 @@
     [namedTopic release];
 }
 
+- (void)testThatTopicHasATag {
+    Topic *taggedTopic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
+    STAssertEqualObjects(taggedTopic.tag, @"iphone", @"");
+    [taggedTopic release];
+}
+
 @end
