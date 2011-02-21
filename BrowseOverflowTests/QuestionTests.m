@@ -7,9 +7,14 @@
 //
 
 #import "QuestionTests.h"
-
+#import "Question.h"
 
 @implementation QuestionTests
 
+- (void)testQuestionHasADate {
+    Question *question = [[Question alloc] init];
+    STAssertTrue([question.askedDate isKindOfClass: [NSDate class]], @"Question needs to provide its date");
+    [question release];
+}
 
 @end

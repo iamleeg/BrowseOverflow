@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
+		9829C1211312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
+		9829C1221312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
 		98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
 		98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
 		98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		9829C11B1312B1570070C733 /* QuestionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTests.h; sourceTree = "<group>"; };
 		9829C11C1312B1570070C733 /* QuestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTests.m; sourceTree = "<group>"; };
+		9829C11F1312B75A0070C733 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
+		9829C1201312B75A0070C733 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,6 +136,8 @@
 				98A548D6130D3ABC003C4F0F /* Supporting Files */,
 				98A5490E130D762F003C4F0F /* Topic.h */,
 				98A5490F130D762F003C4F0F /* Topic.m */,
+				9829C11F1312B75A0070C733 /* Question.h */,
+				9829C1201312B75A0070C733 /* Question.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -283,6 +289,7 @@
 				98A548E0130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m in Sources */,
 				98A548E6130D3ABE003C4F0F /* RootViewController.m in Sources */,
 				98A54910130D762F003C4F0F /* Topic.m in Sources */,
+				9829C1211312B75A0070C733 /* Question.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +301,7 @@
 				98A5490A130D72F9003C4F0F /* TopicTests.m in Sources */,
 				98A54911130D762F003C4F0F /* Topic.m in Sources */,
 				9829C11D1312B1570070C733 /* QuestionTests.m in Sources */,
+				9829C1221312B75A0070C733 /* Question.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
