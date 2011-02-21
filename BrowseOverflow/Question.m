@@ -11,8 +11,11 @@
 
 @implementation Question
 
-- (NSDate *)askedDate {
-    return [NSDate date];
+@synthesize askedDate;
+
+- (void)dealloc {
+    [askedDate release];
+    [super dealloc];
 }
 
 @end

@@ -18,6 +18,6 @@
 /**
  * The date on which the question was asked.
  */
-@property (readonly) NSDate *askedDate;
+@property (retain) NSDate *askedDate;
 
 @end

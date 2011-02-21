@@ -13,7 +13,9 @@
 
 - (void)testQuestionHasADate {
     Question *question = [[Question alloc] init];
-    STAssertTrue([question.askedDate isKindOfClass: [NSDate class]], @"Question needs to provide its date");
+    NSDate *testDate = [NSDate distantPast];
+    question.askedDate = testDate;
+    STAssertEqualObjects(question.askedDate, testDate, @"Question needs to provide its date");
     [question release];
 }
 
