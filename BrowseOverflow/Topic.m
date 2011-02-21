@@ -27,4 +27,8 @@
     [super dealloc];
 }
 
+- (NSArray *)recentQuestions {
+    return [NSArray array];
+}
+
 @end
