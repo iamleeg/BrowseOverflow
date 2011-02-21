@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
 		98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
 		98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
 		98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9829C11B1312B1570070C733 /* QuestionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTests.h; sourceTree = "<group>"; };
+		9829C11C1312B1570070C733 /* QuestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTests.m; sourceTree = "<group>"; };
 		98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -152,6 +155,8 @@
 				98A548F6130D3ABF003C4F0F /* Supporting Files */,
 				98A54908130D72F9003C4F0F /* TopicTests.h */,
 				98A54909130D72F9003C4F0F /* TopicTests.m */,
+				9829C11B1312B1570070C733 /* QuestionTests.h */,
+				9829C11C1312B1570070C733 /* QuestionTests.m */,
 			);
 			path = BrowseOverflowTests;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				98A548FF130D3ABF003C4F0F /* BrowseOverflowTests.m in Sources */,
 				98A5490A130D72F9003C4F0F /* TopicTests.m in Sources */,
 				98A54911130D762F003C4F0F /* Topic.m in Sources */,
+				9829C11D1312B1570070C733 /* QuestionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +469,7 @@
 				98A54904130D3ABF003C4F0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98A54905130D3ABF003C4F0F /* Build configuration list for PBXNativeTarget "BrowseOverflowTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +478,7 @@
 				98A54907130D3ABF003C4F0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
