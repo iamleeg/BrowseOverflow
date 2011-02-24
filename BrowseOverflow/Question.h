@@ -20,5 +20,6 @@
  */
 @property (retain) NSDate *askedDate;
 @property (copy) NSString *title;
+@property NSInteger score;
 
 @end

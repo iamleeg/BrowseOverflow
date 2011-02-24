@@ -13,6 +13,7 @@
 
 @synthesize askedDate;
 @synthesize title;
+@synthesize score;
 
 - (void)dealloc {
     [askedDate release];
