@@ -19,6 +19,7 @@
 
 - (void)tearDown {
     [question release];
+    question = nil;
 }
 
 - (void)testQuestionHasATitle {
