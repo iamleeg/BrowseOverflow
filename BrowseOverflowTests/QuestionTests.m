@@ -11,12 +11,22 @@
 
 @implementation QuestionTests
 
-- (void)testQuestionHasADate {
-    Question *question = [[Question alloc] init];
-    NSDate *testDate = [NSDate distantPast];
-    question.askedDate = testDate;
-    STAssertEqualObjects(question.askedDate, testDate, @"Question needs to provide its date");
+- (void)setUp {
+    question = [[Question alloc] init];
+    question.askedDate = [NSDate distantPast];
+    question.title = @"Do iPhones also dream of electric sheep?";
+}
+
+- (void)tearDown {
     [question release];
+}
+
+- (void)testQuestionHasATitle {
+    STAssertEqualObjects(question.title, @"Do iPhones also dream of electric sheep?", @"Question should know its title");
+}
+
+- (void)testQuestionHasADate {
+    STAssertEqualObjects(question.askedDate, [NSDate distantPast], @"Question needs to provide its date");
 }
 
 @end

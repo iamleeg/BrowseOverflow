@@ -19,5 +19,6 @@
  * The date on which the question was asked.
  */
 @property (retain) NSDate *askedDate;
+@property (copy) NSString *title;
 
 @end

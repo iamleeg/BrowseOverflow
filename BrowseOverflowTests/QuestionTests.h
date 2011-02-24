@@ -10,10 +10,10 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
 //#import "application_headers" as required
-
+@class Question;
 
 @interface QuestionTests : SenTestCase {
-    
+    Question *question;
 }
 
 @end
