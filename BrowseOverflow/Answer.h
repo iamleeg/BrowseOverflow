@@ -15,5 +15,7 @@
 
 @property (copy) NSString *text;
 @property (retain) Person *person;
+@property BOOL accepted;
+@property NSInteger score;
 
 @end

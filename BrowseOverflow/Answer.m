@@ -13,6 +13,8 @@
 
 @synthesize text;
 @synthesize person;
+@synthesize accepted;
+@synthesize score;
 
 - (void)dealloc {
     [text release];

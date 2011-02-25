@@ -16,6 +16,7 @@
     answer = [[Answer alloc] init];
     answer.text = @"The answer is 42";
     answer.person = [[[Person alloc] initWithName: @"Graham Lee" avatarLocation: @"http://example.com/avatar.png"] autorelease];
+    answer.score = 42;
 }
 
 - (void)tearDown {
@@ -28,5 +29,17 @@
 
 - (void)testSomeoneProvidedTheAnswer {
     STAssertTrue([answer.person isKindOfClass: [Person class]], @"A Person gave this Answer");
+}
+
+- (void)testAnswersNotAcceptedByDefault {
+    STAssertFalse(answer.accepted, @"Answer not accepted by default");
+}
+
+- (void)testAnswerCanBeAccepted {
+    STAssertNoThrow(answer.accepted = YES, @"It is possible to accept an answer");
+}
+
+- (void)testAnswerHasAScore {
+    STAssertTrue(answer.score == 42, @"Answer's score can be retrieved");
 }
 @end
