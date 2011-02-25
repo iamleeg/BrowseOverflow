@@ -42,4 +42,5 @@
 - (void)testAnswerHasAScore {
     STAssertTrue(answer.score == 42, @"Answer's score can be retrieved");
 }
+
 @end
