@@ -36,7 +36,7 @@
 }
 
 - (NSArray *)recentQuestions {
-    return [questions sortedArrayUsingComparator: ^(id obj1, id obj2) {
+    NSArray *sortedQuestions =  [questions sortedArrayUsingComparator: ^(id obj1, id obj2) {
         Question *q1 = (Question *)obj1;
         Question *q2 = (Question *)obj2;
         NSComparisonResult sortOrder = [q1.askedDate compare: q2.askedDate];
@@ -49,6 +49,12 @@
                 return NSOrderedSame;
         }
     }];
+    if ([sortedQuestions count] < 21) {
+        return sortedQuestions;
+    }
+    else {
+        return [sortedQuestions subarrayWithRange: NSMakeRange(0, 20)];
+    }
 }
 
 @end
