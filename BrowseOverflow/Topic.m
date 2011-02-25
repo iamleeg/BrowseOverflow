@@ -36,7 +36,19 @@
 }
 
 - (NSArray *)recentQuestions {
-    return questions;
+    return [questions sortedArrayUsingComparator: ^(id obj1, id obj2) {
+        Question *q1 = (Question *)obj1;
+        Question *q2 = (Question *)obj2;
+        NSComparisonResult sortOrder = [q1.askedDate compare: q2.askedDate];
+        switch (sortOrder) {
+            case NSOrderedAscending:
+                return NSOrderedDescending;
+            case NSOrderedDescending:
+                return NSOrderedAscending;
+            default:
+                return NSOrderedSame;
+        }
+    }];
 }
 
 @end
