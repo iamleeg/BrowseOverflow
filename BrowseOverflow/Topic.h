@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Question;
 
 /**
  * A class representing a particular subject on Stack Overflow.
  */
 @interface Topic : NSObject {
-    
+    NSArray *questions;
 }
 /**
  * A name for this topic, suitable for displaying in the UI.
@@ -31,5 +32,9 @@
  * A list of questions recently asked on this topic.
  */
 - (NSArray *)recentQuestions;
+/**
+ * Add a new question to this topic.
+ */
+- (void)addQuestion: (Question *)question;
 
 @end

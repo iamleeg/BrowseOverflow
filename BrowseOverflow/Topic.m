@@ -7,7 +7,7 @@
 //
 
 #import "Topic.h"
-
+#import "Question.h"
 
 @implementation Topic
 @synthesize name;
@@ -17,6 +17,7 @@
     if ((self = [super init])) {
         name = [newName copy];
         tag = [newTag copy];
+        questions = [[NSArray alloc] init];
     }
     return self;
 }
@@ -24,11 +25,18 @@
 - (void)dealloc {
     [name release];
     [tag release];
+    [questions release];
     [super dealloc];
 }
 
+- (void)addQuestion: (Question *)question {
+    NSArray *newQuestions = [questions arrayByAddingObject: question];
+    [questions release];
+    questions = [newQuestions retain];
+}
+
 - (NSArray *)recentQuestions {
-    return [NSArray array];
+    return questions;
 }
 
 @end

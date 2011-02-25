@@ -8,6 +8,7 @@
 
 #import "TopicTests.h"
 #import "Topic.h"
+#import "Question.h"
 
 @implementation TopicTests
 
@@ -35,4 +36,16 @@
 - (void)testForAListOfQuestions {
     STAssertTrue([[topic recentQuestions] isKindOfClass: [NSArray class]], @"Topics should provide a list of recent questions");
 }
+
+- (void)testForInitiallyEmptyQuestionList {
+    STAssertEquals([[topic recentQuestions] count], (NSUInteger)0, @"No questions added yet, count should be zero");
+}
+
+- (void)testAddingAQuestionToTheList {
+    Question *question = [[Question alloc] init];
+    [topic addQuestion: question];
+    STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Add a question, and the count of questions should go up");
+    [question release];
+}
+
 @end
