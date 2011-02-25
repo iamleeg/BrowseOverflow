@@ -50,10 +50,10 @@
 
 - (void)testQuestionsAreListedChronologically {
     Question *q1 = [[Question alloc] init];
-    q1.askedDate = [NSDate distantPast];
+    q1.date = [NSDate distantPast];
     
     Question *q2 = [[Question alloc] init];
-    q2.askedDate = [NSDate distantFuture];
+    q2.date = [NSDate distantFuture];
     
     [topic addQuestion: q1];
     [topic addQuestion: q2];
@@ -62,7 +62,7 @@
     Question *listedFirst = [questions objectAtIndex: 0];
     Question *listedSecond = [questions objectAtIndex: 1];
     
-    STAssertEqualObjects([listedFirst.askedDate laterDate: listedSecond.askedDate], listedFirst.askedDate, @"The later question should appear first in the list");
+    STAssertEqualObjects([listedFirst.date laterDate: listedSecond.date], listedFirst.date, @"The later question should appear first in the list");
 }
 
 - (void)testLimitOfTwentyQuestions {

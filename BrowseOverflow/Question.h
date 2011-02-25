@@ -18,7 +18,7 @@
 /**
  * The date on which the question was asked.
  */
-@property (retain) NSDate *askedDate;
+@property (retain) NSDate *date;
 @property (copy) NSString *title;
 @property NSInteger score;
 

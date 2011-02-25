@@ -11,12 +11,12 @@
 
 @implementation Question
 
-@synthesize askedDate;
+@synthesize date;
 @synthesize title;
 @synthesize score;
 
 - (void)dealloc {
-    [askedDate release];
+    [date release];
     [title release];
     [super dealloc];
 }

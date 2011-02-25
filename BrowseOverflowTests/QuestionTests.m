@@ -13,7 +13,7 @@
 
 - (void)setUp {
     question = [[Question alloc] init];
-    question.askedDate = [NSDate distantPast];
+    question.date = [NSDate distantPast];
     question.title = @"Do iPhones also dream of electric sheep?";
     question.score = 42;
 }
@@ -28,7 +28,7 @@
 }
 
 - (void)testQuestionHasADate {
-    STAssertEqualObjects(question.askedDate, [NSDate distantPast], @"Question needs to provide its date");
+    STAssertEqualObjects(question.date, [NSDate distantPast], @"Question needs to provide its date");
 }
 
 - (void)testQuestionKeepsScore {

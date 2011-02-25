@@ -53,7 +53,7 @@
     return [questionList sortedArrayUsingComparator: ^(id obj1, id obj2) {
         Question *q1 = (Question *)obj1;
         Question *q2 = (Question *)obj2;
-        NSComparisonResult sortOrder = [q1.askedDate compare: q2.askedDate];
+        NSComparisonResult sortOrder = [q1.date compare: q2.date];
         switch (sortOrder) {
             case NSOrderedAscending:
                 return NSOrderedDescending;
