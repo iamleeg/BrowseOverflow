@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class Person;
 
 @interface Answer : NSObject {
     
 }
 
 @property (copy) NSString *text;
+@property (retain) Person *person;
 
 @end

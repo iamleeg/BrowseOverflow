@@ -7,14 +7,16 @@
 //
 
 #import "Answer.h"
-
+#import "Person.h"
 
 @implementation Answer
 
 @synthesize text;
+@synthesize person;
 
 - (void)dealloc {
     [text release];
+    [person release];
     [super dealloc];
 }
 

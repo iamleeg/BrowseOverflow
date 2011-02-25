@@ -8,14 +8,25 @@
 
 #import "AnswerTests.h"
 #import "Answer.h"
+#import "Person.h"
 
 @implementation AnswerTests
 
-- (void)testAnswerHasSomeText {
-    Answer *answer = [[Answer alloc] init];
+- (void)setUp {
+    answer = [[Answer alloc] init];
     answer.text = @"The answer is 42";
-    STAssertEqualObjects(answer.text, @"The answer is 42", @"Answers need to contain some text");
+    answer.person = [[[Person alloc] initWithName: @"Graham Lee" avatarLocation: @"http://example.com/avatar.png"] autorelease];
+}
+
+- (void)tearDown {
     [answer release];
 }
 
+- (void)testAnswerHasSomeText {
+    STAssertEqualObjects(answer.text, @"The answer is 42", @"Answers need to contain some text");
+}
+
+- (void)testSomeoneProvidedTheAnswer {
+    STAssertTrue([answer.person isKindOfClass: [Person class]], @"A Person gave this Answer");
+}
 @end
