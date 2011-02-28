@@ -18,13 +18,25 @@
 }
 
 /**
- * The date on which the question was asked.
+ * The date on which this question was asked.
  */
 @property (retain) NSDate *date;
+/**
+ * The title of this question.
+ */
 @property (copy) NSString *title;
+/**
+ * Upvotes received by this question, minus downvotes received.
+ */
 @property NSInteger score;
+/**
+ * An ordered collection of answers.
+ */
 @property (readonly) NSArray *answers;
 
+/**
+ * Add another answer to this question's collection of answers.
+ */
 - (void)addAnswer: (Answer *)answer;
 
 @end
