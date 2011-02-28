@@ -13,6 +13,7 @@
 
 @interface AnswerTests : SenTestCase {
     Answer *answer;
+    Answer *otherAnswer;
 }
 
 @end

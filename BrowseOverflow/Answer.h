@@ -18,4 +18,6 @@
 @property BOOL accepted;
 @property NSInteger score;
 
+- (NSComparisonResult)compare: (Answer *)otherAnswer;
+
 @end
