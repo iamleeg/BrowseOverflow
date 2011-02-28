@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class Answer;
+
 /**
  * Represents a question asked on the Stack Overflow website.
  */
 @interface Question : NSObject {
-    
+    NSMutableSet *answerSet;
 }
 
 /**
@@ -21,5 +23,8 @@
 @property (retain) NSDate *date;
 @property (copy) NSString *title;
 @property NSInteger score;
+@property (readonly) NSArray *answers;
+
+- (void)addAnswer: (Answer *)answer;
 
 @end

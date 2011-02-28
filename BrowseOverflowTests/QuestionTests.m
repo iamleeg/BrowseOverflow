@@ -8,6 +8,7 @@
 
 #import "QuestionTests.h"
 #import "Question.h"
+#import "Answer.h"
 
 @implementation QuestionTests
 
@@ -16,11 +17,30 @@
     question.date = [NSDate distantPast];
     question.title = @"Do iPhones also dream of electric sheep?";
     question.score = 42;
+
+    Answer *accepted = [[Answer alloc] init];
+    accepted.score = 1;
+    accepted.accepted = YES;
+    [question addAnswer: accepted];
+    [accepted release];
+    
+    lowScore = [[Answer alloc] init];
+    lowScore.score = -4;
+    [question addAnswer: lowScore];
+    [lowScore release];
+    
+    highScore = [[Answer alloc] init];
+    highScore.score = 4;
+    [question addAnswer: highScore];
+    [highScore release];
+    
 }
 
 - (void)tearDown {
     [question release];
     question = nil;
+    lowScore = nil;
+    highScore = nil;
 }
 
 - (void)testQuestionHasATitle {
@@ -33,5 +53,21 @@
 
 - (void)testQuestionKeepsScore {
     STAssertEquals(question.score, 42, @"Questions need a numeric score");
+}
+
+- (void)testQuestionCanHaveAnswersAdded {
+    Answer *myAnswer = [[[Answer alloc] init] autorelease];
+    STAssertNoThrow([question addAnswer: myAnswer], @"Must be able to add answers");
+}
+
+- (void)testAcceptedAnswerIsFirst {
+    STAssertTrue([[question.answers objectAtIndex: 0] isAccepted], @"Accepted answer comes first");
+}
+
+- (void)testHighScoreAnswerBeforeLow {
+    NSArray *answers = question.answers;
+    NSInteger highIndex = [answers indexOfObject: highScore];
+    NSInteger lowIndex = [answers indexOfObject: lowScore];
+    STAssertTrue(highIndex < lowIndex, @"High-scoring answer comes first");
 }
 @end

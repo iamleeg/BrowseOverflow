@@ -15,9 +15,25 @@
 @synthesize title;
 @synthesize score;
 
+- (id)init {
+    if ((self = [super init])) {
+        answerSet = [[NSMutableSet alloc] init];
+    }
+    return self;
+}
+
+- (void)addAnswer:(Answer *)answer {
+    [answerSet addObject: answer];
+}
+
+- (NSArray *)answers {
+    return [[answerSet allObjects] sortedArrayUsingSelector: @selector(compare:)];
+}
+
 - (void)dealloc {
     [date release];
     [title release];
+    [answerSet release];
     [super dealloc];
 }
 

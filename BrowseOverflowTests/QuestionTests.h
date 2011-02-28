@@ -11,9 +11,12 @@
 #import <UIKit/UIKit.h>
 //#import "application_headers" as required
 @class Question;
+@class Answer;
 
 @interface QuestionTests : SenTestCase {
     Question *question;
+    Answer *lowScore;
+    Answer *highScore;
 }
 
 @end

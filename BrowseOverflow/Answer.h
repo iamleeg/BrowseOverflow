@@ -15,7 +15,7 @@
 
 @property (copy) NSString *text;
 @property (retain) Person *person;
-@property BOOL accepted;
+@property (getter=isAccepted) BOOL accepted;
 @property NSInteger score;
 
 - (NSComparisonResult)compare: (Answer *)otherAnswer;
