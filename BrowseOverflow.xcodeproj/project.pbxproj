@@ -13,6 +13,7 @@
 		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
 		9829C1211312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
 		9829C1221312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
+		9868E91D132E128500AEF519 /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9868E91C132E128500AEF519 /* libjson.a */; };
 		98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
 		98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
 		98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 		9829C11C1312B1570070C733 /* QuestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTests.m; sourceTree = "<group>"; };
 		9829C11F1312B75A0070C733 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		9829C1201312B75A0070C733 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		9868E91C132E128500AEF519 /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libjson.a; sourceTree = SOURCE_ROOT; };
 		98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9868E91D132E128500AEF519 /* libjson.a in Frameworks */,
 				98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */,
 				98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */,
 				98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */,
@@ -112,6 +115,7 @@
 		98A548C0130D3ABB003C4F0F = {
 			isa = PBXGroup;
 			children = (
+				9868E91C132E128500AEF519 /* libjson.a */,
 				98A548D5130D3ABC003C4F0F /* BrowseOverflow */,
 				98A548F5130D3ABF003C4F0F /* BrowseOverflowTests */,
 				98A548CE130D3ABC003C4F0F /* Frameworks */,
@@ -420,6 +424,10 @@
 				GCC_PREFIX_HEADER = "BrowseOverflow/BrowseOverflow-Prefix.pch";
 				INFOPLIST_FILE = "BrowseOverflow/BrowseOverflow-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -434,6 +442,10 @@
 				GCC_PREFIX_HEADER = "BrowseOverflow/BrowseOverflow-Prefix.pch";
 				INFOPLIST_FILE = "BrowseOverflow/BrowseOverflow-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
