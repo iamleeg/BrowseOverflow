@@ -18,6 +18,9 @@
 		9868E923132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
 		9868E924132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
 		9868E929132E63C300AEF519 /* MockStackOverflowManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E928132E63C300AEF519 /* MockStackOverflowManagerDelegate.m */; };
+		9893838B13325E6E004F79F1 /* StackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9893838A13325E6E004F79F1 /* StackOverflowCommunicator.m */; };
+		9893838C13325E6E004F79F1 /* StackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9893838A13325E6E004F79F1 /* StackOverflowCommunicator.m */; };
+		98938390133267A3004F79F1 /* MockStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9893838F133267A3004F79F1 /* MockStackOverflowCommunicator.m */; };
 		98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548CF130D3ABC003C4F0F /* UIKit.framework */; };
 		98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D1130D3ABC003C4F0F /* Foundation.framework */; };
 		98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98A548D3130D3ABC003C4F0F /* CoreGraphics.framework */; };
@@ -68,6 +71,10 @@
 		9868E925132E5AA900AEF519 /* StackOverflowManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowManagerDelegate.h; sourceTree = "<group>"; };
 		9868E927132E63C300AEF519 /* MockStackOverflowManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockStackOverflowManagerDelegate.h; sourceTree = "<group>"; };
 		9868E928132E63C300AEF519 /* MockStackOverflowManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockStackOverflowManagerDelegate.m; sourceTree = "<group>"; };
+		9893838913325E6E004F79F1 /* StackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowCommunicator.h; sourceTree = "<group>"; };
+		9893838A13325E6E004F79F1 /* StackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowCommunicator.m; sourceTree = "<group>"; };
+		9893838E133267A3004F79F1 /* MockStackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockStackOverflowCommunicator.h; sourceTree = "<group>"; };
+		9893838F133267A3004F79F1 /* MockStackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockStackOverflowCommunicator.m; sourceTree = "<group>"; };
 		98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowseOverflow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A548CF130D3ABC003C4F0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		98A548D1130D3ABC003C4F0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +135,8 @@
 			children = (
 				9868E927132E63C300AEF519 /* MockStackOverflowManagerDelegate.h */,
 				9868E928132E63C300AEF519 /* MockStackOverflowManagerDelegate.m */,
+				9893838E133267A3004F79F1 /* MockStackOverflowCommunicator.h */,
+				9893838F133267A3004F79F1 /* MockStackOverflowCommunicator.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -183,6 +192,8 @@
 				9868E921132E578600AEF519 /* StackOverflowManager.h */,
 				9868E925132E5AA900AEF519 /* StackOverflowManagerDelegate.h */,
 				9868E922132E578600AEF519 /* StackOverflowManager.m */,
+				9893838913325E6E004F79F1 /* StackOverflowCommunicator.h */,
+				9893838A13325E6E004F79F1 /* StackOverflowCommunicator.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -345,6 +356,7 @@
 				98B5849313168D6E003EA838 /* Person.m in Sources */,
 				9818AB8613181CA700479006 /* Answer.m in Sources */,
 				9868E923132E578600AEF519 /* StackOverflowManager.m in Sources */,
+				9893838B13325E6E004F79F1 /* StackOverflowCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +376,8 @@
 				9868E920132E32F800AEF519 /* StackOverflowManagerTests.m in Sources */,
 				9868E924132E578600AEF519 /* StackOverflowManager.m in Sources */,
 				9868E929132E63C300AEF519 /* MockStackOverflowManagerDelegate.m in Sources */,
+				9893838C13325E6E004F79F1 /* StackOverflowCommunicator.m in Sources */,
+				98938390133267A3004F79F1 /* MockStackOverflowCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

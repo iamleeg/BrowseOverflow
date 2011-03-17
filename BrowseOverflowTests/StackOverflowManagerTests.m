@@ -9,6 +9,8 @@
 #import "StackOverflowManagerTests.h"
 #import "StackOverflowManager.h"
 #import "MockStackOverflowManagerDelegate.h"
+#import "MockStackOverflowCommunicator.h"
+#import "Topic.h"
 
 @implementation StackOverflowManagerTests
 
@@ -29,4 +31,15 @@
     STAssertNoThrow(mgr.delegate = delegate, @"Object conforming to the delegate protocol can be delegate");
     [delegate release];
 }
+
+- (void)testAskingForQuestionsMeansRequestingData {
+    MockStackOverflowCommunicator *communicator = [[MockStackOverflowCommunicator alloc] init];
+    mgr.communicator = communicator;
+    Topic *topic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
+    [mgr fetchQuestionsOnTopic: topic];
+    STAssertTrue([communicator wasAskedToFetchQuestions], @"The communicator should need to fetch data.");
+    [topic release];
+    [communicator release];
+}
+
 @end
