@@ -10,7 +10,7 @@
 #import "StackOverflowManagerDelegate.h"
 
 @interface MockStackOverflowManagerDelegate : NSObject <StackOverflowManagerDelegate> {
-    
 }
+@property (retain) NSError *fetchError;
 
 @end

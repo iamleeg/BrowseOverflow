@@ -30,4 +30,16 @@
  */
 - (void)fetchQuestionsOnTopic: (Topic *)topic;
 
+/**
+ * Signal from the communicator that fetching questions has failed.
+ * @param error The error received from the network or server.
+ */
+- (void)searchingForQuestionsFailedWithError: (NSError *)error;
+
 @end
+
+extern NSString *StackOverflowManagerSearchFailedError;
+
+enum {
+    StackOverflowManagerErrorQuestionSearchCode
+};

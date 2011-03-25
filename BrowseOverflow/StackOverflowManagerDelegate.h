@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class Topic;
 /**
  * The delegate protocol for the StackOverflowManager class.
  *
  * StackOverflowManager uses this delegate protocol to indicate when information becomes available, and to ask about doing further processing.
  */
 @protocol StackOverflowManagerDelegate <NSObject>
+
+- (void)fetchingQuestionsOnTopic: (Topic *)topic failedWithError: (NSError *)error;
 
 @end

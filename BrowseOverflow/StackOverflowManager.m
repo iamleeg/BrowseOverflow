@@ -29,9 +29,17 @@
     [communicator searchForQuestionsWithTag: [topic tag]];
 }
 
+- (void)searchingForQuestionsFailedWithError:(NSError *)error {
+    NSDictionary *errorInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
+    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo:errorInfo];
+    [delegate fetchingQuestionsOnTopic: nil failedWithError: reportableError];
+}
+
 - (void)dealloc {
     [communicator release];
     [super dealloc];
 }
 
 @end
+
+NSString *StackOverflowManagerSearchFailedError = @"StackOverflowManagerSearchFailedError";

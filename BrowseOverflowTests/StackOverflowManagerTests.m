@@ -42,4 +42,22 @@
     [communicator release];
 }
 
+- (void)testErrorReturnedToDelegateIsNotErrorNotifiedByCommunicator {
+    MockStackOverflowManagerDelegate *delegate = [[MockStackOverflowManagerDelegate alloc] init];
+    mgr.delegate = delegate;
+    NSError *underlyingError = [NSError errorWithDomain: @"Test domain" code: 0 userInfo: nil];
+    [mgr searchingForQuestionsFailedWithError: underlyingError];
+    STAssertFalse(underlyingError == [delegate fetchError], @"Error should be at the correct level of abstraction");
+    [delegate release];
+}
+
+- (void)testErrorReturnedToDelegateDocumentsUnderlyingError {
+    MockStackOverflowManagerDelegate *delegate = [[MockStackOverflowManagerDelegate alloc] init];
+    mgr.delegate = delegate;
+    NSError *underlyingError = [NSError errorWithDomain: @"Test domain" code: 0 userInfo: nil];
+    [mgr searchingForQuestionsFailedWithError: underlyingError];
+    STAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], underlyingError, @"The underlying error should be available to client code");
+    [delegate release];
+}
+
 @end
