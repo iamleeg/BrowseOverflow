@@ -13,7 +13,7 @@
 
 @synthesize fetchError;
 
-- (void)fetchingQuestionsOnTopic: (Topic *)topic failedWithError: (NSError *)error {
+- (void)fetchingQuestionsFailedWithError: (NSError *)error {
     self.fetchError = error;
 }
 
