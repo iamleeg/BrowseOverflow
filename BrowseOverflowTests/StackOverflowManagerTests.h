@@ -9,10 +9,13 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 @class StackOverflowManager;
+@class MockStackOverflowManagerDelegate;
 
 @interface StackOverflowManagerTests : SenTestCase {
 @private
     StackOverflowManager *mgr;
+    MockStackOverflowManagerDelegate *delegate;
+    NSError *underlyingError;
 }
 
 @end
