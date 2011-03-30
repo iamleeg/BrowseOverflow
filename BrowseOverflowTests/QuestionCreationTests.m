@@ -20,11 +20,15 @@
     delegate = [[MockStackOverflowManagerDelegate alloc] init];
     mgr.delegate = delegate;
     underlyingError = [[NSError errorWithDomain: @"Test domain" code: 0 userInfo: nil] retain];
+    questionBuilder = [[FakeQuestionBuilder alloc] init];
+    questionBuilder.arrayToReturn = nil;
+    mgr.questionBuilder = questionBuilder;
 }
 
 - (void)tearDown {
     [mgr release];
     [delegate release];
+    [questionBuilder release];
     [underlyingError release];
 }
 
@@ -57,23 +61,13 @@
 }
 
 - (void)testQuestionJSONIsPassedToQuestionBuilder {
-    FakeQuestionBuilder *builder = [[FakeQuestionBuilder alloc] init];
-    builder.arrayToReturn = nil;
-    mgr.questionBuilder = builder;
     [mgr receivedQuestionsJSON: @"Fake JSON"];
-    STAssertEqualObjects(builder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
-    mgr.questionBuilder = nil;
-    [builder release];
+    STAssertEqualObjects(questionBuilder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
 }
 
 - (void)testDelegateNotifiedOfErrorWhenQuestionBuilderFails {
-    FakeQuestionBuilder *builder = [[FakeQuestionBuilder alloc] init];
-    builder.arrayToReturn = nil;
-    builder.errorToSet = underlyingError;
-    mgr.questionBuilder = builder;
+    questionBuilder.errorToSet = underlyingError;
     [mgr receivedQuestionsJSON: @"Fake JSON"];
     STAssertNotNil([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], @"The delegate should have found out about the error");
-    mgr.questionBuilder = nil;
-    [builder release];
 }
 @end

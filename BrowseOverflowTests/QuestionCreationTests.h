@@ -10,11 +10,13 @@
 
 @class StackOverflowManager;
 @class MockStackOverflowManagerDelegate;
+@class FakeQuestionBuilder;
 
 @interface QuestionCreationTests : SenTestCase {
 @private
     StackOverflowManager *mgr;
     MockStackOverflowManagerDelegate *delegate;
+    FakeQuestionBuilder *questionBuilder;
     NSError *underlyingError;
 }
 

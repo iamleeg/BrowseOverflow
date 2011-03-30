@@ -11,6 +11,12 @@
 #import "QuestionBuilder.h"
 #import "Topic.h"
 
+@interface StackOverflowManager ()
+
+- (void)tellDelegateAboutQuestionSearchError: (NSError *)underlyingError;
+
+@end
+
 @implementation StackOverflowManager
 
 @synthesize communicator;
@@ -35,24 +41,27 @@
     NSError *error = nil;
     NSArray *questions = [questionBuilder questionsFromJSON: objectNotation error: &error];
     if (!questions) {
-        NSDictionary *errorInfo = nil;
-        if (error) {
-            errorInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
-        }
-        NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo: errorInfo];
-        [delegate fetchingQuestionsFailedWithError: reportableError];
+        [self tellDelegateAboutQuestionSearchError: error];
     }
 }
 
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {
-    NSDictionary *errorInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
-    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo:errorInfo];
-    [delegate fetchingQuestionsFailedWithError: reportableError];
+    [self tellDelegateAboutQuestionSearchError: error];
 }
 
 - (void)dealloc {
     [communicator release];
     [super dealloc];
+}
+
+#pragma mark Class Continuation
+- (void)tellDelegateAboutQuestionSearchError:(NSError *)underlyingError {
+    NSDictionary *errorInfo = nil;
+    if (underlyingError) {
+        errorInfo = [NSDictionary dictionaryWithObject: underlyingError forKey: NSUnderlyingErrorKey];
+    }
+    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo: errorInfo];
+    [delegate fetchingQuestionsFailedWithError:reportableError];
 }
 
 @end
