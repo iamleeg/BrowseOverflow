@@ -12,13 +12,19 @@
 @implementation MockStackOverflowManagerDelegate
 
 @synthesize fetchError;
+@synthesize fetchedQuestions;
 
 - (void)fetchingQuestionsFailedWithError: (NSError *)error {
     self.fetchError = error;
 }
 
+- (void)questionsReceived:(NSArray *)questions {
+    self.fetchedQuestions = questions;
+}
+
 - (void)dealloc {
     [fetchError release];
+    [fetchedQuestions release];
     [super dealloc];
 }
 @end

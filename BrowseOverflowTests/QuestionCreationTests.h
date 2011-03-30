@@ -18,6 +18,7 @@
     MockStackOverflowManagerDelegate *delegate;
     FakeQuestionBuilder *questionBuilder;
     NSError *underlyingError;
+    NSArray *questionArray;
 }
 
 @end

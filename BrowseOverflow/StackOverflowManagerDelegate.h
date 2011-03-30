@@ -16,6 +16,14 @@
  */
 @protocol StackOverflowManagerDelegate <NSObject>
 
+/**
+ * The manager was unable to retrieve questions from Stack Overflow.
+ */
 - (void)fetchingQuestionsFailedWithError: (NSError *)error;
+
+/**
+ * The manager retrieved a list of questions from Stack Overflow.
+ */
+- (void)questionsReceived: (NSArray *)questions;
 
 @end

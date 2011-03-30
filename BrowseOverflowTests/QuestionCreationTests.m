@@ -12,6 +12,7 @@
 #import "MockStackOverflowCommunicator.h"
 #import "FakeQuestionBuilder.h"
 #import "Topic.h"
+#import "Question.h"
 
 @implementation QuestionCreationTests
 
@@ -23,6 +24,9 @@
     questionBuilder = [[FakeQuestionBuilder alloc] init];
     questionBuilder.arrayToReturn = nil;
     mgr.questionBuilder = questionBuilder;
+    Question *question = [[Question alloc] init];
+    questionArray = [[NSArray arrayWithObject: question] retain];
+    [question release];
 }
 
 - (void)tearDown {
@@ -30,6 +34,7 @@
     [delegate release];
     [questionBuilder release];
     [underlyingError release];
+    [questionArray release];
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {
@@ -69,5 +74,17 @@
     questionBuilder.errorToSet = underlyingError;
     [mgr receivedQuestionsJSON: @"Fake JSON"];
     STAssertNotNil([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], @"The delegate should have found out about the error");
+}
+
+- (void)testDelegateNotToldAboutErrorWhenQuestionsReceived {
+    questionBuilder.arrayToReturn = questionArray;
+    [mgr receivedQuestionsJSON: @"Fake JSON"];
+    STAssertNil([delegate fetchError], @"No error should be received on success");
+}
+
+- (void)testDelegateReceivesTheQuestionsDiscoveredByManager {
+    questionBuilder.arrayToReturn = questionArray;
+    [mgr receivedQuestionsJSON: @"Fake JSON"];
+    STAssertEqualObjects([delegate fetchedQuestions], questionArray, @"The manager should have sent its questions to the delegate");
 }
 @end

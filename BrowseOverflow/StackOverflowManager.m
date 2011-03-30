@@ -43,6 +43,9 @@
     if (!questions) {
         [self tellDelegateAboutQuestionSearchError: error];
     }
+    else {
+        [delegate questionsReceived: questions];
+    }
 }
 
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {
