@@ -12,14 +12,22 @@
 @implementation FakeQuestionBuilder
 
 @synthesize JSON;
+@synthesize arrayToReturn;
+@synthesize errorToSet;
 
 - (NSArray *)questionsFromJSON: (NSString *)objectNotation error: (NSError **)error {
     self.JSON = objectNotation;
-    return nil;
+    if (error) {
+        *error = errorToSet;
+    }
+    return arrayToReturn;
 }
 
 - (void)dealloc {
     [JSON release];
+    [arrayToReturn release];
+    [errorToSet release];
     [super dealloc];
 }
+
 @end

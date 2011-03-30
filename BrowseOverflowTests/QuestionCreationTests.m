@@ -58,9 +58,21 @@
 
 - (void)testQuestionJSONIsPassedToQuestionBuilder {
     FakeQuestionBuilder *builder = [[FakeQuestionBuilder alloc] init];
+    builder.arrayToReturn = nil;
     mgr.questionBuilder = builder;
     [mgr receivedQuestionsJSON: @"Fake JSON"];
     STAssertEqualObjects(builder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
+    mgr.questionBuilder = nil;
+    [builder release];
+}
+
+- (void)testDelegateNotifiedOfErrorWhenQuestionBuilderFails {
+    FakeQuestionBuilder *builder = [[FakeQuestionBuilder alloc] init];
+    builder.arrayToReturn = nil;
+    builder.errorToSet = underlyingError;
+    mgr.questionBuilder = builder;
+    [mgr receivedQuestionsJSON: @"Fake JSON"];
+    STAssertNotNil([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], @"The delegate should have found out about the error");
     mgr.questionBuilder = nil;
     [builder release];
 }

@@ -32,7 +32,16 @@
 }
 
 - (void)receivedQuestionsJSON:(NSString *)objectNotation {
-    NSArray *questions = [questionBuilder questionsFromJSON: objectNotation error: NULL];
+    NSError *error = nil;
+    NSArray *questions = [questionBuilder questionsFromJSON: objectNotation error: &error];
+    if (!questions) {
+        NSDictionary *errorInfo = nil;
+        if (error) {
+            errorInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
+        }
+        NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo: errorInfo];
+        [delegate fetchingQuestionsFailedWithError: reportableError];
+    }
 }
 
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {
