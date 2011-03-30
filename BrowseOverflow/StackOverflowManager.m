@@ -8,11 +8,13 @@
 
 #import "StackOverflowManager.h"
 #import "StackOverflowCommunicator.h"
+#import "QuestionBuilder.h"
 #import "Topic.h"
 
 @implementation StackOverflowManager
 
 @synthesize communicator;
+@synthesize questionBuilder;
 
 - (id<StackOverflowManagerDelegate>)delegate {
     return delegate;
@@ -27,6 +29,10 @@
 
 - (void)fetchQuestionsOnTopic:(Topic *)topic {
     [communicator searchForQuestionsWithTag: [topic tag]];
+}
+
+- (void)receivedQuestionsJSON:(NSString *)objectNotation {
+    NSArray *questions = [questionBuilder questionsFromJSON: objectNotation error: NULL];
 }
 
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {

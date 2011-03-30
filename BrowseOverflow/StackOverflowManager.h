@@ -10,6 +10,7 @@
 #import "StackOverflowManagerDelegate.h"
 
 @class StackOverflowCommunicator;
+@class QuestionBuilder;
 @class Topic;
 /**
  * A façade providing access to the Stack Overflow service.
@@ -20,7 +21,7 @@
 }
 @property (assign) id <StackOverflowManagerDelegate> delegate;
 @property (retain) StackOverflowCommunicator *communicator;
-
+@property (retain) QuestionBuilder *questionBuilder;
 /**
  * Retrieve questions on a given topic from Stack Overflow.
  * @note The delegate will receive messages when new information
@@ -35,6 +36,11 @@
  * @param error The error received from the network or server.
  */
 - (void)searchingForQuestionsFailedWithError: (NSError *)error;
+
+/**
+ * The communicator received a response from the Stack Overflow service.
+ */
+- (void)receivedQuestionsJSON: (NSString *)objectNotation;
 
 @end
 

@@ -10,6 +10,7 @@
 #import "StackOverflowManager.h"
 #import "MockStackOverflowManagerDelegate.h"
 #import "MockStackOverflowCommunicator.h"
+#import "FakeQuestionBuilder.h"
 #import "Topic.h"
 
 @implementation QuestionCreationTests
@@ -59,7 +60,7 @@
     FakeQuestionBuilder *builder = [[FakeQuestionBuilder alloc] init];
     mgr.questionBuilder = builder;
     [mgr receivedQuestionsJSON: @"Fake JSON"];
-    STAssertEqualObjects(questionBuilder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
+    STAssertEqualObjects(builder.JSON, @"Fake JSON", @"Downloaded JSON is sent to the builder");
     mgr.questionBuilder = nil;
     [builder release];
 }
