@@ -87,4 +87,10 @@
     [mgr receivedQuestionsJSON: @"Fake JSON"];
     STAssertEqualObjects([delegate fetchedQuestions], questionArray, @"The manager should have sent its questions to the delegate");
 }
+
+- (void)testEmptyArrayIsPassedToDelegate {
+    questionBuilder.arrayToReturn = [NSArray array];
+    [mgr receivedQuestionsJSON: @"Fake JSON"];
+    STAssertEqualObjects([delegate fetchedQuestions], [NSArray array], @"Returning an empty array is not an error");
+}
 @end
