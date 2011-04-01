@@ -38,4 +38,8 @@
     STAssertNoThrow([questionBuilder questionsFromJSON: @"Not JSON" error: NULL], @"Using a NULL error parameter should not be a problem");
 }
 
+- (void)testRealJSONWithoutQuestionsArrayIsError {
+    NSString *jsonString = @"{ noquestions: true }";
+    STAssertNil([questionBuilder questionsFromJSON: jsonString error: NULL], @"No questions to parse in this JSON");
+}
 @end
