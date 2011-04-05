@@ -10,6 +10,15 @@
 		9803B9D3134328FC00FEF72D /* QuestionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803B9D2134328FC00FEF72D /* QuestionBuilder.m */; };
 		9803B9D4134328FC00FEF72D /* QuestionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803B9D2134328FC00FEF72D /* QuestionBuilder.m */; };
 		9803B9D7134330E000FEF72D /* FakeQuestionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */; };
+		9809BE541349CAF4008B4136 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE481349CAF4008B4136 /* NSObject+JSON.m */; };
+		9809BE551349CAF4008B4136 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE491349CAF4008B4136 /* SBJsonWriter.m */; };
+		9809BE561349CAF4008B4136 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE4A1349CAF4008B4136 /* SBJsonStreamWriter.m */; };
+		9809BE571349CAF4008B4136 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE4C1349CAF4008B4136 /* SBJsonStreamWriterState.m */; };
+		9809BE581349CAF4008B4136 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE4E1349CAF4008B4136 /* SBJsonTokeniser.m */; };
+		9809BE591349CAF4008B4136 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE4F1349CAF4008B4136 /* SBJsonParser.m */; };
+		9809BE5A1349CAF4008B4136 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE501349CAF4008B4136 /* SBJsonStreamParser.m */; };
+		9809BE5B1349CAF4008B4136 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE521349CAF4008B4136 /* SBJsonStreamParserState.m */; };
+		9809BE5C1349CAF4008B4136 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE531349CAF4008B4136 /* SBJsonStreamParserAdapter.m */; };
 		9818AB8213181B6E00479006 /* AnswerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8113181B6E00479006 /* AnswerTests.m */; };
 		9818AB8613181CA700479006 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8513181CA700479006 /* Answer.m */; };
 		9818AB8713181CA700479006 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8513181CA700479006 /* Answer.m */; };
@@ -17,7 +26,6 @@
 		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
 		9829C1211312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
 		9829C1221312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
-		9868E91D132E128500AEF519 /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9868E91C132E128500AEF519 /* libjson.a */; };
 		9868E920132E32F800AEF519 /* QuestionCreationWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E91F132E32F800AEF519 /* QuestionCreationWorkflowTests.m */; };
 		9868E923132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
 		9868E924132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
@@ -49,41 +57,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		98240DF71342491B00D9E1FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 53D229810C96121600276605;
-			remoteInfo = JSON;
-		};
-		98240DF91342491B00D9E1FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 53D2298D0C96122A00276605;
-			remoteInfo = Tests;
-		};
-		98240DFB1342491B00D9E1FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FE2BBD800D8B0D3900184787;
-			remoteInfo = libjson;
-		};
-		98240DFD1342491B00D9E1FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FE2BBDAB0D8B0EE000184787;
-			remoteInfo = libjsontests;
-		};
-		98240E001342494400D9E1FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FE2BBD7F0D8B0D3900184787;
-			remoteInfo = libjson;
-		};
 		98A548F3130D3ABF003C4F0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 98A548C2130D3ABB003C4F0F /* Project object */;
@@ -98,18 +71,35 @@
 		9803B9D2134328FC00FEF72D /* QuestionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionBuilder.m; sourceTree = "<group>"; };
 		9803B9D5134330E000FEF72D /* FakeQuestionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeQuestionBuilder.h; sourceTree = "<group>"; };
 		9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeQuestionBuilder.m; sourceTree = "<group>"; };
+		9809BE3A1349CA28008B4136 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "../../json-framework/Classes/JSON.h"; sourceTree = "<group>"; };
+		9809BE3B1349CA28008B4136 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JSON.h"; path = "../../json-framework/Classes/NSObject+JSON.h"; sourceTree = "<group>"; };
+		9809BE3C1349CA28008B4136 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "../../json-framework/Classes/SBJsonWriter.h"; sourceTree = "<group>"; };
+		9809BE3D1349CA28008B4136 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriter.h; path = "../../json-framework/Classes/SBJsonStreamWriter.h"; sourceTree = "<group>"; };
+		9809BE3E1349CA28008B4136 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = "../../json-framework/Classes/SBJsonParser.h"; sourceTree = "<group>"; };
+		9809BE3F1349CA28008B4136 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParser.h; path = "../../json-framework/Classes/SBJsonStreamParser.h"; sourceTree = "<group>"; };
+		9809BE401349CA28008B4136 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserAdapter.h; path = "../../json-framework/Classes/SBJsonStreamParserAdapter.h"; sourceTree = "<group>"; };
+		9809BE481349CAF4008B4136 /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+JSON.m"; path = "../../json-framework/Classes/NSObject+JSON.m"; sourceTree = "<group>"; };
+		9809BE491349CAF4008B4136 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = "../../json-framework/Classes/SBJsonWriter.m"; sourceTree = "<group>"; };
+		9809BE4A1349CAF4008B4136 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriter.m; path = "../../json-framework/Classes/SBJsonStreamWriter.m"; sourceTree = "<group>"; };
+		9809BE4B1349CAF4008B4136 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamWriterState.h; path = "../../json-framework/Classes/SBJsonStreamWriterState.h"; sourceTree = "<group>"; };
+		9809BE4C1349CAF4008B4136 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamWriterState.m; path = "../../json-framework/Classes/SBJsonStreamWriterState.m"; sourceTree = "<group>"; };
+		9809BE4D1349CAF4008B4136 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonTokeniser.h; path = "../../json-framework/Classes/SBJsonTokeniser.h"; sourceTree = "<group>"; };
+		9809BE4E1349CAF4008B4136 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonTokeniser.m; path = "../../json-framework/Classes/SBJsonTokeniser.m"; sourceTree = "<group>"; };
+		9809BE4F1349CAF4008B4136 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = "../../json-framework/Classes/SBJsonParser.m"; sourceTree = "<group>"; };
+		9809BE501349CAF4008B4136 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParser.m; path = "../../json-framework/Classes/SBJsonStreamParser.m"; sourceTree = "<group>"; };
+		9809BE511349CAF4008B4136 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonStreamParserState.h; path = "../../json-framework/Classes/SBJsonStreamParserState.h"; sourceTree = "<group>"; };
+		9809BE521349CAF4008B4136 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserState.m; path = "../../json-framework/Classes/SBJsonStreamParserState.m"; sourceTree = "<group>"; };
+		9809BE531349CAF4008B4136 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonStreamParserAdapter.m; path = "../../json-framework/Classes/SBJsonStreamParserAdapter.m"; sourceTree = "<group>"; };
 		9818AB8013181B6E00479006 /* AnswerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTests.h; sourceTree = "<group>"; };
 		9818AB8113181B6E00479006 /* AnswerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTests.m; sourceTree = "<group>"; };
 		9818AB8413181CA700479006 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		9818AB8513181CA700479006 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		982341EC1345D888005E14B5 /* QuestionBuilderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionBuilderTests.h; sourceTree = "<group>"; };
 		982341ED1345D888005E14B5 /* QuestionBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionBuilderTests.m; sourceTree = "<group>"; };
-		98240DEE1342491B00D9E1FA /* JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSON.xcodeproj; path = "../json-framework/JSON.xcodeproj"; sourceTree = "<group>"; };
 		9829C11B1312B1570070C733 /* QuestionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTests.h; sourceTree = "<group>"; };
 		9829C11C1312B1570070C733 /* QuestionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTests.m; sourceTree = "<group>"; };
 		9829C11F1312B75A0070C733 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		9829C1201312B75A0070C733 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
-		9868E91C132E128500AEF519 /* libjson.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libjson.a; sourceTree = SOURCE_ROOT; };
 		9868E91E132E32F800AEF519 /* QuestionCreationWorkflowTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCreationWorkflowTests.h; sourceTree = "<group>"; };
 		9868E91F132E32F800AEF519 /* QuestionCreationWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCreationWorkflowTests.m; sourceTree = "<group>"; };
 		9868E921132E578600AEF519 /* StackOverflowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowManager.h; sourceTree = "<group>"; };
@@ -156,7 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9868E91D132E128500AEF519 /* libjson.a in Frameworks */,
 				98A548D0130D3ABC003C4F0F /* UIKit.framework in Frameworks */,
 				98A548D2130D3ABC003C4F0F /* Foundation.framework in Frameworks */,
 				98A548D4130D3ABC003C4F0F /* CoreGraphics.framework in Frameworks */,
@@ -176,17 +165,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		98240DEF1342491B00D9E1FA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				98240DF81342491B00D9E1FA /* JSON.framework */,
-				98240DFA1342491B00D9E1FA /* Tests.octest */,
-				98240DFC1342491B00D9E1FA /* libjson.a */,
-				98240DFE1342491B00D9E1FA /* libjsontests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		9868E926132E63A400AEF519 /* Mocks, Fakes Stubs */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +181,6 @@
 		98A548C0130D3ABB003C4F0F = {
 			isa = PBXGroup;
 			children = (
-				98240DEE1342491B00D9E1FA /* JSON.xcodeproj */,
-				9868E91C132E128500AEF519 /* libjson.a */,
 				98A548D5130D3ABC003C4F0F /* BrowseOverflow */,
 				98A548F5130D3ABF003C4F0F /* BrowseOverflowTests */,
 				98A548CE130D3ABC003C4F0F /* Frameworks */,
@@ -263,6 +239,25 @@
 		98A548D6130D3ABC003C4F0F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9809BE3A1349CA28008B4136 /* JSON.h */,
+				9809BE3B1349CA28008B4136 /* NSObject+JSON.h */,
+				9809BE3C1349CA28008B4136 /* SBJsonWriter.h */,
+				9809BE3D1349CA28008B4136 /* SBJsonStreamWriter.h */,
+				9809BE3E1349CA28008B4136 /* SBJsonParser.h */,
+				9809BE3F1349CA28008B4136 /* SBJsonStreamParser.h */,
+				9809BE401349CA28008B4136 /* SBJsonStreamParserAdapter.h */,
+				9809BE481349CAF4008B4136 /* NSObject+JSON.m */,
+				9809BE491349CAF4008B4136 /* SBJsonWriter.m */,
+				9809BE4A1349CAF4008B4136 /* SBJsonStreamWriter.m */,
+				9809BE4B1349CAF4008B4136 /* SBJsonStreamWriterState.h */,
+				9809BE4C1349CAF4008B4136 /* SBJsonStreamWriterState.m */,
+				9809BE4D1349CAF4008B4136 /* SBJsonTokeniser.h */,
+				9809BE4E1349CAF4008B4136 /* SBJsonTokeniser.m */,
+				9809BE4F1349CAF4008B4136 /* SBJsonParser.m */,
+				9809BE501349CAF4008B4136 /* SBJsonStreamParser.m */,
+				9809BE511349CAF4008B4136 /* SBJsonStreamParserState.h */,
+				9809BE521349CAF4008B4136 /* SBJsonStreamParserState.m */,
+				9809BE531349CAF4008B4136 /* SBJsonStreamParserAdapter.m */,
 				98A548D7130D3ABC003C4F0F /* BrowseOverflow-Info.plist */,
 				98A548D8130D3ABD003C4F0F /* InfoPlist.strings */,
 				98A548DB130D3ABD003C4F0F /* BrowseOverflow-Prefix.pch */,
@@ -318,7 +313,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				98240E011342494400D9E1FA /* PBXTargetDependency */,
 			);
 			name = BrowseOverflow;
 			productName = BrowseOverflow;
@@ -362,12 +356,6 @@
 			mainGroup = 98A548C0130D3ABB003C4F0F;
 			productRefGroup = 98A548CC130D3ABC003C4F0F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 98240DEF1342491B00D9E1FA /* Products */;
-					ProjectRef = 98240DEE1342491B00D9E1FA /* JSON.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				98A548CA130D3ABC003C4F0F /* BrowseOverflow */,
@@ -375,37 +363,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		98240DF81342491B00D9E1FA /* JSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = JSON.framework;
-			remoteRef = 98240DF71342491B00D9E1FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		98240DFA1342491B00D9E1FA /* Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = Tests.octest;
-			remoteRef = 98240DF91342491B00D9E1FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		98240DFC1342491B00D9E1FA /* libjson.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjson.a;
-			remoteRef = 98240DFB1342491B00D9E1FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		98240DFE1342491B00D9E1FA /* libjsontests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = libjsontests.octest;
-			remoteRef = 98240DFD1342491B00D9E1FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		98A548C9130D3ABC003C4F0F /* Resources */ = {
@@ -460,6 +417,15 @@
 				9868E923132E578600AEF519 /* StackOverflowManager.m in Sources */,
 				9893838B13325E6E004F79F1 /* StackOverflowCommunicator.m in Sources */,
 				9803B9D3134328FC00FEF72D /* QuestionBuilder.m in Sources */,
+				9809BE541349CAF4008B4136 /* NSObject+JSON.m in Sources */,
+				9809BE551349CAF4008B4136 /* SBJsonWriter.m in Sources */,
+				9809BE561349CAF4008B4136 /* SBJsonStreamWriter.m in Sources */,
+				9809BE571349CAF4008B4136 /* SBJsonStreamWriterState.m in Sources */,
+				9809BE581349CAF4008B4136 /* SBJsonTokeniser.m in Sources */,
+				9809BE591349CAF4008B4136 /* SBJsonParser.m in Sources */,
+				9809BE5A1349CAF4008B4136 /* SBJsonStreamParser.m in Sources */,
+				9809BE5B1349CAF4008B4136 /* SBJsonStreamParserState.m in Sources */,
+				9809BE5C1349CAF4008B4136 /* SBJsonStreamParserAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,11 +456,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		98240E011342494400D9E1FA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libjson;
-			targetProxy = 98240E001342494400D9E1FA /* PBXContainerItemProxy */;
-		};
 		98A548F4130D3ABF003C4F0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 98A548CA130D3ABC003C4F0F /* BrowseOverflow */;
@@ -584,6 +545,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../json-framework/Classes/";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -602,6 +564,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/../json-framework/Classes/";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -619,6 +582,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
 				INFOPLIST_FILE = "BrowseOverflowTests/BrowseOverflowTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
@@ -642,6 +609,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
 				INFOPLIST_FILE = "BrowseOverflowTests/BrowseOverflowTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,

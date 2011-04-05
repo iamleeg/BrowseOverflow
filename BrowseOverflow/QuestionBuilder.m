@@ -7,14 +7,25 @@
 //
 
 #import "QuestionBuilder.h"
-
+#import "JSON.h"
 
 @implementation QuestionBuilder
 
 - (NSArray *)questionsFromJSON:(NSString *)objectNotation error:(NSError **)error {
     NSParameterAssert(objectNotation != nil);
-    if (error != NULL) {
-        *error = [NSError errorWithDomain:QuestionBuilderErrorDomain code: QuestionBuilderInvalidJSONError userInfo: nil];
+    NSDictionary *parsedObject = [objectNotation JSONValue];
+    if (parsedObject == nil) {
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:QuestionBuilderErrorDomain code: QuestionBuilderInvalidJSONError userInfo: nil];
+        }
+        return nil;
+    }
+    NSArray *questions = [parsedObject objectForKey: @"questions"];
+    if (questions == nil) {
+        if (error != NULL) {
+            *error = [NSError errorWithDomain:QuestionBuilderErrorDomain code: QuestionBuilderMissingDataError userInfo:nil];
+        }
+        return nil;
     }
     return nil;
 }
