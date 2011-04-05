@@ -17,7 +17,8 @@
     question.date = [NSDate distantPast];
     question.title = @"Do iPhones also dream of electric sheep?";
     question.score = 42;
-
+    question.questionID = 17;
+    
     Answer *accepted = [[Answer alloc] init];
     accepted.score = 1;
     accepted.accepted = YES;
@@ -62,6 +63,10 @@
 
 - (void)testAcceptedAnswerIsFirst {
     STAssertTrue([[question.answers objectAtIndex: 0] isAccepted], @"Accepted answer comes first");
+}
+
+- (void)testQuestionHasIdentity {
+    STAssertEquals(question.questionID, 17, @"Questions need a numeric identifier");
 }
 
 - (void)testHighScoreAnswerBeforeLow {

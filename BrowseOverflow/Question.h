@@ -33,6 +33,11 @@
  * An ordered collection of answers.
  */
 @property (readonly) NSArray *answers;
+/**
+ * A numeric identifier, relating this question object to its
+ * source on the website.
+ */
+@property NSInteger questionID;
 
 /**
  * Add another answer to this question's collection of answers.
