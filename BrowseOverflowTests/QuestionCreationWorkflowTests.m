@@ -38,7 +38,7 @@
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {
-    STAssertThrows(mgr.delegate = [NSNull null], @"NSNull doesn't conform to the delegate protocol");
+    STAssertThrows(mgr.delegate = (id <StackOverflowManagerDelegate>)[NSNull null], @"NSNull doesn't conform to the delegate protocol");
 }
 
 - (void)testConformingObjectCanBeDelegate {
