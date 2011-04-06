@@ -26,6 +26,10 @@
  */
 @property (copy) NSString *title;
 /**
+ * The body of this question, as an HTML string.
+ */
+@property (copy) NSString *body;
+/**
  * Upvotes received by this question, minus downvotes received.
  */
 @property NSInteger score;

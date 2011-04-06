@@ -13,6 +13,7 @@
 
 @synthesize date;
 @synthesize title;
+@synthesize body;
 @synthesize score;
 @synthesize questionID;
 
@@ -34,6 +35,7 @@
 - (void)dealloc {
     [date release];
     [title release];
+    [body release];
     [answerSet release];
     [super dealloc];
 }
