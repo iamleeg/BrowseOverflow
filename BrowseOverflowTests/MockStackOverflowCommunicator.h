@@ -11,8 +11,10 @@
 
 @interface MockStackOverflowCommunicator : StackOverflowCommunicator {
     BOOL wasAskedToFetchQuestions;
+    BOOL wasAskedToFetchBody;
 }
 
 - (BOOL)wasAskedToFetchQuestions;
+- (BOOL)wasAskedToFetchBody;
 
 @end

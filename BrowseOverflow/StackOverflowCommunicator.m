@@ -15,4 +15,7 @@
     
 }
 
+- (void)downloadInformationForQuestionWithID:(NSInteger)identifier {
+    
+}
 @end

@@ -15,7 +15,15 @@
     wasAskedToFetchQuestions = YES;
 }
 
+- (void)downloadInformationForQuestionWithID:(NSInteger)identifier {
+    wasAskedToFetchBody = YES;
+}
+
 - (BOOL)wasAskedToFetchQuestions {
     return wasAskedToFetchQuestions;
+}
+
+- (BOOL)wasAskedToFetchBody {
+    return wasAskedToFetchBody;
 }
 @end

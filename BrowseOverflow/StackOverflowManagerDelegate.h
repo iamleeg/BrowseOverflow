@@ -26,4 +26,9 @@
  */
 - (void)questionsReceived: (NSArray *)questions;
 
+/**
+ * The manager couldn't fetch a question body.
+ */
+- (void)fetchingQuestionBodyFailedWithError: (NSError *)error;
+
 @end

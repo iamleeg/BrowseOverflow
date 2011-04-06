@@ -11,6 +11,7 @@
 
 @class StackOverflowCommunicator;
 @class QuestionBuilder;
+@class Question;
 @class Topic;
 /**
  * A façade providing access to the Stack Overflow service.
@@ -25,11 +26,20 @@
 /**
  * Retrieve questions on a given topic from Stack Overflow.
  * @note The delegate will receive messages when new information
- *       arrives, and will ask the delegate if it needs guidance.
+ *       arrives, and this class will ask the delegate if it needs
+ *       guidance.
  * @param topic The subject on which to find questions.
  * @see StackOverflowManagerDelegate
  */
 - (void)fetchQuestionsOnTopic: (Topic *)topic;
+
+/**
+ * Get the body for a question from Stack Overflow.
+ * @note The delegate will receive messages when new information arrives.
+ * @param question The question for which to get the body.
+ * @see StackOverflowManagerDelegate
+ */
+- (void)fetchBodyForQuestion: (Question *)question;
 
 /**
  * Signal from the communicator that fetching questions has failed.
@@ -42,10 +52,16 @@
  */
 - (void)receivedQuestionsJSON: (NSString *)objectNotation;
 
+/**
+ * Signal from the communicator that it couldn't retrieve a question body.
+ */
+- (void)fetchingQuestionBodyFailedWithError: (NSError *)error;
+
 @end
 
-extern NSString *StackOverflowManagerSearchFailedError;
+extern NSString *StackOverflowManagerError;
 
 enum {
-    StackOverflowManagerErrorQuestionSearchCode
+    StackOverflowManagerErrorQuestionSearchCode,
+    StackOverflowManagerErrorQuestionBodyFetchCode
 };

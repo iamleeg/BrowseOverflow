@@ -27,6 +27,8 @@
     Question *question = [[Question alloc] init];
     questionArray = [[NSArray arrayWithObject: question] retain];
     [question release];
+    communicator = [[MockStackOverflowCommunicator alloc] init];
+    mgr.communicator = communicator;
 }
 
 - (void)tearDown {
@@ -35,6 +37,7 @@
     [questionBuilder release];
     [underlyingError release];
     [questionArray release];
+    [communicator release];
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {
@@ -46,13 +49,10 @@
 }
 
 - (void)testAskingForQuestionsMeansRequestingData {
-    MockStackOverflowCommunicator *communicator = [[MockStackOverflowCommunicator alloc] init];
-    mgr.communicator = communicator;
     Topic *topic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
     [mgr fetchQuestionsOnTopic: topic];
     STAssertTrue([communicator wasAskedToFetchQuestions], @"The communicator should need to fetch data.");
     [topic release];
-    [communicator release];
 }
 
 - (void)testErrorReturnedToDelegateIsNotErrorNotifiedByCommunicator {
@@ -92,5 +92,18 @@
     questionBuilder.arrayToReturn = [NSArray array];
     [mgr receivedQuestionsJSON: @"Fake JSON"];
     STAssertEqualObjects([delegate fetchedQuestions], [NSArray array], @"Returning an empty array is not an error");
+}
+
+- (void)testAskingForQuestionBodyMeansRequestingData {
+    Question *questionToFetch = [[Question alloc] init];
+    questionToFetch.questionID = 1234;
+    [mgr fetchBodyForQuestion: questionToFetch];
+    STAssertTrue([communicator wasAskedToFetchBody], @"The communicator should need to retrieve data for the question body");
+    [questionToFetch release];
+}
+
+- (void)testDelegateNotifiedOfFailureToFetchQuestion {
+    [mgr fetchingQuestionBodyFailedWithError: underlyingError];
+    STAssertNotNil([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], @"Delegate should have found out about this error");
 }
 @end

@@ -9,6 +9,7 @@
 #import "StackOverflowManager.h"
 #import "StackOverflowCommunicator.h"
 #import "QuestionBuilder.h"
+#import "Question.h"
 #import "Topic.h"
 
 @interface StackOverflowManager ()
@@ -37,6 +38,10 @@
     [communicator searchForQuestionsWithTag: [topic tag]];
 }
 
+- (void)fetchBodyForQuestion:(Question *)question {
+    [communicator downloadInformationForQuestionWithID: question.questionID];
+}
+
 - (void)receivedQuestionsJSON:(NSString *)objectNotation {
     NSError *error = nil;
     NSArray *questions = [questionBuilder questionsFromJSON: objectNotation error: &error];
@@ -52,6 +57,15 @@
     [self tellDelegateAboutQuestionSearchError: error];
 }
 
+- (void)fetchingQuestionBodyFailedWithError:(NSError *)error {
+    NSDictionary *errorInfo = nil;
+    if (error) {
+        errorInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
+    }
+    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code: StackOverflowManagerErrorQuestionBodyFetchCode userInfo:errorInfo];
+    [delegate fetchingQuestionBodyFailedWithError: reportableError];
+}
+
 - (void)dealloc {
     [communicator release];
     [super dealloc];
@@ -63,10 +77,10 @@
     if (underlyingError) {
         errorInfo = [NSDictionary dictionaryWithObject: underlyingError forKey: NSUnderlyingErrorKey];
     }
-    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerSearchFailedError code: StackOverflowManagerErrorQuestionSearchCode userInfo: errorInfo];
+    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code: StackOverflowManagerErrorQuestionSearchCode userInfo: errorInfo];
     [delegate fetchingQuestionsFailedWithError:reportableError];
 }
 
 @end
 
-NSString *StackOverflowManagerSearchFailedError = @"StackOverflowManagerSearchFailedError";
+NSString *StackOverflowManagerError = @"StackOverflowManagerError";
