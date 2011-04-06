@@ -22,6 +22,7 @@
 
 @synthesize communicator;
 @synthesize questionBuilder;
+@synthesize questionToFill;
 
 - (id<StackOverflowManagerDelegate>)delegate {
     return delegate;
@@ -39,6 +40,7 @@
 }
 
 - (void)fetchBodyForQuestion:(Question *)question {
+    self.questionToFill = question;
     [communicator downloadInformationForQuestionWithID: question.questionID];
 }
 
@@ -53,7 +55,13 @@
     }
 }
 
+- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
+    [questionBuilder fillInDetailsForQuestion: self.questionToFill fromJSON: objectNotation];
+    self.questionToFill = nil;
+}
+
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {
+    self.questionToFill = nil;
     [self tellDelegateAboutQuestionSearchError: error];
 }
 
@@ -68,6 +76,7 @@
 
 - (void)dealloc {
     [communicator release];
+    [questionToFill release];
     [super dealloc];
 }
 

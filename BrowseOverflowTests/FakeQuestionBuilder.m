@@ -7,13 +7,14 @@
 //
 
 #import "FakeQuestionBuilder.h"
-
+#import "Question.h"
 
 @implementation FakeQuestionBuilder
 
 @synthesize JSON;
 @synthesize arrayToReturn;
 @synthesize errorToSet;
+@synthesize questionToFill;
 
 - (NSArray *)questionsFromJSON: (NSString *)objectNotation error: (NSError **)error {
     self.JSON = objectNotation;
@@ -23,10 +24,16 @@
     return arrayToReturn;
 }
 
+- (void)fillInDetailsForQuestion:(Question *)question fromJSON:(NSString *)objectNotation {
+    self.JSON = objectNotation;
+    self.questionToFill = question;
+}
+
 - (void)dealloc {
     [JSON release];
     [arrayToReturn release];
     [errorToSet release];
+    [questionToFill release];
     [super dealloc];
 }
 

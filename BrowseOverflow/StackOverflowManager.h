@@ -23,6 +23,7 @@
 @property (assign) id <StackOverflowManagerDelegate> delegate;
 @property (retain) StackOverflowCommunicator *communicator;
 @property (retain) QuestionBuilder *questionBuilder;
+@property (retain) Question *questionToFill;
 /**
  * Retrieve questions on a given topic from Stack Overflow.
  * @note The delegate will receive messages when new information
@@ -48,7 +49,7 @@
 - (void)searchingForQuestionsFailedWithError: (NSError *)error;
 
 /**
- * The communicator received a response from the Stack Overflow service.
+ * The communicator received a response from the Stack Overflow search.
  */
 - (void)receivedQuestionsJSON: (NSString *)objectNotation;
 
@@ -56,6 +57,11 @@
  * Signal from the communicator that it couldn't retrieve a question body.
  */
 - (void)fetchingQuestionBodyFailedWithError: (NSError *)error;
+
+/**
+ * The communicator received data with more details on a question.
+ */
+- (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
 
 @end
 

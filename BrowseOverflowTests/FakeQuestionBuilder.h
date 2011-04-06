@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "QuestionBuilder.h"
 
+@class Question;
+
 @interface FakeQuestionBuilder : QuestionBuilder {
 }
 @property (copy) NSString *JSON;
 @property (copy) NSArray *arrayToReturn;
 @property (copy) NSError *errorToSet;
+@property (retain) Question *questionToFill;
 @end

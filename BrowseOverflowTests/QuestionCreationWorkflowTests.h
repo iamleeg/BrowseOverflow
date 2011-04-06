@@ -12,6 +12,7 @@
 @class MockStackOverflowManagerDelegate;
 @class FakeQuestionBuilder;
 @class MockStackOverflowCommunicator;
+@class Question;
 
 @interface QuestionCreationWorkflowTests : SenTestCase {
 @private
@@ -19,6 +20,7 @@
     MockStackOverflowManagerDelegate *delegate;
     FakeQuestionBuilder *questionBuilder;
     MockStackOverflowCommunicator *communicator;
+    Question *questionToFetch;
     NSError *underlyingError;
     NSArray *questionArray;
 }
