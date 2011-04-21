@@ -99,5 +99,8 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
     Question *question = [[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0];
     STAssertEquals(question.questionID, 2817980, @"The question ID should match the data we sent");
     STAssertEquals([question.date timeIntervalSince1970], (NSTimeInterval)1273660706, @"The date of the question should match the data");
+    STAssertEqualObjects(question.title, @"Why does Keychain Services return the wrong keychain content?", @"Title should match the provided data");
+    STAssertEquals(question.score, 2, @"Score should match the data");
 }
+
 @end

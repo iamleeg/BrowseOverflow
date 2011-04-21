@@ -33,6 +33,8 @@
         Question *thisQuestion = [[Question alloc] init];
         thisQuestion.questionID = [[parsedQuestion objectForKey: @"question_id"] integerValue];
         thisQuestion.date = [NSDate dateWithTimeIntervalSince1970: [[parsedQuestion objectForKey: @"creation_date"] doubleValue]];
+        thisQuestion.title = [parsedQuestion objectForKey: @"title"];
+        thisQuestion.score = [[parsedQuestion objectForKey: @"score"] integerValue];
         [results addObject: thisQuestion];
         [thisQuestion release];
     }
