@@ -13,6 +13,8 @@
 
 - (void)setUp {
     questionBuilder = [[QuestionBuilder alloc] init];
+    stringIsNotJSON = @"Not JSON";
+    noQuestionsJSONString = @"{ \"noquestions\": true }";
 }
 
 - (void)tearDown {
@@ -25,28 +27,27 @@
 }
 
 - (void)testNilReturnedWhenStringIsNotJSON {
-    STAssertNil([questionBuilder questionsFromJSON: @"Not JSON" error: NULL], @"This parameter should not be parsable");
+    STAssertNil([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"This parameter should not be parsable");
 }
 
 - (void)testErrorSetWhenStringIsNotJSON {
     NSError *error = nil;
-    [questionBuilder questionsFromJSON:@"Not JSON" error: &error];
+    [questionBuilder questionsFromJSON: stringIsNotJSON error: &error];
     STAssertNotNil(error, @"An error occurred, we should be told");
 }
 
 - (void)testPassingNullErrorDoesNotCauseCrash {
-    STAssertNoThrow([questionBuilder questionsFromJSON: @"Not JSON" error: NULL], @"Using a NULL error parameter should not be a problem");
+    STAssertNoThrow([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"Using a NULL error parameter should not be a problem");
 }
 
 - (void)testRealJSONWithoutQuestionsArrayIsError {
-    NSString *jsonString = @"{ \"noquestions\": true }";
-    STAssertNil([questionBuilder questionsFromJSON: jsonString error: NULL], @"No questions to parse in this JSON");
+    STAssertNil([questionBuilder questionsFromJSON: noQuestionsJSONString error: NULL], @"No questions to parse in this JSON");
 }
 
 - (void)testRealJSONWithoutQuestionsReturnsMissingDataError {
-    NSString *jsonString = @"{ \"noquestions\": true }";
     NSError *error = nil;
-    [questionBuilder questionsFromJSON:jsonString error: &error];
+    [questionBuilder questionsFromJSON: noQuestionsJSONString error: &error];
     STAssertEquals([error code], QuestionBuilderMissingDataError, @"This case should not be an invalid JSON error");
 }
+
 @end
