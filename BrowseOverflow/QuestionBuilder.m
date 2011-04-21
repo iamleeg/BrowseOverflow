@@ -8,6 +8,7 @@
 
 #import "QuestionBuilder.h"
 #import "JSON.h"
+#import "Question.h"
 
 @implementation QuestionBuilder
 
@@ -27,7 +28,15 @@
         }
         return nil;
     }
-    return nil;
+    NSMutableArray *results = [NSMutableArray arrayWithCapacity: [questions count]];
+    for (NSDictionary *parsedQuestion in questions) {
+        Question *thisQuestion = [[Question alloc] init];
+        thisQuestion.questionID = [[parsedQuestion objectForKey: @"question_id"] integerValue];
+        thisQuestion.date = [NSDate dateWithTimeIntervalSince1970: [[parsedQuestion objectForKey: @"creation_date"] doubleValue]];
+        [results addObject: thisQuestion];
+        [thisQuestion release];
+    }
+    return [[results copy] autorelease];
 }
 
 - (void)fillInDetailsForQuestion:(Question *)question fromJSON:(NSString *)objectNotation {

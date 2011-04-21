@@ -14,8 +14,6 @@
 
 @interface QuestionBuilderTests : SenTestCase {
     QuestionBuilder *questionBuilder;
-    NSString *stringIsNotJSON;
-    NSString *noQuestionsJSONString;
 }
 
 @end
