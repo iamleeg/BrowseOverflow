@@ -103,4 +103,10 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
     STAssertEquals(question.score, 2, @"Score should match the data");
 }
 
+- (void)testQuestionCreatedFromEmptyObjectIsStillValidObject {
+    NSString *emptyQuestion = @"{ \"questions\": [ {} ] }";
+    NSArray *questions = [questionBuilder questionsFromJSON: emptyQuestion error: NULL];
+    STAssertEquals([questions count], (NSUInteger)1, @"QuestionBuilder must handle partial input");
+}
+
 @end
