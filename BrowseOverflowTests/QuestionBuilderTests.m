@@ -123,4 +123,19 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
 - (void)testBuildingQuestionBodyWithNoQuestionCannotBeTried {
     STAssertThrows([questionBuilder fillInDetailsForQuestion: nil fromJSON: questionJSON], @"No reason to expect that a nil question is passed");
 }
+
+- (void)testNonJSONDataDoesNotCauseABodyToBeAddedToAQuestion {
+    [questionBuilder fillInDetailsForQuestion: question fromJSON: stringIsNotJSON];
+    STAssertNil(question.body, @"Body should not have been added");
+}
+
+- (void)testJSONWhichDoesNotContainABodyDoesNotCauseBodyToBeAdded {
+    [questionBuilder fillInDetailsForQuestion: question fromJSON: noQuestionsJSONString];
+    STAssertNil(question.body, @"There was no body to add");
+}
+
+- (void)testBodyContainedInJSONIsAddedToQuestion {
+    [questionBuilder fillInDetailsForQuestion: question fromJSON:questionJSON];
+    STAssertEqualObjects(question.body, @"<p>I've been trying to use persistent keychain references.</p>", @"The correct question body is added");
+}
 @end

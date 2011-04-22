@@ -51,6 +51,11 @@
 - (void)fillInDetailsForQuestion:(Question *)question fromJSON:(NSString *)objectNotation {
     NSParameterAssert(question != nil);
     NSParameterAssert(objectNotation != nil);
+    NSDictionary *parsedObject = [objectNotation JSONValue];
+    NSString *questionBody = [[[parsedObject objectForKey: @"questions"]  objectAtIndex: 0] objectForKey: @"body"];
+    if (questionBody) {
+        question.body = questionBody;
+    }
 }
 
 @end
