@@ -9,6 +9,7 @@
 #import "QuestionTests.h"
 #import "Question.h"
 #import "Answer.h"
+#import "Person.h"
 
 @implementation QuestionTests
 
@@ -36,6 +37,10 @@
     [question addAnswer: highScore];
     [highScore release];
     
+    asker = [[Person alloc] initWithName: @"Graham Lee" avatarLocation:@"http://example.com/avatar.png"];
+    question.asker = asker;
+    [asker release];
+    
 }
 
 - (void)tearDown {
@@ -43,6 +48,7 @@
     question = nil;
     lowScore = nil;
     highScore = nil;
+    asker = nil;
 }
 
 - (void)testQuestionHasATitle {
@@ -79,5 +85,9 @@
     NSInteger highIndex = [answers indexOfObject: highScore];
     NSInteger lowIndex = [answers indexOfObject: lowScore];
     STAssertTrue(highIndex < lowIndex, @"High-scoring answer comes first");
+}
+
+- (void)testQuestionWasAskedBySomeone {
+    STAssertEqualObjects(question.asker, asker, @"Question should keep track of who asked it.");
 }
 @end

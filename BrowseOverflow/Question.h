@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class Answer;
+@class Person;
 
 /**
  * Represents a question asked on the Stack Overflow website.
@@ -42,7 +43,10 @@
  * source on the website.
  */
 @property NSInteger questionID;
-
+/**
+ * The person who asked this question on the website.
+ */
+@property (retain) Person *asker;
 /**
  * Add another answer to this question's collection of answers.
  */

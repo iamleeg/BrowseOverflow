@@ -12,9 +12,11 @@
 //#import "application_headers" as required
 @class Question;
 @class Answer;
+@class Person;
 
 @interface QuestionTests : SenTestCase {
     Question *question;
+    Person *asker;
     Answer *lowScore;
     Answer *highScore;
 }

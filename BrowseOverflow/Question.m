@@ -8,7 +8,6 @@
 
 #import "Question.h"
 
-
 @implementation Question
 
 @synthesize date;
@@ -16,6 +15,7 @@
 @synthesize body;
 @synthesize score;
 @synthesize questionID;
+@synthesize asker;
 
 - (id)init {
     if ((self = [super init])) {
@@ -37,6 +37,7 @@
     [title release];
     [body release];
     [answerSet release];
+    [asker release];
     [super dealloc];
 }
 
