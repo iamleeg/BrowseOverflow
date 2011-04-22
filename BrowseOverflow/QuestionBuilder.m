@@ -49,8 +49,10 @@
 }
 
 - (void)fillInDetailsForQuestion:(Question *)question fromJSON:(NSString *)objectNotation {
-    
+    NSParameterAssert(question != nil);
+    NSParameterAssert(objectNotation != nil);
 }
+
 @end
 
 NSString *QuestionBuilderErrorDomain = @"QuestionBuilderErrorDomain";

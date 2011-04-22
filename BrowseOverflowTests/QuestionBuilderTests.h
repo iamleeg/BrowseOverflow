@@ -11,9 +11,11 @@
 #import <UIKit/UIKit.h>
 
 @class QuestionBuilder;
+@class Question;
 
 @interface QuestionBuilderTests : SenTestCase {
     QuestionBuilder *questionBuilder;
+    Question *question;
 }
 
 @end

@@ -43,7 +43,8 @@ static NSString *questionJSON = @"{"
 @"\"view_count\": 465,"
 @"\"score\": 2,"
 @"\"community_owned\": false,"
-@"\"title\": \"Why does Keychain Services return the wrong keychain content?\""
+@"\"title\": \"Why does Keychain Services return the wrong keychain content?\","
+@"\"body\": \"<p>I've been trying to use persistent keychain references.</p>\""
 @"}"
 @"]"
 @"}";
@@ -55,11 +56,14 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
 
 - (void)setUp {
     questionBuilder = [[QuestionBuilder alloc] init];
+    question = [[[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0] retain];
 }
 
 - (void)tearDown {
     [questionBuilder release];
     questionBuilder = nil;
+    [question release];
+    question = nil;
 }
 
 - (void)testThatNilIsNotAnAcceptableParameter {
@@ -97,7 +101,6 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
 }
 
 - (void)testQuestionCreatedFromJSONHasPropertiesPresentedInJSON {
-    Question *question = [[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0];
     STAssertEquals(question.questionID, 2817980, @"The question ID should match the data we sent");
     STAssertEquals([question.date timeIntervalSince1970], (NSTimeInterval)1273660706, @"The date of the question should match the data");
     STAssertEqualObjects(question.title, @"Why does Keychain Services return the wrong keychain content?", @"Title should match the provided data");
@@ -113,4 +116,11 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
     STAssertEquals([questions count], (NSUInteger)1, @"QuestionBuilder must handle partial input");
 }
 
+- (void)testBuildingQuestionBodyWithNoDataCannotBeTried {
+    STAssertThrows([questionBuilder fillInDetailsForQuestion: question fromJSON: nil], @"Not receiving data should have been handled earlier");
+}
+
+- (void)testBuildingQuestionBodyWithNoQuestionCannotBeTried {
+    STAssertThrows([questionBuilder fillInDetailsForQuestion: nil fromJSON: questionJSON], @"No reason to expect that a nil question is passed");
+}
 @end
