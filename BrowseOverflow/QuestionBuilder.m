@@ -9,6 +9,7 @@
 #import "QuestionBuilder.h"
 #import "JSON.h"
 #import "Question.h"
+#import "Person.h"
 
 @implementation QuestionBuilder
 
@@ -35,6 +36,12 @@
         thisQuestion.date = [NSDate dateWithTimeIntervalSince1970: [[parsedQuestion objectForKey: @"creation_date"] doubleValue]];
         thisQuestion.title = [parsedQuestion objectForKey: @"title"];
         thisQuestion.score = [[parsedQuestion objectForKey: @"score"] integerValue];
+        NSDictionary *ownerValues = [parsedQuestion objectForKey: @"owner"];
+        NSString *name = [ownerValues objectForKey: @"display_name"];
+        NSString *avatarURL = [NSString stringWithFormat: @"http://www.gravatar.com/avatar/%@", [ownerValues objectForKey: @"email_hash"]];
+        Person *asker = [[Person alloc] initWithName: name avatarLocation: avatarURL];
+        thisQuestion.asker = asker;
+        [asker release];
         [results addObject: thisQuestion];
         [thisQuestion release];
     }
