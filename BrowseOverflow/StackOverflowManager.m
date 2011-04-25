@@ -82,6 +82,14 @@
     [communicator downloadAnswersToQuestionWithID: question.questionID];
 }
 
+- (void)fetchingAnswersFailedWithError:(NSError *)error {
+    NSDictionary *userInfo = nil;
+    if (error) {
+        userInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];
+    }
+    NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code:StackOverflowManagerErrorAnswerFetchCode userInfo: userInfo];
+    [delegate retrievingAnswersFailedWithError: reportableError];
+}
 
 - (void)dealloc {
     [communicator release];

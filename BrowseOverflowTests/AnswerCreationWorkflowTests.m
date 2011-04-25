@@ -39,4 +39,9 @@
     STAssertEquals(question.questionID, [communicator askedForAnswersToQuestionID], @"Answers to questions are found by communicating with the web site");
 }
 
+- (void)testDelegateNotifiedOfFailureToGetAnswers {
+    NSError *error = [NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil];
+    [manager fetchingAnswersFailedWithError: error];
+    STAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Delegate should be notified of failure to communicate");
+}
 @end

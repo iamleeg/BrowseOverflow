@@ -9,15 +9,15 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
-#import "StackOverflowManagerDelegate.h"
 
 @class StackOverflowManager;
 @class MockStackOverflowCommunicator;
+@class MockStackOverflowManagerDelegate;
 
 @interface AnswerCreationWorkflowTests : SenTestCase {
     StackOverflowManager *manager;
     MockStackOverflowCommunicator *communicator;
-    id <StackOverflowManagerDelegate> delegate;
+    MockStackOverflowManagerDelegate *delegate;
 }
 
 @end

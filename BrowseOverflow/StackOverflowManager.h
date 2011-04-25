@@ -71,11 +71,18 @@
  */
 - (void)fetchAnswersForQuestion: (Question *)question;
 
+/**
+ * Trying to retrieve answers failed.
+ * @param error The error that caused the failure.
+ */
+- (void)fetchingAnswersFailedWithError: (NSError *)error;
+
 @end
 
 extern NSString *StackOverflowManagerError;
 
 enum {
     StackOverflowManagerErrorQuestionSearchCode,
-    StackOverflowManagerErrorQuestionBodyFetchCode
+    StackOverflowManagerErrorQuestionBodyFetchCode,
+    StackOverflowManagerErrorAnswerFetchCode
 };

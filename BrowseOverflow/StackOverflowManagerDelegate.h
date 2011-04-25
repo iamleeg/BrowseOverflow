@@ -31,4 +31,9 @@
  */
 - (void)fetchingQuestionBodyFailedWithError: (NSError *)error;
 
+/**
+ * The manager couldn't get answers to a question.
+ */
+- (void)retrievingAnswersFailedWithError: (NSError *)error;
+
 @end

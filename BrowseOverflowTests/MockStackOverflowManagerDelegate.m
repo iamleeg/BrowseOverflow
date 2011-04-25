@@ -26,6 +26,10 @@
     self.fetchedQuestions = questions;
 }
 
+- (void)retrievingAnswersFailedWithError:(NSError *)error {
+    self.fetchError = error;
+}
+
 - (void)dealloc {
     [fetchError release];
     [fetchedQuestions release];
