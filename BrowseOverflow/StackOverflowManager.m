@@ -9,6 +9,7 @@
 #import "StackOverflowManager.h"
 #import "StackOverflowCommunicator.h"
 #import "QuestionBuilder.h"
+#import "AnswerBuilder.h"
 #import "Question.h"
 #import "Topic.h"
 
@@ -22,6 +23,7 @@
 
 @synthesize communicator;
 @synthesize questionBuilder;
+@synthesize answerBuilder;
 @synthesize questionToFill;
 
 - (id<StackOverflowManagerDelegate>)delegate {
@@ -41,7 +43,7 @@
     [communicator searchForQuestionsWithTag: [topic tag]];
 }
 
-- (void)fetchBodyForQuestion:(Question *)question {
+- (void)fetchBodyForQuestion: (Question *)question {
     self.questionToFill = question;
     [communicator downloadInformationForQuestionWithID: question.questionID];
 }
@@ -91,6 +93,10 @@
     }
     NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code:StackOverflowManagerErrorAnswerFetchCode userInfo: userInfo];
     [delegate retrievingAnswersFailedWithError: reportableError];
+}
+
+- (void)receivedAnswerListJSON: (NSString *)objectNotation {
+    [self.answerBuilder addAnswersToQuestion: self.questionToFill fromJSON: objectNotation error: NULL];
 }
 
 - (void)dealloc {

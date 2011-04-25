@@ -11,6 +11,7 @@
 
 @class StackOverflowCommunicator;
 @class QuestionBuilder;
+@class AnswerBuilder;
 @class Question;
 @class Topic;
 /**
@@ -23,6 +24,7 @@
 @property (assign) id <StackOverflowManagerDelegate> delegate;
 @property (retain) StackOverflowCommunicator *communicator;
 @property (retain) QuestionBuilder *questionBuilder;
+@property (retain) AnswerBuilder *answerBuilder;
 @property (retain) Question *questionToFill;
 /**
  * Retrieve questions on a given topic from Stack Overflow.
@@ -76,6 +78,12 @@
  * @param error The error that caused the failure.
  */
 - (void)fetchingAnswersFailedWithError: (NSError *)error;
+
+/**
+ * Data corresponding to answers was received by the communicator.
+ * @param objectNotation The content returned by the server.
+ */
+- (void)receivedAnswerListJSON: (NSString *)objectNotation;
 
 @end
 

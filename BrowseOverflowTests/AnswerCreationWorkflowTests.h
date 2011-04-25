@@ -14,12 +14,14 @@
 @class MockStackOverflowCommunicator;
 @class MockStackOverflowManagerDelegate;
 @class Question;
+@class FakeAnswerBuilder;
 
 @interface AnswerCreationWorkflowTests : SenTestCase {
     StackOverflowManager *manager;
     MockStackOverflowCommunicator *communicator;
     MockStackOverflowManagerDelegate *delegate;
     Question *question;
+    FakeAnswerBuilder *answerBuilder;
 }
 
 @end

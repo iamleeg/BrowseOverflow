@@ -11,6 +11,9 @@
 		9803B9D4134328FC00FEF72D /* QuestionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803B9D2134328FC00FEF72D /* QuestionBuilder.m */; };
 		9803B9D7134330E000FEF72D /* FakeQuestionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */; };
 		98089BC61365AABC00B4FDEC /* AnswerCreationWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98089BC51365AABC00B4FDEC /* AnswerCreationWorkflowTests.m */; };
+		98089BCA1365BBB800B4FDEC /* AnswerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98089BC91365BBB800B4FDEC /* AnswerBuilder.m */; };
+		98089BCD1365BD3500B4FDEC /* FakeAnswerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98089BCC1365BD3500B4FDEC /* FakeAnswerBuilder.m */; };
+		98089BCE1365BE5100B4FDEC /* AnswerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98089BC91365BBB800B4FDEC /* AnswerBuilder.m */; };
 		9809BE541349CAF4008B4136 /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE481349CAF4008B4136 /* NSObject+JSON.m */; };
 		9809BE551349CAF4008B4136 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE491349CAF4008B4136 /* SBJsonWriter.m */; };
 		9809BE561349CAF4008B4136 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9809BE4A1349CAF4008B4136 /* SBJsonStreamWriter.m */; };
@@ -74,6 +77,10 @@
 		9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeQuestionBuilder.m; sourceTree = "<group>"; };
 		98089BC41365AABC00B4FDEC /* AnswerCreationWorkflowTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCreationWorkflowTests.h; sourceTree = "<group>"; };
 		98089BC51365AABC00B4FDEC /* AnswerCreationWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCreationWorkflowTests.m; sourceTree = "<group>"; };
+		98089BC81365BBB800B4FDEC /* AnswerBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerBuilder.h; sourceTree = "<group>"; };
+		98089BC91365BBB800B4FDEC /* AnswerBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerBuilder.m; sourceTree = "<group>"; };
+		98089BCB1365BD3500B4FDEC /* FakeAnswerBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeAnswerBuilder.h; sourceTree = "<group>"; };
+		98089BCC1365BD3500B4FDEC /* FakeAnswerBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeAnswerBuilder.m; sourceTree = "<group>"; };
 		9809BE3A1349CA28008B4136 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "../../json-framework/Classes/JSON.h"; sourceTree = "<group>"; };
 		9809BE3B1349CA28008B4136 /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+JSON.h"; path = "../../json-framework/Classes/NSObject+JSON.h"; sourceTree = "<group>"; };
 		9809BE3C1349CA28008B4136 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "../../json-framework/Classes/SBJsonWriter.h"; sourceTree = "<group>"; };
@@ -177,6 +184,8 @@
 				9893838F133267A3004F79F1 /* MockStackOverflowCommunicator.m */,
 				9803B9D5134330E000FEF72D /* FakeQuestionBuilder.h */,
 				9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */,
+				98089BCB1365BD3500B4FDEC /* FakeAnswerBuilder.h */,
+				98089BCC1365BD3500B4FDEC /* FakeAnswerBuilder.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -235,6 +244,8 @@
 				9893838A13325E6E004F79F1 /* StackOverflowCommunicator.m */,
 				9803B9D1134328FC00FEF72D /* QuestionBuilder.h */,
 				9803B9D2134328FC00FEF72D /* QuestionBuilder.m */,
+				98089BC81365BBB800B4FDEC /* AnswerBuilder.h */,
+				98089BC91365BBB800B4FDEC /* AnswerBuilder.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -431,6 +442,7 @@
 				9809BE5A1349CAF4008B4136 /* SBJsonStreamParser.m in Sources */,
 				9809BE5B1349CAF4008B4136 /* SBJsonStreamParserState.m in Sources */,
 				9809BE5C1349CAF4008B4136 /* SBJsonStreamParserAdapter.m in Sources */,
+				98089BCA1365BBB800B4FDEC /* AnswerBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +468,8 @@
 				9803B9D7134330E000FEF72D /* FakeQuestionBuilder.m in Sources */,
 				982341EE1345D888005E14B5 /* QuestionBuilderTests.m in Sources */,
 				98089BC61365AABC00B4FDEC /* AnswerCreationWorkflowTests.m in Sources */,
+				98089BCD1365BD3500B4FDEC /* FakeAnswerBuilder.m in Sources */,
+				98089BCE1365BE5100B4FDEC /* AnswerBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

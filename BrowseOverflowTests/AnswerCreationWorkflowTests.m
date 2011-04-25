@@ -11,6 +11,7 @@
 #import "StackOverflowManager.h"
 #import "MockStackOverflowCommunicator.h"
 #import "MockStackOverflowManagerDelegate.h"
+#import "FakeAnswerBuilder.h"
 
 @implementation AnswerCreationWorkflowTests
 
@@ -22,9 +23,13 @@
     manager.delegate = delegate;
     question = [[Question alloc] init];
     question.questionID = 12345;
+    answerBuilder = [[FakeAnswerBuilder alloc] init];
+    manager.answerBuilder = answerBuilder;
 }
 
 - (void)tearDown {
+    [answerBuilder release];
+    answerBuilder = nil;
     [question release];
     question = nil;
     [delegate release];
@@ -49,5 +54,10 @@
 - (void)testManagerRemembersWhichQuestionToAddAnswersTo {
     [manager fetchAnswersForQuestion: question];
     STAssertEqualObjects(manager.questionToFill, question, @"Manager should know to fill this question in");
+}
+
+- (void)testAnswerResponsePassedToAnswerBuilder {
+    [manager receivedAnswerListJSON: @"Fake JSON"];
+    STAssertEqualObjects([answerBuilder receivedJSON], @"Fake JSON", @"Manager must pass response to builder to get answers constructed");
 }
 @end
