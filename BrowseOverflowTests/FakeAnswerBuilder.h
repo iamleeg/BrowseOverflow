@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "AnswerBuilder.h"
 
+@class Question;
+
 @interface FakeAnswerBuilder : AnswerBuilder {
     
 }
 
 @property (retain) NSString *receivedJSON;
+@property (retain) Question *questionToFill;
 
 @end

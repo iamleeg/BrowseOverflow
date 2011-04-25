@@ -60,4 +60,11 @@
     [manager receivedAnswerListJSON: @"Fake JSON"];
     STAssertEqualObjects([answerBuilder receivedJSON], @"Fake JSON", @"Manager must pass response to builder to get answers constructed");
 }
+
+- (void)testQuestionPassedToAnwerBuilder {
+    manager.questionToFill = question;
+    [manager receivedAnswerListJSON: @"Fake JSON"];
+    STAssertEqualObjects(answerBuilder.questionToFill, question, @"Manager must pass the question into the answer builder");
+}
+
 @end

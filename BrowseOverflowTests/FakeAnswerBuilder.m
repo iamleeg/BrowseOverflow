@@ -12,14 +12,17 @@
 @implementation FakeAnswerBuilder
 
 @synthesize receivedJSON;
+@synthesize questionToFill;
 
 - (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)error {
+    self.questionToFill = question;
     self.receivedJSON = objectNotation;
     return YES;
 }
 
 - (void)dealloc {
     [receivedJSON release];
+    [questionToFill release];
     [super dealloc];
 }
 
