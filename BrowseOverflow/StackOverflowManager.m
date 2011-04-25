@@ -79,10 +79,12 @@
 #pragma mark Answers
 
 - (void)fetchAnswersForQuestion:(Question *)question {
+    self.questionToFill = question;
     [communicator downloadAnswersToQuestionWithID: question.questionID];
 }
 
 - (void)fetchingAnswersFailedWithError:(NSError *)error {
+    self.questionToFill = nil;
     NSDictionary *userInfo = nil;
     if (error) {
         userInfo = [NSDictionary dictionaryWithObject: error forKey: NSUnderlyingErrorKey];

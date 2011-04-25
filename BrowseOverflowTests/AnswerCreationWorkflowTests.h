@@ -13,11 +13,13 @@
 @class StackOverflowManager;
 @class MockStackOverflowCommunicator;
 @class MockStackOverflowManagerDelegate;
+@class Question;
 
 @interface AnswerCreationWorkflowTests : SenTestCase {
     StackOverflowManager *manager;
     MockStackOverflowCommunicator *communicator;
     MockStackOverflowManagerDelegate *delegate;
+    Question *question;
 }
 
 @end

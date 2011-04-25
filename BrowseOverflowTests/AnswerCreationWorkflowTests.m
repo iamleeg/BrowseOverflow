@@ -20,10 +20,13 @@
     manager.communicator = communicator;
     delegate = [[MockStackOverflowManagerDelegate alloc] init];
     manager.delegate = delegate;
-    
+    question = [[Question alloc] init];
+    question.questionID = 12345;
 }
 
 - (void)tearDown {
+    [question release];
+    question = nil;
     [delegate release];
     delegate = nil;
     [communicator release];
@@ -33,8 +36,6 @@
 }
 
 - (void)testAskingForAnswersMeansCommunicatingWithSite {
-    Question *question = [[Question alloc] init];
-    question.questionID = 12345;
     [manager fetchAnswersForQuestion: question];
     STAssertEquals(question.questionID, [communicator askedForAnswersToQuestionID], @"Answers to questions are found by communicating with the web site");
 }
@@ -43,5 +44,10 @@
     NSError *error = [NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil];
     [manager fetchingAnswersFailedWithError: error];
     STAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Delegate should be notified of failure to communicate");
+}
+
+- (void)testManagerRemembersWhichQuestionToAddAnswersTo {
+    [manager fetchAnswersForQuestion: question];
+    STAssertEqualObjects(manager.questionToFill, question, @"Manager should know to fill this question in");
 }
 @end
