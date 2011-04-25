@@ -63,6 +63,14 @@
  */
 - (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
 
+/**
+ * Get the answers to a question on Stack Overflow.
+ * @note The delegate will receive messages when answers arrive or errors occur.
+ * @param question The question for which to retrieve answers.
+ * @see StackOverflowManagerDelegate
+ */
+- (void)fetchAnswersForQuestion: (Question *)question;
+
 @end
 
 extern NSString *StackOverflowManagerError;

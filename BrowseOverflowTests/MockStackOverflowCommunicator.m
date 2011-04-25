@@ -11,12 +11,23 @@
 
 @implementation MockStackOverflowCommunicator
 
+- (id)init {
+    if ((self = [super init])) {
+        questionID = NSNotFound;
+    }
+    return self;
+}
+
 - (void)searchForQuestionsWithTag:(NSString *)tag {
     wasAskedToFetchQuestions = YES;
 }
 
 - (void)downloadInformationForQuestionWithID:(NSInteger)identifier {
     wasAskedToFetchBody = YES;
+}
+
+- (void)downloadAnswersToQuestionWithID:(NSInteger)identifier {
+    questionID = identifier;
 }
 
 - (BOOL)wasAskedToFetchQuestions {
@@ -26,4 +37,9 @@
 - (BOOL)wasAskedToFetchBody {
     return wasAskedToFetchBody;
 }
+
+- (NSInteger)askedForAnswersToQuestionID {
+    return questionID;
+}
+
 @end

@@ -12,9 +12,11 @@
 @interface MockStackOverflowCommunicator : StackOverflowCommunicator {
     BOOL wasAskedToFetchQuestions;
     BOOL wasAskedToFetchBody;
+    NSInteger questionID;
 }
 
 - (BOOL)wasAskedToFetchQuestions;
 - (BOOL)wasAskedToFetchBody;
+- (NSInteger)askedForAnswersToQuestionID;
 
 @end

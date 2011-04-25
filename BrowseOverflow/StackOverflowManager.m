@@ -35,6 +35,8 @@
     delegate = newDelegate;
 }
 
+#pragma mark Questions
+
 - (void)fetchQuestionsOnTopic:(Topic *)topic {
     [communicator searchForQuestionsWithTag: [topic tag]];
 }
@@ -73,6 +75,13 @@
     NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code: StackOverflowManagerErrorQuestionBodyFetchCode userInfo:errorInfo];
     [delegate fetchingQuestionBodyFailedWithError: reportableError];
 }
+
+#pragma mark Answers
+
+- (void)fetchAnswersForQuestion:(Question *)question {
+    [communicator downloadAnswersToQuestionWithID: question.questionID];
+}
+
 
 - (void)dealloc {
     [communicator release];
