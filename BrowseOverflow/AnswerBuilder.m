@@ -12,6 +12,8 @@
 @implementation AnswerBuilder
 
 - (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)error {
+    NSParameterAssert(objectNotation != nil);
+    NSParameterAssert(question != nil);
     return NO;
 }
 
