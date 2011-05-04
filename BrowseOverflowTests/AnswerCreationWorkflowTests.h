@@ -22,6 +22,7 @@
     MockStackOverflowManagerDelegate *delegate;
     Question *question;
     FakeAnswerBuilder *answerBuilder;
+    NSError *error;
 }
 
 @end

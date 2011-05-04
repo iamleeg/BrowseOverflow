@@ -17,5 +17,7 @@
 
 @property (retain) NSString *receivedJSON;
 @property (retain) Question *questionToFill;
+@property (retain) NSError *error;
+@property BOOL successful;
 
 @end

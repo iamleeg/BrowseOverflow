@@ -25,6 +25,7 @@
     question.questionID = 12345;
     answerBuilder = [[FakeAnswerBuilder alloc] init];
     manager.answerBuilder = answerBuilder;
+    error = [[NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil] retain];
 }
 
 - (void)tearDown {
@@ -38,6 +39,8 @@
     communicator = nil;
     [manager release];
     manager = nil;
+    [error release];
+    error = nil;
 }
 
 - (void)testAskingForAnswersMeansCommunicatingWithSite {
@@ -46,7 +49,6 @@
 }
 
 - (void)testDelegateNotifiedOfFailureToGetAnswers {
-    NSError *error = [NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil];
     [manager fetchingAnswersFailedWithError: error];
     STAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Delegate should be notified of failure to communicate");
 }
@@ -65,6 +67,20 @@
     manager.questionToFill = question;
     [manager receivedAnswerListJSON: @"Fake JSON"];
     STAssertEqualObjects(answerBuilder.questionToFill, question, @"Manager must pass the question into the answer builder");
+}
+
+- (void)testManagerNotifiesDelegateWhenAnswersAdded {
+    answerBuilder.successful = YES;
+    manager.questionToFill = question;
+    [manager receivedAnswerListJSON: @"Fake JSON"];
+    STAssertEqualObjects(delegate.successQuestion, question, @"Manager should call the delegate method");
+}
+
+- (void)testManagerNotifiesDelegateWhenAnswersNotAdded {
+    answerBuilder.successful = NO;
+    answerBuilder.error = error;
+    [manager receivedAnswerListJSON: @"Fake JSON"];
+    STAssertEqualObjects([[delegate.fetchError userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Manager should pass an error on to the delegate");
 }
 
 @end
