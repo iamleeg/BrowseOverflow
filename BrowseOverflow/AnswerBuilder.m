@@ -8,6 +8,8 @@
 
 #import "AnswerBuilder.h"
 #import "JSON.h"
+#import "Answer.h"
+#import "Question.h"
 
 @implementation AnswerBuilder
 
@@ -28,6 +30,14 @@
             *error = [NSError errorWithDomain: AnswerBuilderErrorDomain code:AnswerBuilderErrorMissingDataError userInfo: nil];
         }
         return NO;
+    }
+    
+    for (NSDictionary *answerData in answers) {
+        Answer *thisAnswer = [[Answer alloc] init];
+        thisAnswer.text = [answerData objectForKey: @"body"];
+        thisAnswer.accepted = [[answerData objectForKey: @"accepted"] boolValue];
+        thisAnswer.score = [[answerData objectForKey: @"score"] integerValue];
+        [question addAnswer: thisAnswer];
     }
     return YES;
 }

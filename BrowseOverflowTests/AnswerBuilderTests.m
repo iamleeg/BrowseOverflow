@@ -35,7 +35,7 @@ static NSString *realAnswerJSON = @"{"
 @"\"score\": 1,"
 @"\"community_owned\": false,"
 @"\"title\": \"Why does Keychain Services return the wrong keychain content?\","
-@"\"body\": \\\"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>\\n\\n<p>I did mine like this:</p>\\n\\n<pre><code>NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:\\n                     (id)kSecClassGenericPassword, kSecClass,\\n                     persistentRef, (id)kSecValuePersistentRef,\\n                     (id)kCFBooleanTrue, kSecReturnAttributes,\\n                     (id)kCFBooleanTrue, kSecReturnData,\\n                     nil];\\nNSDictionary *result = nil;\\nOSStatus status = SecItemCopyMatching((CFDictionaryRef)query,\\n                                    (CFTypeRef*)&result);\\n</code></pre>\\n\\n<p>which returned the attributes and data for the persistent reference. The documentation in the header about converting a \\\"persistent reference\\\" into a \\\"standard reference\\\" makes no sense at all. Hope this helps.</p>\\n\\\""
+@"\"body\": \"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>\\n\\n<p>I did mine like this:</p>\\n\\n<pre><code>NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:\\n                     (id)kSecClassGenericPassword, kSecClass,\\n                     persistentRef, (id)kSecValuePersistentRef,\\n                     (id)kCFBooleanTrue, kSecReturnAttributes,\\n                     (id)kCFBooleanTrue, kSecReturnData,\\n                     nil];\\nNSDictionary *result = nil;\\nOSStatus status = SecItemCopyMatching((CFDictionaryRef)query,\\n                                    (CFTypeRef*)&result);\\n</code></pre>\\n\\n<p>which returned the attributes and data for the persistent reference. The documentation in the header about converting a \\\"persistent reference\\\" into a \\\"standard reference\\\" makes no sense at all. Hope this helps.</p>\\n\""
 @"}"
 @"]"
 @"}";
@@ -79,5 +79,14 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
 
 - (void)testSendingJSONWithIncorrectKeysIsAnError {
     STAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: noAnswersJSONString error: &error], @"There must be a collection of answers in the input data");
+}
+
+- (void)testAddingRealAnswerJSONIsNotAnError {
+    STAssertTrue([answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL], @"Should be OK to actually want to add answers");
+}
+
+- (void)testNumberOfAnswersAddedMatchNumberInData {
+    [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
+    STAssertEquals([question.answers count], (NSUInteger)1, @"One answer added to zero should mean one answer");
 }
 @end
