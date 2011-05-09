@@ -10,6 +10,7 @@
 #import "JSON.h"
 #import "Answer.h"
 #import "Question.h"
+#import "UserBuilder.h"
 
 @implementation AnswerBuilder
 
@@ -37,6 +38,8 @@
         thisAnswer.text = [answerData objectForKey: @"body"];
         thisAnswer.accepted = [[answerData objectForKey: @"accepted"] boolValue];
         thisAnswer.score = [[answerData objectForKey: @"score"] integerValue];
+        NSDictionary *ownerData = [answerData objectForKey: @"owner"];
+        thisAnswer.person = [UserBuilder personFromDictionary: ownerData];
         [question addAnswer: thisAnswer];
     }
     return YES;

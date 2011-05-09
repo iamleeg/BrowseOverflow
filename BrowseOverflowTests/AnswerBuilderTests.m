@@ -9,6 +9,8 @@
 #import "AnswerBuilderTests.h"
 #import "AnswerBuilder.h"
 #import "Question.h"
+#import "Answer.h"
+#import "Person.h"
 
 static NSString *realAnswerJSON = @"{"
 @"\"total\": 1,"
@@ -35,7 +37,7 @@ static NSString *realAnswerJSON = @"{"
 @"\"score\": 1,"
 @"\"community_owned\": false,"
 @"\"title\": \"Why does Keychain Services return the wrong keychain content?\","
-@"\"body\": \"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>\\n\\n<p>I did mine like this:</p>\\n\\n<pre><code>NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:\\n                     (id)kSecClassGenericPassword, kSecClass,\\n                     persistentRef, (id)kSecValuePersistentRef,\\n                     (id)kCFBooleanTrue, kSecReturnAttributes,\\n                     (id)kCFBooleanTrue, kSecReturnData,\\n                     nil];\\nNSDictionary *result = nil;\\nOSStatus status = SecItemCopyMatching((CFDictionaryRef)query,\\n                                    (CFTypeRef*)&result);\\n</code></pre>\\n\\n<p>which returned the attributes and data for the persistent reference. The documentation in the header about converting a \\\"persistent reference\\\" into a \\\"standard reference\\\" makes no sense at all. Hope this helps.</p>\\n\""
+@"\"body\": \"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>\""
 @"}"
 @"]"
 @"}";
@@ -88,5 +90,21 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
 - (void)testNumberOfAnswersAddedMatchNumberInData {
     [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
     STAssertEquals([question.answers count], (NSUInteger)1, @"One answer added to zero should mean one answer");
+}
+
+- (void)testAnswerPropertiesMatchDataReceived {
+    [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
+    Answer *answer = [question.answers objectAtIndex: 0];
+    STAssertEquals(answer.score, (NSInteger)1, @"Score property should be set from JSON");
+    STAssertTrue(answer.accepted, @"Answer should be accepted as in JSON data");
+    STAssertEqualObjects(answer.text, @"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>", @"Answer body should match fed data");
+}
+
+- (void)testAnswerIsProvidedByExpectedPerson {
+    [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
+    Answer *answer = [question.answers objectAtIndex: 0];
+    Person *answerer = answer.person;
+    STAssertEqualObjects(answerer.name, @"dmaclach", @"The provided person name was used");
+    STAssertEqualObjects([answerer.avatarURL absoluteString], @"http://www.gravatar.com/avatar/d96ae876eac0075727243a10fab823b3", @"The provided email hash was converted to an avatar URL");
 }
 @end
