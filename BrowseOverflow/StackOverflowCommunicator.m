@@ -28,11 +28,13 @@
 }
 
 - (void)downloadInformationForQuestionWithID:(NSInteger)identifier {
-    
+    [self fetchContentAtURL: [NSURL URLWithString:
+                              [NSString stringWithFormat: @"http://api.stackoverflow.com/1.1/questions/%d?body=true", identifier]]];
 }
 
 - (void)downloadAnswersToQuestionWithID:(NSInteger)identifier {
-    
+    [self fetchContentAtURL: [NSURL URLWithString:
+                              [NSString stringWithFormat: @"http://api.stackoverflow.com/1.1/questions/%d/answers?body=true", identifier]]];
 }
 
 - (void)dealloc {

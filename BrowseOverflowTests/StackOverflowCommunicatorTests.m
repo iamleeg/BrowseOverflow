@@ -11,11 +11,26 @@
 
 @implementation StackOverflowCommunicatorTests
 
-- (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
-    InspectableStackOverflowCommunicator *communicator = [[InspectableStackOverflowCommunicator alloc] init];
-    [communicator searchForQuestionsWithTag: @"ios"];
-    STAssertEqualObjects([[communicator URLToFetch] absoluteString], @"http://api.stackoverflow.com/1.1/search?tagged=ios&pagesize=20", @"Use the search API to find questions with a particular tag");
+- (void)setUp {
+    communicator = [[InspectableStackOverflowCommunicator alloc] init];
+}
+
+- (void)tearDown {
     [communicator release];
 }
 
+- (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
+    [communicator searchForQuestionsWithTag: @"ios"];
+    STAssertEqualObjects([[communicator URLToFetch] absoluteString], @"http://api.stackoverflow.com/1.1/search?tagged=ios&pagesize=20", @"Use the search API to find questions with a particular tag");
+}
+
+- (void)testFillingInQuestionBodyCallsQuestionAPI {
+    [communicator downloadInformationForQuestionWithID: 12345];
+    STAssertEqualObjects([[communicator URLToFetch] absoluteString], @"http://api.stackoverflow.com/1.1/questions/12345?body=true", @"Use the question API to get the body for a question");
+}
+
+- (void)testFetchingAnswersToQuestionCallsQuestionAPI {
+    [communicator downloadAnswersToQuestionWithID: 12345];
+    STAssertEqualObjects([[communicator URLToFetch] absoluteString], @"http://api.stackoverflow.com/1.1/questions/12345/answers?body=true", @"Use the question API to get answers on a given question");
+}
 @end
