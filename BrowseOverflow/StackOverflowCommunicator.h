@@ -12,6 +12,7 @@
 @interface StackOverflowCommunicator : NSObject {
 @protected
     NSURL *fetchingURL;
+    NSURLConnection *fetchingConnection;
 }
 
 - (void)searchForQuestionsWithTag: (NSString *)tag;

@@ -20,6 +20,12 @@
     [url retain];
     [fetchingURL release];
     fetchingURL = url;
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL: fetchingURL];
+    
+    [fetchingConnection cancel];
+    fetchingConnection = [NSURLConnection connectionWithRequest: request delegate: self];
+    
 }
 
 - (void)searchForQuestionsWithTag:(NSString *)tag {

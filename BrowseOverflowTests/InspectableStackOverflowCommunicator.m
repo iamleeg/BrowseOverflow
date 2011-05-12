@@ -15,4 +15,12 @@
     return fetchingURL;
 }
 
+- (NSURLConnection *)currentURLConnection {
+    return fetchingConnection;
+}
+
+- (void)cancelAndDiscardURLConnection {
+    [fetchingConnection cancel];
+    fetchingConnection = nil;
+}
 @end

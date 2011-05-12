@@ -33,4 +33,10 @@
     [communicator downloadAnswersToQuestionWithID: 12345];
     STAssertEqualObjects([[communicator URLToFetch] absoluteString], @"http://api.stackoverflow.com/1.1/questions/12345/answers?body=true", @"Use the question API to get answers on a given question");
 }
+
+- (void)testSearchingForQuestionsCreatesURLConnection {
+    [communicator searchForQuestionsWithTag: @"ios"];
+    STAssertNotNil([communicator currentURLConnection], @"There should be a URL connection in-flight now.");
+    [communicator cancelAndDiscardURLConnection];
+}
 @end
