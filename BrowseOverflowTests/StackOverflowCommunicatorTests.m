@@ -8,6 +8,7 @@
 
 #import "StackOverflowCommunicatorTests.h"
 #import "InspectableStackOverflowCommunicator.h"
+#import "NonNetworkedStackOverflowCommunicator.h"
 
 @implementation StackOverflowCommunicatorTests
 
@@ -45,5 +46,14 @@
     NSURLConnection *firstConnection = [communicator currentURLConnection];
     [communicator searchForQuestionsWithTag: @"cocoa"];
     STAssertFalse([[communicator currentURLConnection] isEqual: firstConnection], @"The communicator needs to replace its URL connection to start a new one");
+}
+
+- (void)testReceivingResponseDiscardsExistingData {
+    NonNetworkedStackOverflowCommunicator *nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
+    nnCommunicator.receivedData = [@"Hello" dataUsingEncoding: NSUTF8StringEncoding];
+    [nnCommunicator searchForQuestionsWithTag: @"ios"];
+    [nnCommunicator connection: nil didReceiveResponse: nil];
+    STAssertEquals([nnCommunicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
+    [nnCommunicator release];
 }
 @end

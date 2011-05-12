@@ -28,6 +28,7 @@
 		9818AB8713181CA700479006 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8513181CA700479006 /* Answer.m */; };
 		981C3D9E137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */; };
 		981C3DA1137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA0137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m */; };
+		981C3DAA137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */; };
 		982341EE1345D888005E14B5 /* QuestionBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 982341ED1345D888005E14B5 /* QuestionBuilderTests.m */; };
 		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
 		9829C1211312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
@@ -113,6 +114,8 @@
 		981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowCommunicatorTests.m; sourceTree = "<group>"; };
 		981C3D9F137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableStackOverflowCommunicator.h; sourceTree = "<group>"; };
 		981C3DA0137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableStackOverflowCommunicator.m; sourceTree = "<group>"; };
+		981C3DA8137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedStackOverflowCommunicator.h; sourceTree = "<group>"; };
+		981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedStackOverflowCommunicator.m; sourceTree = "<group>"; };
 		982341EC1345D888005E14B5 /* QuestionBuilderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionBuilderTests.h; sourceTree = "<group>"; };
 		982341ED1345D888005E14B5 /* QuestionBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionBuilderTests.m; sourceTree = "<group>"; };
 		9829C11B1312B1570070C733 /* QuestionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTests.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				9803B9D6134330E000FEF72D /* FakeQuestionBuilder.m */,
 				98089BCB1365BD3500B4FDEC /* FakeAnswerBuilder.h */,
 				98089BCC1365BD3500B4FDEC /* FakeAnswerBuilder.m */,
+				981C3DA8137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.h */,
+				981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 				98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */,
 				981C3D9E137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m in Sources */,
 				981C3DA1137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m in Sources */,
+				981C3DAA137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

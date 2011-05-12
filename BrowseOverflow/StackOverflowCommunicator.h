@@ -13,6 +13,7 @@
 @protected
     NSURL *fetchingURL;
     NSURLConnection *fetchingConnection;
+    NSMutableData *receivedData;
 }
 
 - (void)searchForQuestionsWithTag: (NSString *)tag;

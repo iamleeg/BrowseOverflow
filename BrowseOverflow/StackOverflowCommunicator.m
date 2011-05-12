@@ -11,11 +11,17 @@
 @interface StackOverflowCommunicator ()
 
 - (void)fetchContentAtURL: (NSURL *)url;
+- (void)launchConnectionForRequest: (NSURLRequest *)request;
 
 @end
 
 @implementation StackOverflowCommunicator
 
+- (void)launchConnectionForRequest: (NSURLRequest *)request  {
+  [self cancelAndDiscardURLConnection];
+    fetchingConnection = [NSURLConnection connectionWithRequest: request delegate: self];
+
+}
 - (void)fetchContentAtURL:(NSURL *)url {
     [url retain];
     [fetchingURL release];
@@ -23,8 +29,8 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL: fetchingURL];
     
-    [self cancelAndDiscardURLConnection];
-    fetchingConnection = [NSURLConnection connectionWithRequest: request delegate: self];
+    [self launchConnectionForRequest: request];
+
     
 }
 
@@ -46,6 +52,7 @@
 - (void)dealloc {
     [fetchingURL release];
     [fetchingConnection cancel];
+    [receivedData release];
     [super dealloc];
 }
 
@@ -53,4 +60,12 @@
     [fetchingConnection cancel];
     fetchingConnection = nil;
 }
+
+#pragma mark NSURLConnection Delegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    [receivedData release];
+    receivedData = [[NSMutableData alloc] init];
+}
+
 @end
