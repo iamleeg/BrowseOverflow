@@ -23,7 +23,7 @@
     
     NSURLRequest *request = [NSURLRequest requestWithURL: fetchingURL];
     
-    [fetchingConnection cancel];
+    [self cancelAndDiscardURLConnection];
     fetchingConnection = [NSURLConnection connectionWithRequest: request delegate: self];
     
 }
@@ -45,7 +45,12 @@
 
 - (void)dealloc {
     [fetchingURL release];
+    [fetchingConnection cancel];
     [super dealloc];
 }
 
+- (void)cancelAndDiscardURLConnection {
+    [fetchingConnection cancel];
+    fetchingConnection = nil;
+}
 @end

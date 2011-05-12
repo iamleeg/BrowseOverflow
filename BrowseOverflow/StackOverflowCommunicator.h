@@ -19,4 +19,5 @@
 - (void)downloadInformationForQuestionWithID: (NSInteger)identifier;
 - (void)downloadAnswersToQuestionWithID: (NSInteger)identifier;
 
+- (void)cancelAndDiscardURLConnection;
 @end

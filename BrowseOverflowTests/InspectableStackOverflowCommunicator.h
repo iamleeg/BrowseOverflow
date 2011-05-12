@@ -14,6 +14,5 @@
 
 - (NSURL *)URLToFetch;
 - (NSURLConnection *)currentURLConnection;
-- (void)cancelAndDiscardURLConnection;
 
 @end

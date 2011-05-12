@@ -19,8 +19,5 @@
     return fetchingConnection;
 }
 
-- (void)cancelAndDiscardURLConnection {
-    [fetchingConnection cancel];
-    fetchingConnection = nil;
-}
+
 @end
