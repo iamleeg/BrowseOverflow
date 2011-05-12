@@ -16,6 +16,7 @@
 }
 
 - (void)tearDown {
+    [communicator cancelAndDiscardURLConnection];
     [communicator release];
 }
 
@@ -37,7 +38,6 @@
 - (void)testSearchingForQuestionsCreatesURLConnection {
     [communicator searchForQuestionsWithTag: @"ios"];
     STAssertNotNil([communicator currentURLConnection], @"There should be a URL connection in-flight now.");
-    [communicator cancelAndDiscardURLConnection];
 }
 
 - (void)testStartingNewSearchThrowsOutOldConnection {
@@ -45,6 +45,5 @@
     NSURLConnection *firstConnection = [communicator currentURLConnection];
     [communicator searchForQuestionsWithTag: @"cocoa"];
     STAssertFalse([[communicator currentURLConnection] isEqual: firstConnection], @"The communicator needs to replace its URL connection to start a new one");
-    [communicator cancelAndDiscardURLConnection];
 }
 @end
