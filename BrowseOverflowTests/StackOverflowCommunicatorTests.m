@@ -14,6 +14,8 @@
 
 - (void)setUp {
     communicator = [[InspectableStackOverflowCommunicator alloc] init];
+    nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
+    [nnCommunicator release];
 }
 
 - (void)tearDown {
@@ -49,11 +51,10 @@
 }
 
 - (void)testReceivingResponseDiscardsExistingData {
-    NonNetworkedStackOverflowCommunicator *nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
     nnCommunicator.receivedData = [@"Hello" dataUsingEncoding: NSUTF8StringEncoding];
     [nnCommunicator searchForQuestionsWithTag: @"ios"];
     [nnCommunicator connection: nil didReceiveResponse: nil];
     STAssertEquals([nnCommunicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
-    [nnCommunicator release];
 }
+
 @end

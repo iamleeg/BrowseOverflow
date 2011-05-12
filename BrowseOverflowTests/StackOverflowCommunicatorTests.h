@@ -11,9 +11,11 @@
 #import <UIKit/UIKit.h>
 
 @class InspectableStackOverflowCommunicator;
+@class NonNetworkedStackOverflowCommunicator;
 
 @interface StackOverflowCommunicatorTests : SenTestCase {
     InspectableStackOverflowCommunicator *communicator;
+    NonNetworkedStackOverflowCommunicator *nnCommunicator;
 }
 
 @end
