@@ -70,6 +70,13 @@
     STAssertEquals([manager topicFailureErrorCode], 404, @"Fetch failure was passed through to delegate");
 }
 
+- (void)testNoErrorReceivedOn200Status {
+    FakeURLResponse *twoHundredResponse = [[FakeURLResponse alloc] initWithStatusCode: 200];
+    [nnCommunicator searchForQuestionsWithTag: @"ios"];
+    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)twoHundredResponse];
+    [twoHundredResponse release];
+    STAssertFalse([manager topicFailureErrorCode] == 200, @"No need for error on 200 response");
+}
 - (void)testReceiving404ResponseToQuestionBodyRequestPassesErrorToDelegate {
     [nnCommunicator downloadInformationForQuestionWithID: 12345];
     [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
