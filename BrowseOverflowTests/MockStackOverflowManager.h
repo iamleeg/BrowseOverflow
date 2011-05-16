@@ -11,8 +11,12 @@
 
 @interface MockStackOverflowManager : NSObject <StackOverflowCommunicatorDelegate> {
     NSInteger topicFailureErrorCode;
+    NSInteger bodyFailureErrorCode;
+    NSInteger answerFailureErrorCode;
 }
 
 - (NSInteger)topicFailureErrorCode;
+- (NSInteger)bodyFailureErrorCode;
+- (NSInteger)answerFailureErrorCode;
 
 @end

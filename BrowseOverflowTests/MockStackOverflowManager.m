@@ -15,8 +15,24 @@
     return topicFailureErrorCode;
 }
 
+- (NSInteger)bodyFailureErrorCode {
+    return bodyFailureErrorCode;
+}
+
+- (NSInteger)answerFailureErrorCode {
+    return answerFailureErrorCode;
+}
+
 - (void)searchingForQuestionsFailedWithError: (NSError *)error {
     topicFailureErrorCode = [error code];
+}
+
+- (void)fetchingQuestionBodyFailedWithError:(NSError *)error {
+    bodyFailureErrorCode = [error code];
+}
+
+- (void)fetchingAnswersFailedWithError:(NSError *)error {
+    answerFailureErrorCode = [error code];
 }
 
 @end

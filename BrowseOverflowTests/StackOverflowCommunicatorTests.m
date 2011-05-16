@@ -19,6 +19,7 @@
     nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
     manager = [[MockStackOverflowManager alloc] init];
     nnCommunicator.delegate = manager;
+    fourOhFourResponse = [[FakeURLResponse alloc] initWithStatusCode: 404];
 }
 
 - (void)tearDown {
@@ -26,6 +27,7 @@
     [communicator release];
     [nnCommunicator release];
     [manager release];
+    [fourOhFourResponse release];
 }
 
 - (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
@@ -64,10 +66,19 @@
 
 - (void)testReceivingResponseWith404StatusPassesErrorToDelegate {
     [nnCommunicator searchForQuestionsWithTag: @"ios"];
-    FakeURLResponse *response = [[FakeURLResponse alloc] initWithStatusCode: 404];
-    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)response];
-    [response release];
+    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
     STAssertEquals([manager topicFailureErrorCode], 404, @"Fetch failure was passed through to delegate");
 }
 
+- (void)testReceiving404ResponseToQuestionBodyRequestPassesErrorToDelegate {
+    [nnCommunicator downloadInformationForQuestionWithID: 12345];
+    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
+    STAssertEquals([manager bodyFailureErrorCode], 404, @"Body fetch error was passed through to delegate");
+}
+
+- (void)testReceiving404ResponseToAnswerRequestPassesErrorToDelegate {
+    [nnCommunicator downloadAnswersToQuestionWithID: 12345];
+    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
+    STAssertEquals([manager answerFailureErrorCode], 404, @"Answer fetch error was passed to delegate");
+}
 @end

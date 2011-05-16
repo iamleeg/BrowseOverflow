@@ -13,11 +13,13 @@
 @class InspectableStackOverflowCommunicator;
 @class NonNetworkedStackOverflowCommunicator;
 @class MockStackOverflowManager;
+@class FakeURLResponse;
 
 @interface StackOverflowCommunicatorTests : SenTestCase {
     InspectableStackOverflowCommunicator *communicator;
     NonNetworkedStackOverflowCommunicator *nnCommunicator;
     MockStackOverflowManager *manager;
+    FakeURLResponse *fourOhFourResponse;
 }
 
 @end
