@@ -88,4 +88,12 @@
     [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
     STAssertEquals([manager answerFailureErrorCode], 404, @"Answer fetch error was passed to delegate");
 }
+
+- (void)testConnectionFailingPassesErrorToDelegate {
+    [nnCommunicator searchForQuestionsWithTag: @"ios"];
+    NSError *error = [NSError errorWithDomain: @"Fake domain" code: 12345 userInfo: nil];
+    [nnCommunicator connection: nil didFailWithError: error];
+    STAssertEquals([manager topicFailureErrorCode], 12345, @"Failure to connect should get passed to the delegate");
+}
+
 @end

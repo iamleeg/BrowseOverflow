@@ -83,10 +83,20 @@
     if ([httpResponse statusCode] != 200) {
         NSError *error = [NSError errorWithDomain: StackOverflowCommunicatorErrorDomain code: [httpResponse statusCode] userInfo: nil];
         errorHandler(error);
+        [self cancelAndDiscardURLConnection];
     }
     else {
         receivedData = [[NSMutableData alloc] init];
     }
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [receivedData release];
+    receivedData = nil;
+    fetchingConnection = nil;
+    [fetchingURL release];
+    fetchingURL = nil;
+    errorHandler(error);
 }
 
 @end
