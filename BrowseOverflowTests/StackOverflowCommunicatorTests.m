@@ -9,13 +9,14 @@
 #import "StackOverflowCommunicatorTests.h"
 #import "InspectableStackOverflowCommunicator.h"
 #import "NonNetworkedStackOverflowCommunicator.h"
+#import "MockStackOverflowManager.h"
+#import "FakeURLResponse.h"
 
 @implementation StackOverflowCommunicatorTests
 
 - (void)setUp {
     communicator = [[InspectableStackOverflowCommunicator alloc] init];
     nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
-    [nnCommunicator release];
 }
 
 - (void)tearDown {
@@ -57,4 +58,14 @@
     STAssertEquals([nnCommunicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
 }
 
+- (void)testReceivingResponseWith404StatusPassesErrorToDelegate {
+    manager = [[MockStackOverflowManager alloc] init];
+    nnCommunicator.delegate = manager;
+    [nnCommunicator searchForQuestionsWithTag: @"ios"];
+    FakeURLResponse *response = [[FakeURLResponse alloc] initWithStatusCode: 404];
+    [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)response];
+    [response release];
+    STAssertEquals([manager topicFailureErrorCode], 404, @"Fetch failure was passed through to delegate");
+    [manager release];
+}
 @end

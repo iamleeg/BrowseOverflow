@@ -12,10 +12,12 @@
 
 @class InspectableStackOverflowCommunicator;
 @class NonNetworkedStackOverflowCommunicator;
+@class MockStackOverflowManager;
 
 @interface StackOverflowCommunicatorTests : SenTestCase {
     InspectableStackOverflowCommunicator *communicator;
     NonNetworkedStackOverflowCommunicator *nnCommunicator;
+    MockStackOverflowManager *manager;
 }
 
 @end

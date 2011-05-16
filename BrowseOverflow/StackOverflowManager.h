@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "StackOverflowManagerDelegate.h"
+#import "StackOverflowCommunicatorDelegate.h"
 
 @class StackOverflowCommunicator;
 @class QuestionBuilder;
@@ -18,7 +19,7 @@
  * A façade providing access to the Stack Overflow service.
  * Application code should only use this class to get at Stack Overflow innards.
  */
-@interface StackOverflowManager : NSObject {
+@interface StackOverflowManager : NSObject <StackOverflowCommunicatorDelegate> {
     id <StackOverflowManagerDelegate> delegate;
 }
 @property (assign) id <StackOverflowManagerDelegate> delegate;
@@ -45,20 +46,9 @@
 - (void)fetchBodyForQuestion: (Question *)question;
 
 /**
- * Signal from the communicator that fetching questions has failed.
- * @param error The error received from the network or server.
- */
-- (void)searchingForQuestionsFailedWithError: (NSError *)error;
-
-/**
  * The communicator received a response from the Stack Overflow search.
  */
 - (void)receivedQuestionsJSON: (NSString *)objectNotation;
-
-/**
- * Signal from the communicator that it couldn't retrieve a question body.
- */
-- (void)fetchingQuestionBodyFailedWithError: (NSError *)error;
 
 /**
  * The communicator received data with more details on a question.
@@ -72,12 +62,6 @@
  * @see StackOverflowManagerDelegate
  */
 - (void)fetchAnswersForQuestion: (Question *)question;
-
-/**
- * Trying to retrieve answers failed.
- * @param error The error that caused the failure.
- */
-- (void)fetchingAnswersFailedWithError: (NSError *)error;
 
 /**
  * Data corresponding to answers was received by the communicator.
