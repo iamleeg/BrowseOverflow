@@ -17,11 +17,15 @@
 - (void)setUp {
     communicator = [[InspectableStackOverflowCommunicator alloc] init];
     nnCommunicator = [[NonNetworkedStackOverflowCommunicator alloc] init];
+    manager = [[MockStackOverflowManager alloc] init];
+    nnCommunicator.delegate = manager;
 }
 
 - (void)tearDown {
     [communicator cancelAndDiscardURLConnection];
     [communicator release];
+    [nnCommunicator release];
+    [manager release];
 }
 
 - (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
@@ -59,13 +63,11 @@
 }
 
 - (void)testReceivingResponseWith404StatusPassesErrorToDelegate {
-    manager = [[MockStackOverflowManager alloc] init];
-    nnCommunicator.delegate = manager;
     [nnCommunicator searchForQuestionsWithTag: @"ios"];
     FakeURLResponse *response = [[FakeURLResponse alloc] initWithStatusCode: 404];
     [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)response];
     [response release];
     STAssertEquals([manager topicFailureErrorCode], 404, @"Fetch failure was passed through to delegate");
-    [manager release];
 }
+
 @end
