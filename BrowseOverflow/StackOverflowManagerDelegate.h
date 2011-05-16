@@ -43,4 +43,9 @@
  */
 - (void)answersReceivedForQuestion: (Question *)question;
 
+/**
+ * The communicator received data with more details on a question.
+ */
+- (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
+
 @end

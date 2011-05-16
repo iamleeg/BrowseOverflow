@@ -20,6 +20,7 @@
     manager = [[MockStackOverflowManager alloc] init];
     nnCommunicator.delegate = manager;
     fourOhFourResponse = [[FakeURLResponse alloc] initWithStatusCode: 404];
+    receivedData = [[@"Result" dataUsingEncoding: NSUTF8StringEncoding] retain];
 }
 
 - (void)tearDown {
@@ -28,6 +29,7 @@
     [nnCommunicator release];
     [manager release];
     [fourOhFourResponse release];
+    [receivedData release];
 }
 
 - (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
@@ -94,6 +96,27 @@
     NSError *error = [NSError errorWithDomain: @"Fake domain" code: 12345 userInfo: nil];
     [nnCommunicator connection: nil didFailWithError: error];
     STAssertEquals([manager topicFailureErrorCode], 12345, @"Failure to connect should get passed to the delegate");
+}
+
+- (void)testSuccessfulQuestionSearchPassesDataToDelegate {
+    [nnCommunicator searchForQuestionsWithTag: @"ios"];
+    [nnCommunicator setReceivedData: receivedData];
+    [nnCommunicator connectionDidFinishLoading: nil];
+    STAssertEqualObjects([manager topicSearchString], @"Result", @"The delegate should have received data on success");
+}
+
+- (void)testSuccessfulBodyFetchPassesDataToDelegate {
+    [nnCommunicator downloadInformationForQuestionWithID: 12345];
+    [nnCommunicator setReceivedData: receivedData];
+    [nnCommunicator connectionDidFinishLoading: nil];
+    STAssertEqualObjects([manager questionBodyString], @"Result", @"The delegate should have received the question body data");
+}
+
+- (void)testSuccessfulAnswerFetchPassesDataToDelegate {
+    [nnCommunicator downloadAnswersToQuestionWithID: 12345];
+    [nnCommunicator setReceivedData: receivedData];
+    [nnCommunicator connectionDidFinishLoading: nil];
+    STAssertEqualObjects([manager answerListString], @"Result", @"Answer list should be passed to delegate");
 }
 
 @end

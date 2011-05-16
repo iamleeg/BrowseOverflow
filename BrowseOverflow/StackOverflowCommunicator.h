@@ -17,6 +17,7 @@
 @private
     id <StackOverflowCommunicatorDelegate> delegate;
     void (^errorHandler)(NSError *);
+    void (^successHandler)(NSString *);
 }
 
 @property (assign) id <StackOverflowCommunicatorDelegate> delegate;

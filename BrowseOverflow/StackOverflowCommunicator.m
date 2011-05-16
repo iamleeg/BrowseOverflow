@@ -10,7 +10,7 @@
 
 @interface StackOverflowCommunicator ()
 
-- (void)fetchContentAtURL: (NSURL *)url errorHandler: (void(^)(NSError *error))errorBlock;
+- (void)fetchContentAtURL: (NSURL *)url errorHandler: (void(^)(NSError *error))errorBlock successHandler: (void(^)(NSString *objectNotation)) successBlock;
 - (void)launchConnectionForRequest: (NSURLRequest *)request;
 
 @end
@@ -24,12 +24,14 @@
     fetchingConnection = [NSURLConnection connectionWithRequest: request delegate: self];
 
 }
-- (void)fetchContentAtURL:(NSURL *)url errorHandler:(void (^)(NSError *))errorBlock {
+- (void)fetchContentAtURL:(NSURL *)url errorHandler:(void (^)(NSError *))errorBlock successHandler:(void (^)(NSString *))successBlock {
     [url retain];
     [fetchingURL release];
     fetchingURL = url;
     [errorHandler release];
     errorHandler = [errorBlock copy];
+    [successHandler release];
+    successHandler = [successBlock copy];
     NSURLRequest *request = [NSURLRequest requestWithURL: fetchingURL];
     
     [self launchConnectionForRequest: request];
@@ -42,7 +44,10 @@
                               [NSString stringWithFormat: @"http://api.stackoverflow.com/1.1/search?tagged=%@&pagesize=20", tag]]
                errorHandler: ^(NSError *error) {
                    [delegate searchingForQuestionsFailedWithError: error];
-               }];
+               }
+             successHandler: ^(NSString *objectNotation) {
+                 [delegate receivedQuestionsJSON: objectNotation];
+             }];
 }
 
 - (void)downloadInformationForQuestionWithID:(NSInteger)identifier {
@@ -50,7 +55,10 @@
                               [NSString stringWithFormat: @"http://api.stackoverflow.com/1.1/questions/%d?body=true", identifier]]
                errorHandler: ^(NSError *error) {
                    [delegate fetchingQuestionBodyFailedWithError: error];
-               }];
+               }
+             successHandler: ^(NSString *objectNotation) {
+                 [delegate receivedQuestionBodyJSON: objectNotation];
+             }];
 }
 
 - (void)downloadAnswersToQuestionWithID:(NSInteger)identifier {
@@ -58,11 +66,15 @@
                               [NSString stringWithFormat: @"http://api.stackoverflow.com/1.1/questions/%d/answers?body=true", identifier]]
                errorHandler: ^(NSError *error) {
                    [delegate fetchingAnswersFailedWithError: error];
-               }];
+               }
+             successHandler: ^(NSString *objectNotation) {
+                 [delegate receivedAnswerListJSON: objectNotation];
+             }];
 }
 
 - (void)dealloc {
     [errorHandler release];
+    [successHandler release];
     [fetchingURL release];
     [fetchingConnection cancel];
     [receivedData release];
@@ -97,6 +109,18 @@
     [fetchingURL release];
     fetchingURL = nil;
     errorHandler(error);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    fetchingConnection = nil;
+    [fetchingURL release];
+    fetchingURL = nil;
+    NSString *receivedText = [[NSString alloc] initWithData: receivedData
+                                                   encoding: NSUTF8StringEncoding];
+    [receivedData release];
+    receivedData = nil;
+    successHandler(receivedText);
+    [receivedText release];
 }
 
 @end

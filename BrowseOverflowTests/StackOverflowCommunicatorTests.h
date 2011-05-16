@@ -20,6 +20,7 @@
     NonNetworkedStackOverflowCommunicator *nnCommunicator;
     MockStackOverflowManager *manager;
     FakeURLResponse *fourOhFourResponse;
+    NSData *receivedData;
 }
 
 @end

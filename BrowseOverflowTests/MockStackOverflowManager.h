@@ -13,10 +13,17 @@
     NSInteger topicFailureErrorCode;
     NSInteger bodyFailureErrorCode;
     NSInteger answerFailureErrorCode;
+    NSString *topicSearchString;
+    NSString *questionBodyString;
+    NSString *answerListString;
 }
 
 - (NSInteger)topicFailureErrorCode;
 - (NSInteger)bodyFailureErrorCode;
 - (NSInteger)answerFailureErrorCode;
+
+- (NSString *)topicSearchString;
+- (NSString *)questionBodyString;
+- (NSString *)answerListString;
 
 @end

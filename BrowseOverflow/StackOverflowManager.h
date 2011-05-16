@@ -46,28 +46,12 @@
 - (void)fetchBodyForQuestion: (Question *)question;
 
 /**
- * The communicator received a response from the Stack Overflow search.
- */
-- (void)receivedQuestionsJSON: (NSString *)objectNotation;
-
-/**
- * The communicator received data with more details on a question.
- */
-- (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
-
-/**
  * Get the answers to a question on Stack Overflow.
  * @note The delegate will receive messages when answers arrive or errors occur.
  * @param question The question for which to retrieve answers.
  * @see StackOverflowManagerDelegate
  */
 - (void)fetchAnswersForQuestion: (Question *)question;
-
-/**
- * Data corresponding to answers was received by the communicator.
- * @param objectNotation The content returned by the server.
- */
-- (void)receivedAnswerListJSON: (NSString *)objectNotation;
 
 @end
 

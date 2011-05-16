@@ -28,4 +28,21 @@
  */
 - (void)fetchingAnswersFailedWithError: (NSError *)error;
 
+/**
+ * The communicator received a response from the Stack Overflow search.
+ */
+- (void)receivedQuestionsJSON: (NSString *)objectNotation;
+
+/**
+ * Data corresponding to answers was received by the communicator.
+ * @param objectNotation The content returned by the server.
+ */
+- (void)receivedAnswerListJSON: (NSString *)objectNotation;
+
+/**
+ * Data corresponding to question details was received by the communicator.
+ * @param objectNotation The content returned by the server.
+ */
+- (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
+
 @end

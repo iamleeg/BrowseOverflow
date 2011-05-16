@@ -36,6 +36,10 @@
     self.successQuestion = question;
 }
 
+- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
+    
+}
+
 - (void)dealloc {
     [fetchError release];
     [fetchedQuestions release];

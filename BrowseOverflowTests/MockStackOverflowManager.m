@@ -35,4 +35,35 @@
     answerFailureErrorCode = [error code];
 }
 
+- (void)receivedQuestionsJSON:(NSString *)objectNotation {
+    topicSearchString = [objectNotation retain];
+}
+
+- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
+    questionBodyString = [objectNotation retain];
+}
+
+- (void)receivedAnswerListJSON:(NSString *)objectNotation {
+    answerListString = [objectNotation retain];
+}
+
+- (NSString *)topicSearchString {
+    return topicSearchString;
+}
+
+- (NSString *)questionBodyString {
+    return questionBodyString;
+}
+
+- (NSString *)answerListString {
+    return answerListString;
+}
+
+- (void)dealloc {
+    [topicSearchString release];
+    [questionBodyString release];
+    [answerListString release];
+    [super dealloc];
+}
+
 @end
