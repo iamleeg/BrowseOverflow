@@ -79,6 +79,7 @@
     [twoHundredResponse release];
     STAssertFalse([manager topicFailureErrorCode] == 200, @"No need for error on 200 response");
 }
+
 - (void)testReceiving404ResponseToQuestionBodyRequestPassesErrorToDelegate {
     [nnCommunicator downloadInformationForQuestionWithID: 12345];
     [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)fourOhFourResponse];
@@ -117,6 +118,15 @@
     [nnCommunicator setReceivedData: receivedData];
     [nnCommunicator connectionDidFinishLoading: nil];
     STAssertEqualObjects([manager answerListString], @"Result", @"Answer list should be passed to delegate");
+}
+
+- (void)testAdditionalDataAppendedToDownload {
+    [nnCommunicator setReceivedData: receivedData];
+    NSData *extraData = [@" appended" dataUsingEncoding: NSUTF8StringEncoding];
+    [nnCommunicator connection: nil didReceiveData: extraData];
+    NSString *combinedString = [[NSString alloc] initWithData: [nnCommunicator receivedData] encoding: NSUTF8StringEncoding];
+    STAssertEqualObjects(combinedString, @"Result appended", @"Received data should be appended to the downloaded data");
+    [combinedString release];
 }
 
 @end

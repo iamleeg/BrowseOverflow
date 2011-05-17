@@ -123,6 +123,10 @@
     [receivedText release];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData: data];
+}
+
 @end
 
 NSString *StackOverflowCommunicatorErrorDomain = @"StackOverflowCommunicatorErrorDomain";
