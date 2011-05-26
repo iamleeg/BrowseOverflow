@@ -68,6 +68,10 @@
 		98BAC3E2138E55D300B36163 /* GravatarCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */; };
 		98BAC3E3138E55D300B36163 /* GravatarCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */; };
 		98BAC3E7138E577000B36163 /* FakeGravatarDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */; };
+		98BAC3EA138E985300B36163 /* AvatarStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E9138E985300B36163 /* AvatarStoreTests.m */; };
+		98BAC3ED138EA6AA00B36163 /* AvatarStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3EC138EA6AA00B36163 /* AvatarStore.m */; };
+		98BAC3EE138EA6AA00B36163 /* AvatarStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3EC138EA6AA00B36163 /* AvatarStore.m */; };
+		98BAC3F2138EABA200B36163 /* AvatarStore+TestingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */; };
 		98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 /* End PBXBuildFile section */
@@ -181,6 +185,12 @@
 		98BAC3E4138E568E00B36163 /* GravatarCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarCommunicatorDelegate.h; sourceTree = "<group>"; };
 		98BAC3E5138E577000B36163 /* FakeGravatarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeGravatarDelegate.h; sourceTree = "<group>"; };
 		98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeGravatarDelegate.m; sourceTree = "<group>"; };
+		98BAC3E8138E985300B36163 /* AvatarStoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarStoreTests.h; sourceTree = "<group>"; };
+		98BAC3E9138E985300B36163 /* AvatarStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarStoreTests.m; sourceTree = "<group>"; };
+		98BAC3EB138EA6AA00B36163 /* AvatarStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvatarStore.h; sourceTree = "<group>"; };
+		98BAC3EC138EA6AA00B36163 /* AvatarStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvatarStore.m; sourceTree = "<group>"; };
+		98BAC3F0138EABA200B36163 /* AvatarStore+TestingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AvatarStore+TestingExtensions.h"; sourceTree = "<group>"; };
+		98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AvatarStore+TestingExtensions.m"; sourceTree = "<group>"; };
 		98DDCCF41377F41D007E9A50 /* UserBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBuilder.h; sourceTree = "<group>"; };
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +306,8 @@
 				98BAC3E0138E55D300B36163 /* GravatarCommunicator.h */,
 				98BAC3E4138E568E00B36163 /* GravatarCommunicatorDelegate.h */,
 				98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */,
+				98BAC3EB138EA6AA00B36163 /* AvatarStore.h */,
+				98BAC3EC138EA6AA00B36163 /* AvatarStore.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -333,6 +345,7 @@
 		98A548F5130D3ABF003C4F0F /* BrowseOverflowTests */ = {
 			isa = PBXGroup;
 			children = (
+				98BAC3EF138EAB7E00B36163 /* Testing Categories */,
 				9868E926132E63A400AEF519 /* Mocks, Fakes Stubs */,
 				98A548FC130D3ABF003C4F0F /* BrowseOverflowTests.h */,
 				98A548FE130D3ABF003C4F0F /* BrowseOverflowTests.m */,
@@ -357,6 +370,8 @@
 				981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */,
 				98BAC3DD138E503200B36163 /* GravatarCommunicatorTests.h */,
 				98BAC3DE138E503200B36163 /* GravatarCommunicatorTests.m */,
+				98BAC3E8138E985300B36163 /* AvatarStoreTests.h */,
+				98BAC3E9138E985300B36163 /* AvatarStoreTests.m */,
 			);
 			path = BrowseOverflowTests;
 			sourceTree = "<group>";
@@ -369,6 +384,15 @@
 				98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		98BAC3EF138EAB7E00B36163 /* Testing Categories */ = {
+			isa = PBXGroup;
+			children = (
+				98BAC3F0138EABA200B36163 /* AvatarStore+TestingExtensions.h */,
+				98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */,
+			);
+			name = "Testing Categories";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -501,6 +525,7 @@
 				98089BCA1365BBB800B4FDEC /* AnswerBuilder.m in Sources */,
 				98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */,
 				98BAC3E2138E55D300B36163 /* GravatarCommunicator.m in Sources */,
+				98BAC3ED138EA6AA00B36163 /* AvatarStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +563,9 @@
 				98BAC3DF138E503200B36163 /* GravatarCommunicatorTests.m in Sources */,
 				98BAC3E3138E55D300B36163 /* GravatarCommunicator.m in Sources */,
 				98BAC3E7138E577000B36163 /* FakeGravatarDelegate.m in Sources */,
+				98BAC3EA138E985300B36163 /* AvatarStoreTests.m in Sources */,
+				98BAC3EE138EA6AA00B36163 /* AvatarStore.m in Sources */,
+				98BAC3F2138EABA200B36163 /* AvatarStore+TestingExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
