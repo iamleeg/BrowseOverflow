@@ -64,6 +64,10 @@
 		98B5849413168D6E003EA838 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B5849213168D6E003EA838 /* Person.m */; };
 		98B96BAB137D9E9000D084F0 /* MockStackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B96BAA137D9E9000D084F0 /* MockStackOverflowManager.m */; };
 		98B96BAF137DAA9700D084F0 /* FakeURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B96BAE137DAA9700D084F0 /* FakeURLResponse.m */; };
+		98BAC3DF138E503200B36163 /* GravatarCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3DE138E503200B36163 /* GravatarCommunicatorTests.m */; };
+		98BAC3E2138E55D300B36163 /* GravatarCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */; };
+		98BAC3E3138E55D300B36163 /* GravatarCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */; };
+		98BAC3E7138E577000B36163 /* FakeGravatarDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */; };
 		98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 /* End PBXBuildFile section */
@@ -170,6 +174,13 @@
 		98B96BAC137DA1A400D084F0 /* StackOverflowCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowCommunicatorDelegate.h; sourceTree = "<group>"; };
 		98B96BAD137DAA9700D084F0 /* FakeURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeURLResponse.h; sourceTree = "<group>"; };
 		98B96BAE137DAA9700D084F0 /* FakeURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeURLResponse.m; sourceTree = "<group>"; };
+		98BAC3DD138E503200B36163 /* GravatarCommunicatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarCommunicatorTests.h; sourceTree = "<group>"; };
+		98BAC3DE138E503200B36163 /* GravatarCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravatarCommunicatorTests.m; sourceTree = "<group>"; };
+		98BAC3E0138E55D300B36163 /* GravatarCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarCommunicator.h; sourceTree = "<group>"; };
+		98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravatarCommunicator.m; sourceTree = "<group>"; };
+		98BAC3E4138E568E00B36163 /* GravatarCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravatarCommunicatorDelegate.h; sourceTree = "<group>"; };
+		98BAC3E5138E577000B36163 /* FakeGravatarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeGravatarDelegate.h; sourceTree = "<group>"; };
+		98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeGravatarDelegate.m; sourceTree = "<group>"; };
 		98DDCCF41377F41D007E9A50 /* UserBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBuilder.h; sourceTree = "<group>"; };
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +228,8 @@
 				98B96BAA137D9E9000D084F0 /* MockStackOverflowManager.m */,
 				98B96BAD137DAA9700D084F0 /* FakeURLResponse.h */,
 				98B96BAE137DAA9700D084F0 /* FakeURLResponse.m */,
+				98BAC3E5138E577000B36163 /* FakeGravatarDelegate.h */,
+				98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -280,6 +293,9 @@
 				98089BC91365BBB800B4FDEC /* AnswerBuilder.m */,
 				98DDCCF41377F41D007E9A50 /* UserBuilder.h */,
 				98DDCCF51377F41D007E9A50 /* UserBuilder.m */,
+				98BAC3E0138E55D300B36163 /* GravatarCommunicator.h */,
+				98BAC3E4138E568E00B36163 /* GravatarCommunicatorDelegate.h */,
+				98BAC3E1138E55D300B36163 /* GravatarCommunicator.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -339,6 +355,8 @@
 				98731D9D13719C9F00AEB991 /* AnswerBuilderTests.m */,
 				981C3D9C137AACD4002B3FE9 /* StackOverflowCommunicatorTests.h */,
 				981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */,
+				98BAC3DD138E503200B36163 /* GravatarCommunicatorTests.h */,
+				98BAC3DE138E503200B36163 /* GravatarCommunicatorTests.m */,
 			);
 			path = BrowseOverflowTests;
 			sourceTree = "<group>";
@@ -482,6 +500,7 @@
 				9809BE5C1349CAF4008B4136 /* SBJsonStreamParserAdapter.m in Sources */,
 				98089BCA1365BBB800B4FDEC /* AnswerBuilder.m in Sources */,
 				98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */,
+				98BAC3E2138E55D300B36163 /* GravatarCommunicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +535,9 @@
 				981C3DAA137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m in Sources */,
 				98B96BAB137D9E9000D084F0 /* MockStackOverflowManager.m in Sources */,
 				98B96BAF137DAA9700D084F0 /* FakeURLResponse.m in Sources */,
+				98BAC3DF138E503200B36163 /* GravatarCommunicatorTests.m in Sources */,
+				98BAC3E3138E55D300B36163 /* GravatarCommunicator.m in Sources */,
+				98BAC3E7138E577000B36163 /* FakeGravatarDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
