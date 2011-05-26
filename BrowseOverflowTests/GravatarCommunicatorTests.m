@@ -35,4 +35,10 @@
     [communicator connectionDidFinishLoading: nil];
     STAssertEqualObjects([delegate reportedData], fakeData, @"The communicator needs to pass its data to the delegate");
 }
+
+- (void)testCommunicatorKeepsURLRequested {
+    NSURL *differentURL = [NSURL URLWithString: @"http://example.org/notthesameURL"];
+    [communicator fetchDataForURL: differentURL];
+    STAssertEqualObjects(communicator.url, differentURL, @"Communicator holds on to URL");
+}
 @end

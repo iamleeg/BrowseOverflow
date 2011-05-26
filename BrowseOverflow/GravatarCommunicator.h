@@ -16,4 +16,6 @@
 @property (retain) NSMutableData *receivedData;
 @property (assign) id <GravatarCommunicatorDelegate> delegate;
 
+- (void)fetchDataForURL: (NSURL *)location;
+
 @end

@@ -21,6 +21,10 @@
     [super dealloc];
 }
 
+- (void)fetchDataForURL:(NSURL *)location {
+    self.url = location;
+}
+
 #pragma mark NSURLConnection Delegate
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
