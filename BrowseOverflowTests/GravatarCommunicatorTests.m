@@ -54,4 +54,12 @@
     STAssertEquals([communicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
 }
 
+- (void)testCommunicatorAppendsReceivedData {
+    communicator.receivedData = [[fakeData mutableCopy] autorelease];
+    NSData *extraData = [@" more" dataUsingEncoding: NSUTF8StringEncoding];
+    NSData *expectedData = [@"Fake data more" dataUsingEncoding: NSUTF8StringEncoding];
+    [communicator connection: nil didReceiveData: extraData];
+    STAssertEqualObjects([[communicator.receivedData copy] autorelease], expectedData, @"Should append data when it gets received");
+}
+
 @end

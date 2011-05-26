@@ -37,4 +37,9 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     self.receivedData = [NSMutableData data];
 }
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData: data];
+}
+
 @end
