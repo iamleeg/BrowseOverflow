@@ -34,4 +34,7 @@
     [delegate communicatorReceivedData: [[receivedData copy] autorelease] forURL: url];
 }
 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    self.receivedData = [NSMutableData data];
+}
 @end

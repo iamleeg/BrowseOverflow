@@ -17,11 +17,13 @@
     delegate = [[FakeGravatarDelegate alloc] init];
     communicator.url = [NSURL URLWithString: @"http://example.com/avatar"];
     communicator.delegate = delegate;
+    fakeData = [[@"Fake data" dataUsingEncoding: NSUTF8StringEncoding] retain];
 }
 
 - (void)tearDown {
     [delegate release];
     [communicator release];
+    [fakeData release];
 }
 
 - (void)testThatCommunicatorPassesURLBackWhenCompleted {
@@ -30,7 +32,6 @@
 }
 
 - (void)testThatCommunicatorPassesDataWhenCompleted {
-    NSData *fakeData = [@"Fake data" dataUsingEncoding: NSUTF8StringEncoding];
     communicator.receivedData = [[fakeData mutableCopy] autorelease];
     [communicator connectionDidFinishLoading: nil];
     STAssertEqualObjects([delegate reportedData], fakeData, @"The communicator needs to pass its data to the delegate");
@@ -45,6 +46,12 @@
 - (void)testCommunicatorCreatesAURLConnection {
     [communicator fetchDataForURL: communicator.url];
     STAssertNotNil(communicator.connection, @"The communicator should create an NSURLConnection here");
+}
+
+- (void)testCommunicatorDiscardsDataWhenResponseReceived {
+    communicator.receivedData = [[fakeData mutableCopy] autorelease];
+    [communicator connection: nil didReceiveResponse: nil];
+    STAssertEquals([communicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
 }
 
 @end

@@ -16,6 +16,7 @@
 @interface GravatarCommunicatorTests : SenTestCase {
     GravatarCommunicator *communicator;
     FakeGravatarDelegate *delegate;
+    NSData *fakeData;
 }
 
 @end
