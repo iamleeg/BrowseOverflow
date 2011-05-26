@@ -14,6 +14,7 @@
 @synthesize url;
 @synthesize delegate;
 @synthesize receivedData;
+@synthesize connection;
 
 - (void)dealloc {
     [url release];
@@ -23,6 +24,8 @@
 
 - (void)fetchDataForURL:(NSURL *)location {
     self.url = location;
+    NSURLRequest *request = [NSURLRequest requestWithURL: location];
+    self.connection = [NSURLConnection connectionWithRequest: request delegate: self];
 }
 
 #pragma mark NSURLConnection Delegate

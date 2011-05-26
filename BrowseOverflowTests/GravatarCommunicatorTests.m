@@ -41,4 +41,10 @@
     [communicator fetchDataForURL: differentURL];
     STAssertEqualObjects(communicator.url, differentURL, @"Communicator holds on to URL");
 }
+
+- (void)testCommunicatorCreatesAURLConnection {
+    [communicator fetchDataForURL: communicator.url];
+    STAssertNotNil(communicator.connection, @"The communicator should create an NSURLConnection here");
+}
+
 @end
