@@ -25,4 +25,7 @@
     self.reportedData = data;
 }
 
+- (void)communicatorGotErrorForURL:(NSURL *)url {
+    self.reportedURL = url;
+}
 @end

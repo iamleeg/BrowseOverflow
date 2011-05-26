@@ -62,4 +62,9 @@
     STAssertEqualObjects([[communicator.receivedData copy] autorelease], expectedData, @"Should append data when it gets received");
 }
 
+- (void)testURLPassedBackOnError {
+    [communicator connection: nil didFailWithError: nil];
+    STAssertEqualObjects([delegate reportedURL], communicator.url, @"delegate knows which URL got an error");
+}
+
 @end

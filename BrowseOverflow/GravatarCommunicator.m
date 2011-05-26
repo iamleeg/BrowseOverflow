@@ -42,4 +42,8 @@
     [receivedData appendData: data];
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [delegate communicatorGotErrorForURL: url];
+}
+
 @end

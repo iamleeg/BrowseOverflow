@@ -13,4 +13,6 @@
 
 - (void)communicatorReceivedData: (NSData *)data forURL: (NSURL *)url;
 
+- (void)communicatorGotErrorForURL: (NSURL *)url;
+
 @end
