@@ -12,14 +12,25 @@
 
 @implementation AvatarStoreTests
 
-- (void)testLookupDataInCacheDictionary {
-    AvatarStore *store = [[AvatarStore alloc] init];
-    NSData *sampleData = [@"sample data" dataUsingEncoding: NSUTF8StringEncoding];
-    NSString *sampleLocation = @"http://example.com/avatar/sample";
+- (void)setUp {
+    store = [[AvatarStore alloc] init];
+    sampleData = [[@"sample data" dataUsingEncoding: NSUTF8StringEncoding] retain];
+    sampleLocation = @"http://example.com/avatar/sample";
     [store setData: sampleData forLocation: sampleLocation];
-    NSData *retrievedData = [store dataForURL: [NSURL URLWithString: sampleLocation]];
-    STAssertEqualObjects(retrievedData, sampleData, @"If the data's already in the dictionary ");
-    [store release];
 }
 
+- (void)tearDown {
+    [store release];
+    [sampleData release];
+}
+
+- (void)testLookupDataInCacheDictionary {
+    NSData *retrievedData = [store dataForURL: [NSURL URLWithString: sampleLocation]];
+    STAssertEqualObjects(retrievedData, sampleData, @"If the data's already in the dictionary ");
+}
+
+- (void)testLowMemoryWarningRemovesCache {
+    [store didReceiveMemoryWarning];
+    STAssertEquals([store dataCacheSize], (NSUInteger)0, @"Cache should be purged");
+}
 @end

@@ -12,5 +12,6 @@
 @interface AvatarStore (TestingExtensions)
 
 - (void)setData: (NSData *)data forLocation: (NSString *)location;
+- (NSUInteger)dataCacheSize;
 
 @end

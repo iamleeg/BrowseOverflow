@@ -10,8 +10,11 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
 
+@class AvatarStore;
 @interface AvatarStoreTests : SenTestCase {
-    
+    AvatarStore *store;
+    NSData *sampleData;
+    NSString *sampleLocation;
 }
 
 @end

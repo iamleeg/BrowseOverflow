@@ -14,5 +14,6 @@
 }
 
 - (NSData *)dataForURL: (NSURL *)url;
+- (void)didReceiveMemoryWarning;
 
 @end

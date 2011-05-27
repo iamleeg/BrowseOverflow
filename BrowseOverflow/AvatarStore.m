@@ -28,4 +28,8 @@
     return [dataCache objectForKey: [url absoluteString]];
 }
 
+- (void)didReceiveMemoryWarning {
+    [dataCache removeAllObjects];
+}
+
 @end

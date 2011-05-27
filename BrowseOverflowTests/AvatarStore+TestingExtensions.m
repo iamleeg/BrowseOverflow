@@ -15,4 +15,8 @@
     [dataCache setObject: data forKey: location];
 }
 
+- (NSUInteger)dataCacheSize {
+    return [[dataCache allKeys] count];
+}
+
 @end
