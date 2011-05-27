@@ -74,6 +74,7 @@
 		98BAC3F2138EABA200B36163 /* AvatarStore+TestingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */; };
 		98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
+		98E3AEB5138FD55B00E8407B /* FakeNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,8 @@
 		98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AvatarStore+TestingExtensions.m"; sourceTree = "<group>"; };
 		98DDCCF41377F41D007E9A50 /* UserBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBuilder.h; sourceTree = "<group>"; };
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
+		98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNotificationCenter.h; sourceTree = "<group>"; };
+		98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeNotificationCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +243,8 @@
 				98B96BAE137DAA9700D084F0 /* FakeURLResponse.m */,
 				98BAC3E5138E577000B36163 /* FakeGravatarDelegate.h */,
 				98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */,
+				98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */,
+				98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				98BAC3EA138E985300B36163 /* AvatarStoreTests.m in Sources */,
 				98BAC3EE138EA6AA00B36163 /* AvatarStore.m in Sources */,
 				98BAC3F2138EABA200B36163 /* AvatarStore+TestingExtensions.m in Sources */,
+				98E3AEB5138FD55B00E8407B /* FakeNotificationCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

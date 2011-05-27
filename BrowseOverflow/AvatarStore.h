@@ -14,6 +14,7 @@
 }
 
 - (NSData *)dataForURL: (NSURL *)url;
-- (void)didReceiveMemoryWarning;
-
+- (void)didReceiveMemoryWarning: (NSNotification *)note;
+- (void)registerForMemoryWarnings: (NSNotificationCenter *)center;
+- (void)removeRegistrationForMemoryWarnings: (NSNotificationCenter *)center;
 @end

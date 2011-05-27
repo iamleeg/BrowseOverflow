@@ -28,8 +28,15 @@
     return [dataCache objectForKey: [url absoluteString]];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning: (NSNotification *)note {
     [dataCache removeAllObjects];
 }
 
+- (void)registerForMemoryWarnings:(NSNotificationCenter *)center {
+    [center addObserver: self selector: @selector(didReceiveMemoryWarning:) name: UIApplicationDidReceiveMemoryWarningNotification object: nil];
+}
+
+- (void)removeRegistrationForMemoryWarnings:(NSNotificationCenter *)center {
+    [center removeObserver: self];
+}
 @end

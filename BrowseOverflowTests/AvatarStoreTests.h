@@ -11,7 +11,10 @@
 #import <UIKit/UIKit.h>
 
 @class AvatarStore;
+@class FakeNotificationCenter;
+
 @interface AvatarStoreTests : SenTestCase {
+    FakeNotificationCenter *center;
     AvatarStore *store;
     NSData *sampleData;
     NSString *sampleLocation;

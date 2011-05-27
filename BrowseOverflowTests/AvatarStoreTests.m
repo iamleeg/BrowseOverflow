@@ -9,10 +9,12 @@
 #import "AvatarStoreTests.h"
 #import "AvatarStore.h"
 #import "AvatarStore+TestingExtensions.h"
+#import "FakeNotificationCenter.h"
 
 @implementation AvatarStoreTests
 
 - (void)setUp {
+    center = [[FakeNotificationCenter alloc] init];
     store = [[AvatarStore alloc] init];
     sampleData = [[@"sample data" dataUsingEncoding: NSUTF8StringEncoding] retain];
     sampleLocation = @"http://example.com/avatar/sample";
@@ -20,6 +22,7 @@
 }
 
 - (void)tearDown {
+    [center release];
     [store release];
     [sampleData release];
 }
@@ -30,7 +33,19 @@
 }
 
 - (void)testLowMemoryWarningRemovesCache {
-    [store didReceiveMemoryWarning];
+    [store didReceiveMemoryWarning: nil];
     STAssertEquals([store dataCacheSize], (NSUInteger)0, @"Cache should be purged");
 }
+
+- (void)testStoreSubscribesToLowMemoryNotification {
+    [store registerForMemoryWarnings: (NSNotificationCenter *)center];
+    STAssertTrue([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"store should have registered for the notification");
+}
+
+- (void)testStoreRemovesSubscriptionFromLowMemoryNotification {
+    [store registerForMemoryWarnings: (NSNotificationCenter *)center];
+    [store removeRegistrationForMemoryWarnings: (NSNotificationCenter *)center];
+    STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
+}
+
 @end
