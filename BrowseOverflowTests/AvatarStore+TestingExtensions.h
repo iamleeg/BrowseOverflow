@@ -13,5 +13,6 @@
 
 - (void)setData: (NSData *)data forLocation: (NSString *)location;
 - (NSUInteger)dataCacheSize;
+- (NSDictionary *)communicators;
 
 @end

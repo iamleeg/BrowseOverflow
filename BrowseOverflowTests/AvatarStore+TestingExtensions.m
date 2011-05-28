@@ -19,4 +19,8 @@
     return [[dataCache allKeys] count];
 }
 
+- (NSDictionary *)communicators {
+    return communicators;
+}
+
 @end

@@ -19,6 +19,7 @@
     sampleData = [[@"sample data" dataUsingEncoding: NSUTF8StringEncoding] retain];
     sampleLocation = @"http://example.com/avatar/sample";
     [store setData: sampleData forLocation: sampleLocation];
+    otherLocation = @"http://example.com/avatar/other";
 }
 
 - (void)tearDown {
@@ -46,6 +47,15 @@
     [store registerForMemoryWarnings: (NSNotificationCenter *)center];
     [store removeRegistrationForMemoryWarnings: (NSNotificationCenter *)center];
     STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
+}
+
+- (void)testCacheMissReturnsNoData {
+    STAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"There shouldn't be any data for this location");
+}
+
+- (void)testCacheMissCreatesNewCommunicator {
+    [store dataForURL: [NSURL URLWithString: otherLocation]];
+    STAssertNotNil([[store communicators] objectForKey: otherLocation], @"Store tries to fetch data from the network");
 }
 
 @end
