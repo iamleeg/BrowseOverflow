@@ -58,4 +58,31 @@
     STAssertNotNil([[store communicators] objectForKey: otherLocation], @"Store tries to fetch data from the network");
 }
 
+- (void)testStoreRetrievedDataFromCommunicator {
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store communicatorReceivedData: sampleData forURL: otherURL];
+    STAssertEqualObjects([store dataForURL: otherURL], sampleData, @"The store should keep the data it receives");
+}
+
+- (void)testStoreDiscardsCommunicatorOnCompletion {
+    [store dataForURL: [NSURL URLWithString: otherLocation]];
+    [store communicatorReceivedData: sampleData forURL: [NSURL URLWithString: otherLocation]];
+    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should have thrown away its communicator");
+}
+
+- (void)testStoreDiscardsCommunicatorOnFailure {
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store dataForURL: otherURL];
+    [store communicatorGotErrorForURL: otherURL];
+    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should throw away its communicator on error");
+}
+
+- (void)testStoreDoesNotUseAnyDataOnError {
+    NSUInteger initialCacheSize = [store dataCacheSize];
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store dataForURL: otherURL];
+    [store communicatorGotErrorForURL: otherURL];
+    STAssertEquals([store dataCacheSize], initialCacheSize, @"No data should be added on error");
+}
+
 @end

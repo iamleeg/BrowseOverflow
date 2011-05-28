@@ -51,10 +51,12 @@
 }
 
 - (void)communicatorGotErrorForURL:(NSURL *)url {
-    
+    [communicators removeObjectForKey: [url absoluteString]];
 }
 
 - (void)communicatorReceivedData:(NSData *)data forURL:(NSURL *)url {
-    
+    [dataCache setObject: data forKey: [url absoluteString]];
+    [communicators removeObjectForKey: [url absoluteString]];
 }
+
 @end
