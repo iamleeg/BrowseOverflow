@@ -8,11 +8,13 @@
 
 #import "MockStackOverflowManagerDelegate.h"
 #import "Topic.h"
+#import "Question.h"
 
 @implementation MockStackOverflowManagerDelegate
 
 @synthesize fetchError;
 @synthesize fetchedQuestions;
+@synthesize successQuestion;
 
 - (void)fetchingQuestionsFailedWithError: (NSError *)error {
     self.fetchError = error;
@@ -30,9 +32,18 @@
     self.fetchError = error;
 }
 
+- (void)answersReceivedForQuestion:(Question *)question {
+    self.successQuestion = question;
+}
+
+- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
+    
+}
+
 - (void)dealloc {
     [fetchError release];
     [fetchedQuestions release];
+    [successQuestion release];
     [super dealloc];
 }
 @end

@@ -30,3 +30,10 @@
 - (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)error;
 
 @end
+
+extern NSString *AnswerBuilderErrorDomain;
+
+enum {
+    AnswerBuilderErrorInvalidJSONError,
+    AnswerBuilderErrorMissingDataError,
+};

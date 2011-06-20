@@ -13,16 +13,22 @@
 
 @synthesize receivedJSON;
 @synthesize questionToFill;
+@synthesize successful;
+@synthesize error;
 
-- (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)error {
+- (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)addError {
     self.questionToFill = question;
     self.receivedJSON = objectNotation;
-    return YES;
+    if (addError) {
+        *addError = error;
+    }
+    return successful;
 }
 
 - (void)dealloc {
     [receivedJSON release];
     [questionToFill release];
+    [error release];
     [super dealloc];
 }
 

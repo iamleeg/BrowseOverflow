@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class Topic;
+@class Question;
+
 /**
  * The delegate protocol for the StackOverflowManager class.
  *
@@ -35,5 +37,15 @@
  * The manager couldn't get answers to a question.
  */
 - (void)retrievingAnswersFailedWithError: (NSError *)error;
+
+/**
+ * The manager got a list of answers to a question.
+ */
+- (void)answersReceivedForQuestion: (Question *)question;
+
+/**
+ * The communicator received data with more details on a question.
+ */
+- (void)receivedQuestionBodyJSON: (NSString *)objectNotation;
 
 @end

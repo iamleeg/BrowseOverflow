@@ -96,7 +96,14 @@
 }
 
 - (void)receivedAnswerListJSON: (NSString *)objectNotation {
-    [self.answerBuilder addAnswersToQuestion: self.questionToFill fromJSON: objectNotation error: NULL];
+    NSError *error = nil;
+    if ([self.answerBuilder addAnswersToQuestion: self.questionToFill fromJSON: objectNotation error: &error]) {
+        [delegate answersReceivedForQuestion: self.questionToFill];
+        self.questionToFill = nil;
+    }
+    else {
+        [self fetchingAnswersFailedWithError: error];
+    }
 }
 
 - (void)dealloc {
