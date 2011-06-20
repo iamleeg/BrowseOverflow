@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GravatarCommunicatorDelegate.h"
 
-
-@interface AvatarStore : NSObject {
+@interface AvatarStore : NSObject <GravatarCommunicatorDelegate> {
     NSMutableDictionary *dataCache;
+    NSMutableDictionary *communicators;
 }
 
 - (NSData *)dataForURL: (NSURL *)url;

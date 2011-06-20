@@ -18,6 +18,7 @@
     AvatarStore *store;
     NSData *sampleData;
     NSString *sampleLocation;
+    NSString *otherLocation;
 }
 
 @end

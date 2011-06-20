@@ -19,6 +19,7 @@
     sampleData = [[@"sample data" dataUsingEncoding: NSUTF8StringEncoding] retain];
     sampleLocation = @"http://example.com/avatar/sample";
     [store setData: sampleData forLocation: sampleLocation];
+    otherLocation = @"http://example.com/avatar/other";
 }
 
 - (void)tearDown {
@@ -48,9 +49,40 @@
     STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
 }
 
-- (void)testCacheMissReturnsNil {
-    NSString *otherLocation = @"http://example.com/avatar/other";
-    STAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"If the store doesn't have any data, it shouldn't return any");
+- (void)testCacheMissReturnsNoData {
+    STAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"There shouldn't be any data for this location");
+}
+
+- (void)testCacheMissCreatesNewCommunicator {
+    [store dataForURL: [NSURL URLWithString: otherLocation]];
+    STAssertNotNil([[store communicators] objectForKey: otherLocation], @"Store tries to fetch data from the network");
+}
+
+- (void)testStoreRetrievedDataFromCommunicator {
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store communicatorReceivedData: sampleData forURL: otherURL];
+    STAssertEqualObjects([store dataForURL: otherURL], sampleData, @"The store should keep the data it receives");
+}
+
+- (void)testStoreDiscardsCommunicatorOnCompletion {
+    [store dataForURL: [NSURL URLWithString: otherLocation]];
+    [store communicatorReceivedData: sampleData forURL: [NSURL URLWithString: otherLocation]];
+    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should have thrown away its communicator");
+}
+
+- (void)testStoreDiscardsCommunicatorOnFailure {
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store dataForURL: otherURL];
+    [store communicatorGotErrorForURL: otherURL];
+    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should throw away its communicator on error");
+}
+
+- (void)testStoreDoesNotUseAnyDataOnError {
+    NSUInteger initialCacheSize = [store dataCacheSize];
+    NSURL *otherURL = [NSURL URLWithString: otherLocation];
+    [store dataForURL: otherURL];
+    [store communicatorGotErrorForURL: otherURL];
+    STAssertEquals([store dataCacheSize], initialCacheSize, @"No data should be added on error");
 }
 
 @end
