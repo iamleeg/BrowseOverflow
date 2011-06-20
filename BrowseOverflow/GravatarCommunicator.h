@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GravatarCommunicatorDelegate.h"
 
-@interface GravatarCommunicator : NSObject {
+@interface GravatarCommunicator : NSObject <NSURLConnectionDataDelegate> {
     
 }
 @property (retain) NSURL *url;

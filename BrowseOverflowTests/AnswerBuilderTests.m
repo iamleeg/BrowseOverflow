@@ -51,15 +51,6 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
     answerBuilder = [[AnswerBuilder alloc] init];
     question = [[Question alloc] init];
     question.questionID = 12345;
-    error = nil;
-}
-
-- (void)tearDown {
-    [answerBuilder release];
-    answerBuilder = nil;
-    [question release];
-    question = nil;
-    error = nil;
 }
 
 - (void)testThatSendingNilJSONIsNotAnOption {
@@ -71,6 +62,7 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
 }
 
 - (void)testSendingNonJSONIsAnError {
+    NSError *error = nil;
     STAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: stringIsNotJSON error: &error], @"Can't successfully create answers without real data");
     STAssertEqualObjects([error domain], AnswerBuilderErrorDomain, @"This should be an AnswerBuilder error");
 }
@@ -80,6 +72,7 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
 }
 
 - (void)testSendingJSONWithIncorrectKeysIsAnError {
+    NSError *error = nil;
     STAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: noAnswersJSONString error: &error], @"There must be a collection of answers in the input data");
 }
 

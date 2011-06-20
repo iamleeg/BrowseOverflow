@@ -29,12 +29,4 @@
     self.questionToFill = question;
 }
 
-- (void)dealloc {
-    [JSON release];
-    [arrayToReturn release];
-    [errorToSet release];
-    [questionToFill release];
-    [super dealloc];
-}
-
 @end

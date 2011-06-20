@@ -20,11 +20,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [dataCache release];
-    [communicators release];
-    [super dealloc];
-}
 
 - (NSData *)dataForURL:(NSURL *)url {
     NSData *avatarData = [dataCache objectForKey: [url absoluteString]];
@@ -33,7 +28,6 @@
         [communicators setObject: communicator forKey: [url absoluteString]];
         communicator.delegate = self;
         [communicator fetchDataForURL: url];
-        [communicator release];
     }
     return avatarData;
 }

@@ -33,13 +33,5 @@
     return [[answerSet allObjects] sortedArrayUsingSelector: @selector(compare:)];
 }
 
-- (void)dealloc {
-    [date release];
-    [title release];
-    [body release];
-    [answerSet release];
-    [asker release];
-    [super dealloc];
-}
 
 @end

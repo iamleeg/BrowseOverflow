@@ -46,9 +46,8 @@
         NSDictionary *ownerValues = [parsedQuestion objectForKey: @"owner"];
         thisQuestion.asker = [UserBuilder personFromDictionary: ownerValues];
         [results addObject: thisQuestion];
-        [thisQuestion release];
     }
-    return [[results copy] autorelease];
+    return [results copy];
 }
 
 - (void)fillInDetailsForQuestion:(Question *)question fromJSON:(NSString *)objectNotation {

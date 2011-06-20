@@ -17,8 +17,6 @@
 }
 
 - (void)tearDown {
-    [topic release];
-    topic = nil;
 }
 
 - (void)testThatTopicExists {
@@ -45,7 +43,6 @@
     Question *question = [[Question alloc] init];
     [topic addQuestion: question];
     STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Add a question, and the count of questions should go up");
-    [question release];
 }
 
 - (void)testQuestionsAreListedChronologically {

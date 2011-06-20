@@ -19,17 +19,12 @@
     return self;
 }
 
-- (void)dealloc {
-    [dictionary release];
-    [super dealloc];
-}
-
 - (void)addObserver: (id)observer selector:(SEL)aSelector name:(NSString *)aName object:(id)anObject {
     [dictionary setObject: observer forKey: aName];
 }
 
 - (void)removeObserver:(id)observer {
-    [[[dictionary copy] autorelease] enumerateKeysAndObjectsUsingBlock: ^(id key, id obj, BOOL *stop) {
+    [[dictionary copy]  enumerateKeysAndObjectsUsingBlock: ^(id key, id obj, BOOL *stop) {
         if ([obj isEqual: observer]) {
             [dictionary removeObjectForKey: key];
         }

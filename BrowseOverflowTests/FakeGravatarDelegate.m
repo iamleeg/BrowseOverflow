@@ -14,12 +14,6 @@
 @synthesize reportedURL;
 @synthesize reportedData;
 
-- (void)dealloc {
-    [reportedURL release];
-    [reportedData release];
-    [super dealloc];
-}
-
 - (void)communicatorReceivedData:(NSData *)data forURL:(NSURL *)url {
     self.reportedURL = url;
     self.reportedData = data;

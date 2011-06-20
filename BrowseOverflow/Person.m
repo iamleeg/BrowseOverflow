@@ -22,10 +22,5 @@
     return self;
 }
 
-- (void)dealloc {
-    [name release];
-    [avatarURL release];
-    [super dealloc];
-}
 
 @end

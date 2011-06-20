@@ -25,30 +25,18 @@
     accepted.score = 1;
     accepted.accepted = YES;
     [question addAnswer: accepted];
-    [accepted release];
     
     lowScore = [[Answer alloc] init];
     lowScore.score = -4;
     [question addAnswer: lowScore];
-    [lowScore release];
     
     highScore = [[Answer alloc] init];
     highScore.score = 4;
     [question addAnswer: highScore];
-    [highScore release];
     
     asker = [[Person alloc] initWithName: @"Graham Lee" avatarLocation:@"http://example.com/avatar.png"];
     question.asker = asker;
-    [asker release];
     
-}
-
-- (void)tearDown {
-    [question release];
-    question = nil;
-    lowScore = nil;
-    highScore = nil;
-    asker = nil;
 }
 
 - (void)testQuestionHasATitle {
@@ -68,7 +56,7 @@
 }
 
 - (void)testQuestionCanHaveAnswersAdded {
-    Answer *myAnswer = [[[Answer alloc] init] autorelease];
+    Answer *myAnswer = [[Answer alloc] init];
     STAssertNoThrow([question addAnswer: myAnswer], @"Must be able to add answers");
 }
 

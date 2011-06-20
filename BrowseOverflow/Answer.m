@@ -31,10 +31,5 @@
     }
 }
 
-- (void)dealloc {
-    [text release];
-    [person release];
-    [super dealloc];
-}
 
 @end

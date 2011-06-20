@@ -16,16 +16,10 @@
 - (void)setUp {
     center = [[FakeNotificationCenter alloc] init];
     store = [[AvatarStore alloc] init];
-    sampleData = [[@"sample data" dataUsingEncoding: NSUTF8StringEncoding] retain];
+    sampleData = [@"sample data" dataUsingEncoding: NSUTF8StringEncoding];
     sampleLocation = @"http://example.com/avatar/sample";
     [store setData: sampleData forLocation: sampleLocation];
     otherLocation = @"http://example.com/avatar/other";
-}
-
-- (void)tearDown {
-    [center release];
-    [store release];
-    [sampleData release];
 }
 
 - (void)testLookupDataInCacheDictionary {

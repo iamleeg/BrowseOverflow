@@ -25,11 +25,4 @@
     return successful;
 }
 
-- (void)dealloc {
-    [receivedJSON release];
-    [questionToFill release];
-    [error release];
-    [super dealloc];
-}
-
 @end

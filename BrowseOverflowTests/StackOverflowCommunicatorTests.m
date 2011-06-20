@@ -20,16 +20,11 @@
     manager = [[MockStackOverflowManager alloc] init];
     nnCommunicator.delegate = manager;
     fourOhFourResponse = [[FakeURLResponse alloc] initWithStatusCode: 404];
-    receivedData = [[@"Result" dataUsingEncoding: NSUTF8StringEncoding] retain];
+    receivedData = [@"Result" dataUsingEncoding: NSUTF8StringEncoding];
 }
 
 - (void)tearDown {
     [communicator cancelAndDiscardURLConnection];
-    [communicator release];
-    [nnCommunicator release];
-    [manager release];
-    [fourOhFourResponse release];
-    [receivedData release];
 }
 
 - (void)testSearchingForQuestionsOnTopicCallsTopicAPI {
@@ -76,7 +71,6 @@
     FakeURLResponse *twoHundredResponse = [[FakeURLResponse alloc] initWithStatusCode: 200];
     [nnCommunicator searchForQuestionsWithTag: @"ios"];
     [nnCommunicator connection: nil didReceiveResponse: (NSURLResponse *)twoHundredResponse];
-    [twoHundredResponse release];
     STAssertFalse([manager topicFailureErrorCode] == 200, @"No need for error on 200 response");
 }
 
@@ -126,7 +120,6 @@
     [nnCommunicator connection: nil didReceiveData: extraData];
     NSString *combinedString = [[NSString alloc] initWithData: [nnCommunicator receivedData] encoding: NSUTF8StringEncoding];
     STAssertEqualObjects(combinedString, @"Result appended", @"Received data should be appended to the downloaded data");
-    [combinedString release];
 }
 
 @end

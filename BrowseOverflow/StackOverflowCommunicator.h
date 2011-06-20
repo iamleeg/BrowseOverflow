@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 #import "StackOverflowCommunicatorDelegate.h"
 
-@interface StackOverflowCommunicator : NSObject {
+@interface StackOverflowCommunicator : NSObject <NSURLConnectionDataDelegate> {
 @protected
     NSURL *fetchingURL;
     NSURLConnection *fetchingConnection;
     NSMutableData *receivedData;
 @private
-    id <StackOverflowCommunicatorDelegate> delegate;
+    id <StackOverflowCommunicatorDelegate> __weak delegate;
     void (^errorHandler)(NSError *);
     void (^successHandler)(NSString *);
 }
 
-@property (assign) id <StackOverflowCommunicatorDelegate> delegate;
+@property (weak) id <StackOverflowCommunicatorDelegate> delegate;
 
 - (void)searchForQuestionsWithTag: (NSString *)tag;
 - (void)downloadInformationForQuestionWithID: (NSInteger)identifier;

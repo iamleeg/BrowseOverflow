@@ -40,10 +40,4 @@
     
 }
 
-- (void)dealloc {
-    [fetchError release];
-    [fetchedQuestions release];
-    [successQuestion release];
-    [super dealloc];
-}
 @end

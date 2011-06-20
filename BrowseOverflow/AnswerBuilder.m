@@ -46,7 +46,6 @@
         NSDictionary *ownerData = [answerData objectForKey: @"owner"];
         thisAnswer.person = [UserBuilder personFromDictionary: ownerData];
         [question addAnswer: thisAnswer];
-        [thisAnswer release];
     }
     return YES;
 }

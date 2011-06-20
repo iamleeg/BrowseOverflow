@@ -16,11 +16,6 @@
                                    avatarLocation: @"http://example.com/avatar.png"];
 }
 
-- (void)tearDown {
-    [person release];
-    person = nil;
-}
-
 - (void)testThatPersonHasTheRightName {
     STAssertEqualObjects(person.name, @"Graham Lee", @"expecting a person to provide its name");
 }

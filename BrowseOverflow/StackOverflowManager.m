@@ -106,11 +106,6 @@
     }
 }
 
-- (void)dealloc {
-    [communicator release];
-    [questionToFill release];
-    [super dealloc];
-}
 
 #pragma mark Class Continuation
 - (void)tellDelegateAboutQuestionSearchError:(NSError *)underlyingError {
