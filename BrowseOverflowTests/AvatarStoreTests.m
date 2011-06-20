@@ -48,4 +48,9 @@
     STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
 }
 
+- (void)testCacheMissReturnsNil {
+    NSString *otherLocation = @"http://example.com/avatar/other";
+    STAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"If the store doesn't have any data, it shouldn't return any");
+}
+
 @end
