@@ -13,8 +13,8 @@
     
 }
 
-@property (readonly) NSString *name;
-@property (readonly) NSURL *avatarURL;
+@property (readonly, strong) NSString *name;
+@property (readonly, strong) NSURL *avatarURL;
 
 - (id)initWithName: (NSString *)aName avatarLocation: (NSString *)location;
 
