@@ -28,12 +28,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [name release];
-    [tag release];
-    [questions release];
-    [super dealloc];
-}
 
 - (void)addQuestion: (Question *)question {
     NSArray *newQuestions = [questions arrayByAddingObject: question];
@@ -41,8 +35,7 @@
         newQuestions = [self sortQuestionsLatestFirst: newQuestions];
         newQuestions = [newQuestions subarrayWithRange: NSMakeRange(0, 20)];
     }
-    [questions release];
-    questions = [newQuestions retain];
+    questions = newQuestions;
 }
 
 - (NSArray *)recentQuestions {

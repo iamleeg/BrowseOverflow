@@ -56,14 +56,7 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
 
 - (void)setUp {
     questionBuilder = [[QuestionBuilder alloc] init];
-    question = [[[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0] retain];
-}
-
-- (void)tearDown {
-    [questionBuilder release];
-    questionBuilder = nil;
-    [question release];
-    question = nil;
+    question = [[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0];
 }
 
 - (void)testThatNilIsNotAnAcceptableParameter {

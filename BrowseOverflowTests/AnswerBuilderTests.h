@@ -17,7 +17,6 @@
 @interface AnswerBuilderTests : SenTestCase {
     AnswerBuilder *answerBuilder;
     Question *question;
-    NSError *error;
 }
 
 @end

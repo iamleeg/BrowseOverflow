@@ -20,7 +20,7 @@
 }
 
 - (NSData *)receivedData {
-    return [[receivedData copy] autorelease];
+    return [receivedData copy];
 }
 
 @end

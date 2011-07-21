@@ -20,25 +20,15 @@
     mgr = [[StackOverflowManager alloc] init];
     delegate = [[MockStackOverflowManagerDelegate alloc] init];
     mgr.delegate = delegate;
-    underlyingError = [[NSError errorWithDomain: @"Test domain" code: 0 userInfo: nil] retain];
+    underlyingError = [NSError errorWithDomain: @"Test domain" code: 0 userInfo: nil];
     questionBuilder = [[FakeQuestionBuilder alloc] init];
     questionBuilder.arrayToReturn = nil;
     mgr.questionBuilder = questionBuilder;
     questionToFetch = [[Question alloc] init];
     questionToFetch.questionID = 1234;
-    questionArray = [[NSArray arrayWithObject: questionToFetch] retain];
+    questionArray = [NSArray arrayWithObject: questionToFetch];
     communicator = [[MockStackOverflowCommunicator alloc] init];
     mgr.communicator = communicator;
-}
-
-- (void)tearDown {
-    [mgr release];
-    [delegate release];
-    [questionBuilder release];
-    [underlyingError release];
-    [questionArray release];
-    [questionToFetch release];
-    [communicator release];
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {
@@ -53,7 +43,6 @@
     Topic *topic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
     [mgr fetchQuestionsOnTopic: topic];
     STAssertTrue([communicator wasAskedToFetchQuestions], @"The communicator should need to fetch data.");
-    [topic release];
 }
 
 - (void)testErrorReturnedToDelegateIsNotErrorNotifiedByCommunicator {

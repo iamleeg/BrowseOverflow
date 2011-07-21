@@ -25,22 +25,7 @@
     question.questionID = 12345;
     answerBuilder = [[FakeAnswerBuilder alloc] init];
     manager.answerBuilder = answerBuilder;
-    error = [[NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil] retain];
-}
-
-- (void)tearDown {
-    [answerBuilder release];
-    answerBuilder = nil;
-    [question release];
-    question = nil;
-    [delegate release];
-    delegate = nil;
-    [communicator release];
-    communicator = nil;
-    [manager release];
-    manager = nil;
-    [error release];
-    error = nil;
+    error = [NSError errorWithDomain: @"Fake Domain" code: 42 userInfo: nil];
 }
 
 - (void)testAskingForAnswersMeansCommunicatingWithSite {

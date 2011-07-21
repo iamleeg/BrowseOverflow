@@ -16,11 +16,6 @@
 @synthesize receivedData;
 @synthesize connection;
 
-- (void)dealloc {
-    [url release];
-    [receivedData release];
-    [super dealloc];
-}
 
 - (void)fetchDataForURL:(NSURL *)location {
     self.url = location;
@@ -31,7 +26,7 @@
 #pragma mark NSURLConnection Delegate
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    [delegate communicatorReceivedData: [[receivedData copy] autorelease] forURL: url];
+    [delegate communicatorReceivedData: [receivedData copy] forURL: url];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

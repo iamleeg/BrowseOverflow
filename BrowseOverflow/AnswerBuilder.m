@@ -7,7 +7,6 @@
 //
 
 #import "AnswerBuilder.h"
-#import "JSON.h"
 #import "Answer.h"
 #import "Question.h"
 #import "UserBuilder.h"
@@ -17,10 +16,16 @@
 - (BOOL)addAnswersToQuestion: (Question *)question fromJSON: (NSString *)objectNotation error: (NSError **)error {
     NSParameterAssert(objectNotation != nil);
     NSParameterAssert(question != nil);
-    NSDictionary *answerData = [objectNotation JSONValue];
+    NSData *unicodeNotation = [objectNotation dataUsingEncoding: NSUTF8StringEncoding];
+    NSError *localError = nil;
+    NSDictionary *answerData = [NSJSONSerialization JSONObjectWithData: unicodeNotation options: 0  error: &localError];
     if (answerData == nil) {
         if (error) {
-            *error = [NSError errorWithDomain: AnswerBuilderErrorDomain code: AnswerBuilderErrorInvalidJSONError userInfo: nil];
+            NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity: 1];
+            if (localError != nil) {
+                [userInfo setObject: localError forKey: NSUnderlyingErrorKey];
+            }
+            *error = [NSError errorWithDomain: AnswerBuilderErrorDomain code: AnswerBuilderErrorInvalidJSONError userInfo: userInfo];
         }
         return NO;
     }
@@ -41,7 +46,6 @@
         NSDictionary *ownerData = [answerData objectForKey: @"owner"];
         thisAnswer.person = [UserBuilder personFromDictionary: ownerData];
         [question addAnswer: thisAnswer];
-        [thisAnswer release];
     }
     return YES;
 }

@@ -36,15 +36,15 @@
 }
 
 - (void)receivedQuestionsJSON:(NSString *)objectNotation {
-    topicSearchString = [objectNotation retain];
+    topicSearchString = objectNotation;
 }
 
 - (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
-    questionBodyString = [objectNotation retain];
+    questionBodyString = objectNotation;
 }
 
 - (void)receivedAnswerListJSON:(NSString *)objectNotation {
-    answerListString = [objectNotation retain];
+    answerListString = objectNotation;
 }
 
 - (NSString *)topicSearchString {
@@ -57,13 +57,6 @@
 
 - (NSString *)answerListString {
     return answerListString;
-}
-
-- (void)dealloc {
-    [topicSearchString release];
-    [questionBodyString release];
-    [answerListString release];
-    [super dealloc];
 }
 
 @end

@@ -25,12 +25,8 @@
 
 }
 - (void)fetchContentAtURL:(NSURL *)url errorHandler:(void (^)(NSError *))errorBlock successHandler:(void (^)(NSString *))successBlock {
-    [url retain];
-    [fetchingURL release];
     fetchingURL = url;
-    [errorHandler release];
     errorHandler = [errorBlock copy];
-    [successHandler release];
     successHandler = [successBlock copy];
     NSURLRequest *request = [NSURLRequest requestWithURL: fetchingURL];
     
@@ -73,12 +69,7 @@
 }
 
 - (void)dealloc {
-    [errorHandler release];
-    [successHandler release];
-    [fetchingURL release];
     [fetchingConnection cancel];
-    [receivedData release];
-    [super dealloc];
 }
 
 - (void)cancelAndDiscardURLConnection {
@@ -89,7 +80,6 @@
 #pragma mark NSURLConnection Delegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [receivedData release];
     receivedData = nil;
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     if ([httpResponse statusCode] != 200) {
@@ -103,24 +93,19 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [receivedData release];
     receivedData = nil;
     fetchingConnection = nil;
-    [fetchingURL release];
     fetchingURL = nil;
     errorHandler(error);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     fetchingConnection = nil;
-    [fetchingURL release];
     fetchingURL = nil;
     NSString *receivedText = [[NSString alloc] initWithData: receivedData
                                                    encoding: NSUTF8StringEncoding];
-    [receivedData release];
     receivedData = nil;
     successHandler(receivedText);
-    [receivedText release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
