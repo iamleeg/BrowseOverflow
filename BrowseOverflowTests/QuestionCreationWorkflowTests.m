@@ -31,6 +31,10 @@
     mgr.communicator = communicator;
 }
 
+- (void)tearDown {
+    mgr = nil;
+}
+
 - (void)testNonConformingObjectCannotBeDelegate {
     STAssertThrows(mgr.delegate = (id <StackOverflowManagerDelegate>)[NSNull null], @"NSNull doesn't conform to the delegate protocol");
 }
