@@ -15,6 +15,16 @@
 #import "Question.h"
 
 @implementation QuestionCreationWorkflowTests
+{
+@private
+    StackOverflowManager *mgr;
+    MockStackOverflowManagerDelegate *delegate;
+    FakeQuestionBuilder *questionBuilder;
+    MockStackOverflowCommunicator *communicator;
+    Question *questionToFetch;
+    NSError *underlyingError;
+    NSArray *questionArray;
+}
 
 - (void)setUp {
     mgr = [[StackOverflowManager alloc] init];
@@ -38,6 +48,7 @@
     questionToFetch = nil;
     questionArray = nil;
     communicator = nil;
+    underlyingError = nil;
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {

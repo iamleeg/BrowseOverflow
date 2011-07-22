@@ -8,21 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@class StackOverflowManager;
-@class MockStackOverflowManagerDelegate;
-@class FakeQuestionBuilder;
-@class MockStackOverflowCommunicator;
-@class Question;
-
-@interface QuestionCreationWorkflowTests : SenTestCase {
-@private
-    StackOverflowManager *mgr;
-    MockStackOverflowManagerDelegate *delegate;
-    FakeQuestionBuilder *questionBuilder;
-    MockStackOverflowCommunicator *communicator;
-    Question *questionToFetch;
-    NSError *underlyingError;
-    NSArray *questionArray;
-}
+@interface QuestionCreationWorkflowTests : SenTestCase 
 
 @end
