@@ -59,6 +59,10 @@
     STAssertNoThrow(mgr.delegate = delegate, @"Object conforming to the delegate protocol can be delegate");
 }
 
+- (void)testManagerAcceptsNilAsADelegate {
+    STAssertNoThrow(mgr.delegate = nil, @"It should be acceptable to use nil as an object's delegate");
+}
+
 - (void)testAskingForQuestionsMeansRequestingData {
     Topic *topic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
     [mgr fetchQuestionsOnTopic: topic];

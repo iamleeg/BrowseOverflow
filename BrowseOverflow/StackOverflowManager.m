@@ -28,7 +28,7 @@
 @synthesize questionToFill;
 
 - (void)setDelegate:(id<StackOverflowManagerDelegate>)newDelegate {
-    if (![newDelegate conformsToProtocol: @protocol(StackOverflowManagerDelegate)]) {
+    if (newDelegate && ![newDelegate conformsToProtocol: @protocol(StackOverflowManagerDelegate)]) {
         [[NSException exceptionWithName: NSInvalidArgumentException reason: @"Delegate object does not conform to the delegate protocol" userInfo: nil] raise];
     }
     delegate = newDelegate;
