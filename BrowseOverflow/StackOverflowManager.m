@@ -21,14 +21,11 @@
 
 @implementation StackOverflowManager
 
+@synthesize delegate;
 @synthesize communicator;
 @synthesize questionBuilder;
 @synthesize answerBuilder;
 @synthesize questionToFill;
-
-- (id<StackOverflowManagerDelegate>)delegate {
-    return delegate;
-}
 
 - (void)setDelegate:(id<StackOverflowManagerDelegate>)newDelegate {
     if (![newDelegate conformsToProtocol: @protocol(StackOverflowManagerDelegate)]) {
