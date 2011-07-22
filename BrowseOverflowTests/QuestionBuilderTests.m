@@ -59,6 +59,11 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
     question = [[questionBuilder questionsFromJSON: questionJSON error: NULL] objectAtIndex: 0];
 }
 
+- (void)tearDown {
+    questionBuilder = nil;
+    question = nil;
+}
+
 - (void)testThatNilIsNotAnAcceptableParameter {
     STAssertThrows([questionBuilder questionsFromJSON: nil error: NULL], @"Lack of data should have been handled elsewhere");
 }
