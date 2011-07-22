@@ -10,6 +10,11 @@
 
 
 @implementation MockStackOverflowCommunicator
+{
+    BOOL wasAskedToFetchQuestions;
+    BOOL wasAskedToFetchBody;
+    NSInteger questionID;
+}
 
 - (id)init {
     if ((self = [super init])) {

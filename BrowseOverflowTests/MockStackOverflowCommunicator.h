@@ -9,14 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "StackOverflowCommunicator.h"
 
-@interface MockStackOverflowCommunicator : StackOverflowCommunicator {
-    BOOL wasAskedToFetchQuestions;
-    BOOL wasAskedToFetchBody;
-    NSInteger questionID;
-}
-
+@interface MockStackOverflowCommunicator : StackOverflowCommunicator
 - (BOOL)wasAskedToFetchQuestions;
 - (BOOL)wasAskedToFetchBody;
 - (NSInteger)askedForAnswersToQuestionID;
-
 @end
