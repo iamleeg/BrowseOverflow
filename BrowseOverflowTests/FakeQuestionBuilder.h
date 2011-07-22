@@ -11,10 +11,9 @@
 
 @class Question;
 
-@interface FakeQuestionBuilder : QuestionBuilder {
-}
+@interface FakeQuestionBuilder : QuestionBuilder
 @property (copy) NSString *JSON;
 @property (copy) NSArray *arrayToReturn;
 @property (copy) NSError *errorToSet;
-@property (retain) Question *questionToFill;
+@property (strong) Question *questionToFill;
 @end
