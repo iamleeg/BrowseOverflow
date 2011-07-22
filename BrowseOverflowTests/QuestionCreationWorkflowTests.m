@@ -33,6 +33,11 @@
 
 - (void)tearDown {
     mgr = nil;
+    delegate = nil;
+    questionBuilder = nil;
+    questionToFetch = nil;
+    questionArray = nil;
+    communicator = nil;
 }
 
 - (void)testNonConformingObjectCannotBeDelegate {

@@ -11,10 +11,9 @@
 
 @class Question;
 
-@interface MockStackOverflowManagerDelegate : NSObject <StackOverflowManagerDelegate> {
-}
-@property (retain) NSError *fetchError;
-@property (retain) NSArray *fetchedQuestions;
-@property (retain) Question *successQuestion;
+@interface MockStackOverflowManagerDelegate : NSObject <StackOverflowManagerDelegate>
+@property (strong) NSError *fetchError;
+@property (strong) NSArray *fetchedQuestions;
+@property (strong) Question *successQuestion;
 
 @end
