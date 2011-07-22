@@ -24,7 +24,7 @@
     self.fetchError = error;
 }
 
-- (void)questionsReceived:(NSArray *)questions {
+- (void)didReceiveQuestions:(NSArray *)questions {
     self.fetchedQuestions = questions;
 }
 

@@ -26,7 +26,7 @@
 /**
  * The manager retrieved a list of questions from Stack Overflow.
  */
-- (void)questionsReceived: (NSArray *)questions;
+- (void)didReceiveQuestions: (NSArray *)questions;
 
 /**
  * The manager couldn't fetch a question body.

@@ -52,7 +52,7 @@
         [self tellDelegateAboutQuestionSearchError: error];
     }
     else {
-        [delegate questionsReceived: questions];
+        [delegate didReceiveQuestions: questions];
     }
 }
 
