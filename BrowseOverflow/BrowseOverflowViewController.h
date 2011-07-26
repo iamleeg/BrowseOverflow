@@ -10,4 +10,6 @@
 
 @interface BrowseOverflowViewController : UIViewController
 
+@property (strong) UITableView *tableView;
+
 @end
