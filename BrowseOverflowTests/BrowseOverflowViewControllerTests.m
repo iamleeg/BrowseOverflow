@@ -23,12 +23,17 @@
 }
 
 - (void)testViewControllerHasATableViewProperty {
-    objc_property_t tableViewProperty = class_getProperty([BrowseOverflowViewController class], "tableView");
+    objc_property_t tableViewProperty = class_getProperty([viewController class], "tableView");
     STAssertTrue(tableViewProperty != NULL, @"BrowseOverflowViewController needs a table view");
 }
 
-- (void)testDefaultTableViewIsNil {
-    STAssertNil(viewController.tableView, @"View Controller's default table view should be nil");
+- (void)testViewControllerHasADataSourceProperty {
+    objc_property_t dataSourceProperty = class_getProperty([viewController class], "dataSource");
+    STAssertTrue(dataSourceProperty != NULL, @"View Controller needs a data source");
 }
 
+- (void)testViewControllerHasATableViewDelegateProperty {
+    objc_property_t delegateProperty = class_getProperty([viewController class], "tableViewDelegate");
+    STAssertTrue(delegateProperty != NULL, @"View Controller needs a table view delegate");
+}
 @end
