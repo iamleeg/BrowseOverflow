@@ -8,7 +8,7 @@
 
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
-#import "EmptyTableViewDataSource.h"
+#import "TopicTableViewDataSource.h"
 #import "EmptyTableViewDelegate.h"
 
 @implementation BrowseOverflowViewControllerTests
@@ -44,7 +44,7 @@
 }
 
 - (void)testViewControllerConnectsDataSourceInViewDidLoad {
-    id <UITableViewDataSource> dataSource = [[EmptyTableViewDataSource alloc] init];
+    id <UITableViewDataSource> dataSource = [[TopicTableViewDataSource alloc] init];
     viewController.dataSource = dataSource;
     [viewController viewDidLoad];
     STAssertEqualObjects([tableView dataSource], dataSource, @"View controller should have set the table view's data source");
