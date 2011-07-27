@@ -12,7 +12,7 @@
 
 @synthesize tableView;
 @synthesize dataSource;
-@synthesize delegate;
+@synthesize tableViewDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

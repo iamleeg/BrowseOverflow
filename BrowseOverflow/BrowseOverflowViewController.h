@@ -12,6 +12,6 @@
 
 @property (strong) UITableView *tableView;
 @property (strong) id <UITableViewDataSource> dataSource;
-@property (strong) id <UITableViewDelegate> delegate;
+@property (strong) id <UITableViewDelegate> tableViewDelegate;
 
 @end
