@@ -18,4 +18,5 @@
     NSArray *topicsList = [NSArray arrayWithObject: sampleTopic];
     STAssertNoThrow([dataSource setTopics: topicsList], @"The data source needs a list of topics");
 }
+
 @end
