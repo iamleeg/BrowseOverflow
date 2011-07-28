@@ -11,12 +11,33 @@
 #import "Topic.h"
 
 @implementation TopicTableDataSourceTests
+{
+    TopicTableDataSource *dataSource;
+    NSArray *topicsList;
+}
 
-- (void)testTopicDataSourceCanReceiveAListOfTopics {
-    TopicTableDataSource *dataSource = [[TopicTableDataSource alloc] init];
+- (void)setUp {
+    dataSource = [[TopicTableDataSource alloc] init];
     Topic *sampleTopic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
-    NSArray *topicsList = [NSArray arrayWithObject: sampleTopic];
-    STAssertNoThrow([dataSource setTopics: topicsList], @"The data source needs a list of topics");
+    topicsList = [NSArray arrayWithObject: sampleTopic];
+    [dataSource setTopics: topicsList];
+}
+
+- (void)tearDown {
+    dataSource = nil;
+    topicsList = nil;
+}
+
+- (void)testOneTableRowForOneTopic {
+    STAssertEquals((NSInteger)[topicsList count], [dataSource tableView: nil numberOfRowsInSection: 0], @"As there's one topic, there should be one row in the table");
+}
+
+- (void)testTwoTableRowsForTwoTopics {
+    Topic *topic1 = [[Topic alloc] initWithName: @"Mac OS X" tag: @"macosx"];
+    Topic *topic2 = [[Topic alloc] initWithName: @"Cocoa" tag: @"cocoa"];
+    NSArray *twoTopicsList = [NSArray arrayWithObjects: topic1, topic2, nil];
+    [dataSource setTopics: twoTopicsList];
+    STAssertEquals((NSInteger)[twoTopicsList count], [dataSource tableView: nil numberOfRowsInSection: 0], @"There should be two rows in the table for two topics");
 }
 
 @end
