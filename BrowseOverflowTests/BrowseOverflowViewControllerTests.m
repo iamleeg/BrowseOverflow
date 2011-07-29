@@ -9,7 +9,7 @@
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
 #import "TopicTableDataSource.h"
-#import "EmptyTableViewDelegate.h"
+#import "TopicTableDelegate.h"
 
 @implementation BrowseOverflowViewControllerTests
 {
@@ -51,7 +51,7 @@
 }
 
 - (void)testViewControllerConnectsDelegateInViewDidLoad {
-    id <UITableViewDelegate> delegate = [[EmptyTableViewDelegate alloc] init];
+    id <UITableViewDelegate> delegate = [[TopicTableDelegate alloc] init];
     viewController.tableViewDelegate = delegate;
     [viewController viewDidLoad];
     STAssertEqualObjects([tableView delegate], delegate, @"View controller should have set the table view's delegate");

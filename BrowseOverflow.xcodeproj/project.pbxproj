@@ -19,7 +19,7 @@
 		9818AB8613181CA700479006 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8513181CA700479006 /* Answer.m */; };
 		9818AB8713181CA700479006 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9818AB8513181CA700479006 /* Answer.m */; };
 		981A28B413E024F300FE8AD0 /* TopicTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A28B313E024F300FE8AD0 /* TopicTableDataSource.m */; };
-		981A28B713E0269900FE8AD0 /* EmptyTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A28B613E0269900FE8AD0 /* EmptyTableViewDelegate.m */; };
+		981A28B713E0269900FE8AD0 /* TopicTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A28B613E0269900FE8AD0 /* TopicTableDelegate.m */; };
 		981C3D9E137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */; };
 		981C3DA1137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA0137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m */; };
 		981C3DAA137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */; };
@@ -60,6 +60,8 @@
 		98B5848F131688FD003EA838 /* PersonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B5848E131688FD003EA838 /* PersonTests.m */; };
 		98B5849313168D6E003EA838 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B5849213168D6E003EA838 /* Person.m */; };
 		98B5849413168D6E003EA838 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B5849213168D6E003EA838 /* Person.m */; };
+		98B76A9513E2FF170003AB77 /* TopicTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A28B613E0269900FE8AD0 /* TopicTableDelegate.m */; };
+		98B76A9613E2FF1C0003AB77 /* TopicTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 981A28B313E024F300FE8AD0 /* TopicTableDataSource.m */; };
 		98B96BAB137D9E9000D084F0 /* MockStackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B96BAA137D9E9000D084F0 /* MockStackOverflowManager.m */; };
 		98B96BAF137DAA9700D084F0 /* FakeURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 98B96BAE137DAA9700D084F0 /* FakeURLResponse.m */; };
 		98BAC3DF138E503200B36163 /* GravatarCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3DE138E503200B36163 /* GravatarCommunicatorTests.m */; };
@@ -104,8 +106,8 @@
 		9818AB8413181CA700479006 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		9818AB8513181CA700479006 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		981A28B313E024F300FE8AD0 /* TopicTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicTableDataSource.m; path = BrowseOverflowTests/TopicTableDataSource.m; sourceTree = SOURCE_ROOT; };
-		981A28B513E0269900FE8AD0 /* EmptyTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTableViewDelegate.h; sourceTree = "<group>"; };
-		981A28B613E0269900FE8AD0 /* EmptyTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTableViewDelegate.m; sourceTree = "<group>"; };
+		981A28B513E0269900FE8AD0 /* TopicTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicTableDelegate.h; path = BrowseOverflowTests/TopicTableDelegate.h; sourceTree = SOURCE_ROOT; };
+		981A28B613E0269900FE8AD0 /* TopicTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopicTableDelegate.m; path = BrowseOverflowTests/TopicTableDelegate.m; sourceTree = SOURCE_ROOT; };
 		981C3D9C137AACD4002B3FE9 /* StackOverflowCommunicatorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowCommunicatorTests.h; sourceTree = "<group>"; };
 		981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowCommunicatorTests.m; sourceTree = "<group>"; };
 		981C3D9F137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableStackOverflowCommunicator.h; sourceTree = "<group>"; };
@@ -184,7 +186,7 @@
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
 		98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNotificationCenter.h; sourceTree = "<group>"; };
 		98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeNotificationCenter.m; sourceTree = "<group>"; };
-		98EAE5C813E06EE60010E9D8 /* TopicTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; name = TopicTableDataSource.h; path = BrowseOverflowTests/TopicTableDataSource.h; sourceTree = SOURCE_ROOT; };
+		98EAE5C813E06EE60010E9D8 /* TopicTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicTableDataSource.h; path = BrowseOverflowTests/TopicTableDataSource.h; sourceTree = SOURCE_ROOT; };
 		98F82F2613E1863800668CAC /* TopicTableDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicTableDataSourceTests.h; sourceTree = "<group>"; };
 		98F82F2713E1863800668CAC /* TopicTableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicTableDataSourceTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,8 +238,6 @@
 				98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */,
 				98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */,
 				98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */,
-				981A28B513E0269900FE8AD0 /* EmptyTableViewDelegate.h */,
-				981A28B613E0269900FE8AD0 /* EmptyTableViewDelegate.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -310,6 +310,8 @@
 				981F716513DD87A300061943 /* BrowseOverflowViewController.m */,
 				98EAE5C813E06EE60010E9D8 /* TopicTableDataSource.h */,
 				981A28B313E024F300FE8AD0 /* TopicTableDataSource.m */,
+				981A28B513E0269900FE8AD0 /* TopicTableDelegate.h */,
+				981A28B613E0269900FE8AD0 /* TopicTableDelegate.m */,
 				981F716613DD87A300061943 /* BrowseOverflowViewController.xib */,
 			);
 			path = BrowseOverflow;
@@ -509,6 +511,8 @@
 				98BAC3E2138E55D300B36163 /* GravatarCommunicator.m in Sources */,
 				98BAC3ED138EA6AA00B36163 /* AvatarStore.m in Sources */,
 				981F716713DD87A300061943 /* BrowseOverflowViewController.m in Sources */,
+				98B76A9513E2FF170003AB77 /* TopicTableDelegate.m in Sources */,
+				98B76A9613E2FF1C0003AB77 /* TopicTableDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,7 +557,7 @@
 				981F716813DD87A300061943 /* BrowseOverflowViewController.m in Sources */,
 				980E4A6613DF0DF000A59B25 /* BrowseOverflowViewControllerTests.m in Sources */,
 				981A28B413E024F300FE8AD0 /* TopicTableDataSource.m in Sources */,
-				981A28B713E0269900FE8AD0 /* EmptyTableViewDelegate.m in Sources */,
+				981A28B713E0269900FE8AD0 /* TopicTableDelegate.m in Sources */,
 				98F82F2813E1863800668CAC /* TopicTableDataSourceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
