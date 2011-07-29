@@ -24,7 +24,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSParameterAssert([indexPath section] == 0);
+    NSParameterAssert([indexPath row] < [topics count]);
+    UITableViewCell *topicCell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: @"Topic"];
+    topicCell.textLabel.text = [[topics objectAtIndex: [indexPath row]] name];
+    return topicCell;
 }
 
 @end
