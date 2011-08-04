@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TopicTableDataSource;
+
 @interface TopicTableDelegate : NSObject <UITableViewDelegate>
+
+@property (strong) TopicTableDataSource *tableDataSource;
 
 @end

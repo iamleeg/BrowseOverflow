@@ -10,4 +10,6 @@
 
 @implementation TopicTableDelegate
 
+@synthesize tableDataSource;
+
 @end
