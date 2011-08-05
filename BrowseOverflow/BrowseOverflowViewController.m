@@ -7,14 +7,12 @@
 //
 
 #import "BrowseOverflowViewController.h"
-#import "TopicTableDelegate.h"
 #import "TopicTableDataSource.h"
 
 @implementation BrowseOverflowViewController
 
 @synthesize tableView;
 @synthesize dataSource;
-@synthesize tableViewDelegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,9 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView.delegate = self.tableViewDelegate;
+    self.tableView.delegate = self.dataSource;
     self.tableView.dataSource = self.dataSource;
-    self.tableViewDelegate.tableDataSource = self.dataSource;
 }
 
 - (void)viewDidUnload
