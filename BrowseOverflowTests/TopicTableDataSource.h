@@ -8,12 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class Topic;
-
 @interface TopicTableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 - (void)setTopics: (NSArray *)newTopics;
-- (Topic *)topicForIndexPath: (NSIndexPath *)indexPath;
 
 @end
 

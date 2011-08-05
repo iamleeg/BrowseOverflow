@@ -11,6 +11,12 @@
 
 NSString *topicCellReuseIdentifier = @"Topic";
 
+@interface TopicTableDataSource ()
+
+- (Topic *)topicForIndexPath: (NSIndexPath *)indexPath;
+
+@end
+
 @implementation TopicTableDataSource
 {
     NSArray *topics;
