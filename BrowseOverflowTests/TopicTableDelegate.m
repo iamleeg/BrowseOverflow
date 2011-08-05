@@ -13,11 +13,5 @@
 
 @synthesize tableDataSource;
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNotification *note = [NSNotification notificationWithName: TopicTableDidSelectTopicNotification object: [tableDataSource topicForIndexPath: indexPath]];
-    [[NSNotificationCenter defaultCenter] postNotification: note];
-}
-
 @end
 
-NSString *TopicTableDidSelectTopicNotification = @"TopicTableDidSelectTopicNotification";

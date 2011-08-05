@@ -16,4 +16,3 @@
 
 @end
 
-extern NSString *TopicTableDidSelectTopicNotification;
