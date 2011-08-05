@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class TopicTableDataSource;
-
 @interface BrowseOverflowViewController : UIViewController
 
 @property (strong) UITableView *tableView;
