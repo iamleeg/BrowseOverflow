@@ -53,4 +53,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear: animated];
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self 
+     selector: @selector(userDidSelectTopicNotification:)
+     name: TopicTableDidSelectTopicNotification
+     object: nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear: animated];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver: self];
+}
+
 @end
