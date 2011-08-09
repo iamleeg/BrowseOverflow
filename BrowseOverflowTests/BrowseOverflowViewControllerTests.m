@@ -9,6 +9,7 @@
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
 #import "TopicTableDataSource.h"
+#import <objc/runtime.h>
 
 static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociatedNotificationKey";
 @implementation BrowseOverflowViewController (TestNotificationDelivery)
