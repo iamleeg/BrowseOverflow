@@ -18,11 +18,11 @@
 /**
  * A name for this topic, suitable for displaying in the UI.
  */
-@property (readonly) NSString *name;
+@property (readonly, strong) NSString *name;
 /**
  * The text with which questions on this topic get tagged on the website.
  */
-@property (readonly) NSString *tag;
+@property (readonly, strong) NSString *tag;
 
 /**
  * Initialise a new instance of this class with a particular name and tag.
