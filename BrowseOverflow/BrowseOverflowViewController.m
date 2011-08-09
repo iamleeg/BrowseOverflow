@@ -68,4 +68,10 @@
      removeObserver: self];
 }
 
+#pragma mark - Notification handling
+
+- (void)userDidSelectTopicNotification: (NSNotification *)note {
+    
+}
+
 @end
