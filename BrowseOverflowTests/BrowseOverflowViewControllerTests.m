@@ -44,6 +44,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     SEL realViewDidAppear, testViewDidAppear;
     SEL realViewWillDisappear, testViewWillDisappear;
     SEL realUserDidSelectTopic, testUserDidSelectTopic;
+    UINavigationController *navController;
 }
 
 + (void)swapInstanceMethodsForClass: (Class) cls selector: (SEL)sel1 andSelector: (SEL)sel2 {
@@ -70,12 +71,15 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     
     realUserDidSelectTopic = @selector(userDidSelectTopicNotification:);
     testUserDidSelectTopic = @selector(browseOverflowControllerTests_userDidSelectTopicNotification:);
+    
+    navController = [[UINavigationController alloc] initWithRootViewController: viewController];
 }
 
 - (void)tearDown {
     objc_removeAssociatedObjects(viewController);
     viewController = nil;
     tableView = nil;
+    navController = nil;
     
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewDidAppear andSelector: testViewDidAppear];
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillDisappear andSelector: testViewWillDisappear];
@@ -144,4 +148,10 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     STAssertNotNil(objc_getAssociatedObject(viewController, viewWillDisappearKey), @"-viewWillDisappear: should call through to superclass implementation");
 }
 
+- (void)testSelectingTopicPushesNewViewController {
+    [viewController userDidSelectTopicNotification: nil];
+    UIViewController *currentTopVC = navController.topViewController;
+    STAssertFalse([currentTopVC isEqual: viewController], @"New view controller should be pushed onto the stack");
+    STAssertTrue([currentTopVC isKindOfClass: [BrowseOverflowViewController class]], @"New view controller should be a BrowseOverflowViewController");
+}
 @end
