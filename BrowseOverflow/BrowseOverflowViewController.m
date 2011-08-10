@@ -71,7 +71,8 @@
 #pragma mark - Notification handling
 
 - (void)userDidSelectTopicNotification: (NSNotification *)note {
-    
+    BrowseOverflowViewController *nextViewController = [[BrowseOverflowViewController alloc] init];
+    [[self navigationController] pushViewController: nextViewController animated: YES];
 }
 
 @end
