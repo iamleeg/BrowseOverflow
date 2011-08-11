@@ -9,6 +9,7 @@
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
 #import "TopicTableDataSource.h"
+#import "Topic.h"
 #import <objc/runtime.h>
 
 static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociatedNotificationKey";
@@ -154,4 +155,14 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     STAssertFalse([currentTopVC isEqual: viewController], @"New view controller should be pushed onto the stack");
     STAssertTrue([currentTopVC isKindOfClass: [BrowseOverflowViewController class]], @"New view controller should be a BrowseOverflowViewController");
 }
+
+- (void)testNewViewControllerHasAQuestionListDataSourceForTheSelectedTopic {
+    Topic *iPhoneTopic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
+    NSNotification *iPhoneTopicSelectedNotification = [NSNotification notificationWithName: TopicTableDidSelectTopicNotification object: iPhoneTopic];
+    [viewController userDidSelectTopicNotification: iPhoneTopicSelectedNotification];
+    BrowseOverflowViewController *nextViewController = navController.topViewController;
+    STAssertTrue([nextViewController.dataSource isKindOfClass: [QuestionListTableDataSource class]], @"Selecting a topic should push a list of questions");
+    STAssertEqualObjects(QuestionListTableDataSource.topic, iPhoneTopic, @"The questions to display should come from the selected topic");
+}
+
 @end
