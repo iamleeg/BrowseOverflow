@@ -25,6 +25,7 @@
 
 - (void)tearDown {
     dataSource = nil;
+    iPhoneTopic = nil;
 }
 
 - (void)testTopicWithNoQuestionsLeadsToOneRowInTheTable {
