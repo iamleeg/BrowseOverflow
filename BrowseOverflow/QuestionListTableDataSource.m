@@ -7,13 +7,14 @@
 //
 
 #import "QuestionListTableDataSource.h"
+#import "Topic.h"
 
 @implementation QuestionListTableDataSource 
 
 @synthesize topic;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [[topic recentQuestions] count] ?: 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
