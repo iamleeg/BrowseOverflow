@@ -18,7 +18,21 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    UITableViewCell *cell = nil;
+    if ([topic.recentQuestions count]) {
+        cell = [tableView dequeueReusableCellWithIdentifier: @"question"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: @"question"];
+        }
+    }
+    else {
+        cell = [tableView dequeueReusableCellWithIdentifier: @"placeholder"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: @"placeholder"];
+        }
+        cell.textLabel.text = @"There was a problem connecting to the network.";
+    }
+    return cell;
 }
 
 @end
