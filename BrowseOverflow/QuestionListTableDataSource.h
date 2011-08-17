@@ -10,10 +10,12 @@
 
 @class Topic;
 @class QuestionSummaryCell;
+@class AvatarStore;
 
 @interface QuestionListTableDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong) Topic *topic;
 @property (weak) IBOutlet QuestionSummaryCell *summaryCell;
+@property (strong) AvatarStore *avatarStore;
 
 @end

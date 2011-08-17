@@ -13,6 +13,7 @@
 @synthesize titleLabel;
 @synthesize scoreLabel;
 @synthesize nameLabel;
+@synthesize avatarView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

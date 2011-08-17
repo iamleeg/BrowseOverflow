@@ -12,6 +12,8 @@
 #import "Question.h"
 #import "Person.h"
 #import "QuestionSummaryCell.h"
+#import "AvatarStore.h"
+#import "AvatarStore+TestingExtensions.h"
 
 @implementation QuestionListTableDataSourceTests
 {
@@ -67,12 +69,6 @@
     STAssertFalse([cell.textLabel.text isEqualToString: @"There was a problem connecting to the network."], @"Placeholder should only be shown when there's no content");
 }
 
-- (void)testQuestionCellIsOfCustomCellType {
-    [iPhoneTopic addQuestion: question1];
-    UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertTrue([cell isKindOfClass: [QuestionSummaryCell class]], @"Cells for displaying questions should be of a custom type");
-}
-
 - (void)testCellPropertiesAreTheSameAsTheQuestion {
     [iPhoneTopic addQuestion: question1];
     QuestionSummaryCell *cell = (QuestionSummaryCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstCell];
@@ -81,4 +77,14 @@
     STAssertEqualObjects(cell.nameLabel.text, @"Graham Lee", @"Question cells display the asker's name");
 }
 
+- (void)testCellGetsImageFromAvatarStore {
+    AvatarStore *store = [[AvatarStore alloc] init];
+    dataSource.avatarStore = store;
+    NSURL *imageURL = [[NSBundle bundleForClass: [self class]] URLForResource: @"Graham_Lee" withExtension: @"jpg"];
+    NSData *imageData = [NSData dataWithContentsOfURL: imageURL];
+    [store setData: imageData forLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
+    [iPhoneTopic addQuestion: question1];
+    QuestionSummaryCell *cell = (QuestionSummaryCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstCell];
+    STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
+}
 @end

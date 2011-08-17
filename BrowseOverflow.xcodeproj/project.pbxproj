@@ -22,6 +22,7 @@
 		981C3D9E137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3D9D137AACD4002B3FE9 /* StackOverflowCommunicatorTests.m */; };
 		981C3DA1137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA0137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m */; };
 		981C3DAA137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */; };
+		981DAC9213FBDF8F0068EF97 /* Graham_Lee.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981DAC9113FBDF8F0068EF97 /* Graham_Lee.jpg */; };
 		981F716713DD87A300061943 /* BrowseOverflowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 981F716513DD87A300061943 /* BrowseOverflowViewController.m */; };
 		981F716813DD87A300061943 /* BrowseOverflowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 981F716513DD87A300061943 /* BrowseOverflowViewController.m */; };
 		981F716913DD87A300061943 /* BrowseOverflowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981F716613DD87A300061943 /* BrowseOverflowViewController.xib */; };
@@ -118,6 +119,7 @@
 		981C3DA0137AB8AE002B3FE9 /* InspectableStackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableStackOverflowCommunicator.m; sourceTree = "<group>"; };
 		981C3DA8137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonNetworkedStackOverflowCommunicator.h; sourceTree = "<group>"; };
 		981C3DA9137C2EEE002B3FE9 /* NonNetworkedStackOverflowCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NonNetworkedStackOverflowCommunicator.m; sourceTree = "<group>"; };
+		981DAC9113FBDF8F0068EF97 /* Graham_Lee.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Graham_Lee.jpg; sourceTree = "<group>"; };
 		981F716413DD87A300061943 /* BrowseOverflowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowViewController.h; sourceTree = "<group>"; };
 		981F716513DD87A300061943 /* BrowseOverflowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowViewController.m; sourceTree = "<group>"; };
 		981F716613DD87A300061943 /* BrowseOverflowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowseOverflowViewController.xib; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		98A548F6130D3ABF003C4F0F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				981DAC9113FBDF8F0068EF97 /* Graham_Lee.jpg */,
 				98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */,
 				98A548F8130D3ABF003C4F0F /* InfoPlist.strings */,
 				98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */,
@@ -492,6 +495,7 @@
 				98A548FD130D3ABF003C4F0F /* BrowseOverflowTests.h in Resources */,
 				981F716A13DD87A300061943 /* BrowseOverflowViewController.xib in Resources */,
 				9854500F13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */,
+				981DAC9213FBDF8F0068EF97 /* Graham_Lee.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

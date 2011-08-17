@@ -13,4 +13,5 @@
 @property (strong) IBOutlet UILabel *titleLabel;
 @property (strong) IBOutlet UILabel *scoreLabel;
 @property (strong) IBOutlet UILabel *nameLabel;
+@property (strong) IBOutlet UIImageView *avatarView;
 @end

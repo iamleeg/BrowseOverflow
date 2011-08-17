@@ -11,11 +11,13 @@
 #import "Topic.h"
 #import "Question.h"
 #import "Person.h"
+#import "AvatarStore.h"
 
 @implementation QuestionListTableDataSource 
 
 @synthesize topic;
 @synthesize summaryCell;
+@synthesize avatarStore;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[topic recentQuestions] count] ?: 1;
@@ -32,6 +34,11 @@
         summaryCell.titleLabel.text = question.title;
         summaryCell.scoreLabel.text = [NSString stringWithFormat: @"%d", question.score];
         summaryCell.nameLabel.text = question.asker.name;
+        
+        NSData *avatarData = [avatarStore dataForURL: question.asker.avatarURL];
+        if (avatarData) {
+            summaryCell.avatarView.image = [UIImage imageWithData: avatarData];
+        }
         cell = summaryCell;
         summaryCell = nil;
     }
