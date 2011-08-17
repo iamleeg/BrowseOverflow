@@ -34,6 +34,10 @@
 		9850302E13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */; };
 		9850302F13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */; };
 		9850303213F41B4700BA7985 /* QuestionListTableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850303113F41B4700BA7985 /* QuestionListTableDataSourceTests.m */; };
+		9854500B13FA760100665C7A /* QuestionSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854500A13FA760100665C7A /* QuestionSummaryCell.m */; };
+		9854500C13FA760100665C7A /* QuestionSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854500A13FA760100665C7A /* QuestionSummaryCell.m */; };
+		9854500E13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */; };
+		9854500F13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */; };
 		9868E920132E32F800AEF519 /* QuestionCreationWorkflowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E91F132E32F800AEF519 /* QuestionCreationWorkflowTests.m */; };
 		9868E923132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
 		9868E924132E578600AEF519 /* StackOverflowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9868E922132E578600AEF519 /* StackOverflowManager.m */; };
@@ -129,6 +133,9 @@
 		9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListTableDataSource.m; sourceTree = "<group>"; };
 		9850303013F41B4700BA7985 /* QuestionListTableDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionListTableDataSourceTests.h; sourceTree = "<group>"; };
 		9850303113F41B4700BA7985 /* QuestionListTableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListTableDataSourceTests.m; sourceTree = "<group>"; };
+		9854500913FA760100665C7A /* QuestionSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSummaryCell.h; sourceTree = "<group>"; };
+		9854500A13FA760100665C7A /* QuestionSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSummaryCell.m; sourceTree = "<group>"; };
+		9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionSummaryCell.xib; sourceTree = "<group>"; };
 		9868E91E132E32F800AEF519 /* QuestionCreationWorkflowTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCreationWorkflowTests.h; sourceTree = "<group>"; };
 		9868E91F132E32F800AEF519 /* QuestionCreationWorkflowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCreationWorkflowTests.m; sourceTree = "<group>"; };
 		9868E921132E578600AEF519 /* StackOverflowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackOverflowManager.h; sourceTree = "<group>"; };
@@ -319,6 +326,9 @@
 				981F716613DD87A300061943 /* BrowseOverflowViewController.xib */,
 				9850302C13F4014D00BA7985 /* QuestionListTableDataSource.h */,
 				9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */,
+				9854500913FA760100665C7A /* QuestionSummaryCell.h */,
+				9854500A13FA760100665C7A /* QuestionSummaryCell.m */,
+				9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -470,6 +480,7 @@
 				98A548E3130D3ABE003C4F0F /* MainWindow.xib in Resources */,
 				98A548E9130D3ABE003C4F0F /* RootViewController.xib in Resources */,
 				981F716913DD87A300061943 /* BrowseOverflowViewController.xib in Resources */,
+				9854500E13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +491,7 @@
 				98A548FA130D3ABF003C4F0F /* InfoPlist.strings in Resources */,
 				98A548FD130D3ABF003C4F0F /* BrowseOverflowTests.h in Resources */,
 				981F716A13DD87A300061943 /* BrowseOverflowViewController.xib in Resources */,
+				9854500F13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +535,7 @@
 				981F716713DD87A300061943 /* BrowseOverflowViewController.m in Sources */,
 				98B76A9613E2FF1C0003AB77 /* TopicTableDataSource.m in Sources */,
 				9850302E13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */,
+				9854500B13FA760100665C7A /* QuestionSummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +584,7 @@
 				982E389B13EAF8B500AD73C6 /* TopicTableDelegateTests.m in Sources */,
 				9850302F13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */,
 				9850303213F41B4700BA7985 /* QuestionListTableDataSourceTests.m in Sources */,
+				9854500C13FA760100665C7A /* QuestionSummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

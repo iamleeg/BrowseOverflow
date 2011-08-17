@@ -7,11 +7,15 @@
 //
 
 #import "QuestionListTableDataSource.h"
+#import "QuestionSummaryCell.h"
 #import "Topic.h"
+#import "Question.h"
+#import "Person.h"
 
 @implementation QuestionListTableDataSource 
 
 @synthesize topic;
+@synthesize summaryCell;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[topic recentQuestions] count] ?: 1;
@@ -20,10 +24,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     if ([topic.recentQuestions count]) {
-        cell = [tableView dequeueReusableCellWithIdentifier: @"question"];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: @"question"];
+        Question *question = [topic.recentQuestions objectAtIndex: indexPath.row];
+        summaryCell = [tableView dequeueReusableCellWithIdentifier: @"question"];
+        if (!summaryCell) {
+            [[NSBundle bundleForClass: [self class]] loadNibNamed: @"QuestionSummaryCell" owner: self options: nil];
         }
+        summaryCell.titleLabel.text = question.title;
+        summaryCell.scoreLabel.text = [NSString stringWithFormat: @"%d", question.score];
+        summaryCell.nameLabel.text = question.asker.name;
+        cell = summaryCell;
+        summaryCell = nil;
     }
     else {
         cell = [tableView dequeueReusableCellWithIdentifier: @"placeholder"];
