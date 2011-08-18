@@ -19,3 +19,5 @@
 - (void)registerForMemoryWarnings: (NSNotificationCenter *)center;
 - (void)removeRegistrationForMemoryWarnings: (NSNotificationCenter *)center;
 @end
+
+extern NSString *AvatarStoreDidUpdateContentNotification;

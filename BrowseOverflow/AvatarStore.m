@@ -54,3 +54,5 @@
 }
 
 @end
+
+NSString *AvatarStoreDidUpdateContentNotification = @"AvatarStoreDidUpdateContentNotification";

@@ -56,7 +56,7 @@
 
 - (void)registerForUpdatesToAvatarStore:(AvatarStore *)store withNotificationCenter:(NSNotificationCenter *)center {
     notificationCenter = center;
-    [center addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: @"AvatarStoreDidUpdateContentNotification" object: store];
+    [center addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: AvatarStoreDidUpdateContentNotification object: store];
 }
 
 @end
