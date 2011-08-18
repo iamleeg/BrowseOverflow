@@ -14,7 +14,9 @@
 #import "AvatarStore.h"
 
 @implementation QuestionListTableDataSource 
-
+{
+    NSNotificationCenter *notificationCenter;
+}
 @synthesize topic;
 @synthesize summaryCell;
 @synthesize avatarStore;
@@ -50,6 +52,11 @@
         cell.textLabel.text = @"There was a problem connecting to the network.";
     }
     return cell;
+}
+
+- (void)registerForUpdatesToAvatarStore:(AvatarStore *)store withNotificationCenter:(NSNotificationCenter *)center {
+    notificationCenter = center;
+    [center addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: @"AvatarStoreDidUpdateContentNotification" object: store];
 }
 
 @end

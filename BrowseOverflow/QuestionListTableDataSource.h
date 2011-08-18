@@ -18,4 +18,5 @@
 @property (weak) IBOutlet QuestionSummaryCell *summaryCell;
 @property (strong) AvatarStore *avatarStore;
 
+- (void)registerForUpdatesToAvatarStore: (AvatarStore *)store withNotificationCenter: (NSNotificationCenter *)center;
 @end

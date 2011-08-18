@@ -14,6 +14,7 @@
 #import "QuestionSummaryCell.h"
 #import "AvatarStore.h"
 #import "AvatarStore+TestingExtensions.h"
+#import "FakeNotificationCenter.h"
 
 @implementation QuestionListTableDataSourceTests
 {
@@ -22,6 +23,7 @@
     NSIndexPath *firstCell;
     Question *question1, *question2;
     Person *asker1;
+    AvatarStore *store;
 }
 
 - (void)setUp {
@@ -37,6 +39,7 @@
     
     asker1 = [[Person alloc] initWithName: @"Graham Lee" avatarLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
     question1.asker = asker1;
+    store = [[AvatarStore alloc] init];
 }
 
 - (void)tearDown {
@@ -46,6 +49,7 @@
     question1 = nil;
     question2 = nil;
     asker1 = nil;
+    store = nil;
 }
 
 - (void)testTopicWithNoQuestionsLeadsToOneRowInTheTable {
@@ -78,7 +82,6 @@
 }
 
 - (void)testCellGetsImageFromAvatarStore {
-    AvatarStore *store = [[AvatarStore alloc] init];
     dataSource.avatarStore = store;
     NSURL *imageURL = [[NSBundle bundleForClass: [self class]] URLForResource: @"Graham_Lee" withExtension: @"jpg"];
     NSData *imageData = [NSData dataWithContentsOfURL: imageURL];
@@ -86,5 +89,11 @@
     [iPhoneTopic addQuestion: question1];
     QuestionSummaryCell *cell = (QuestionSummaryCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstCell];
     STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
+}
+
+- (void)testQuestionListRegistersForAvatarNotifications {
+    FakeNotificationCenter *center = [[FakeNotificationCenter alloc] init];
+    [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
+    STAssertTrue([center hasObject: dataSource forNotification: @"AvatarStoreDidUpdateContentNotification"], @"The data source should know when new images have been downloaded");
 }
 @end
