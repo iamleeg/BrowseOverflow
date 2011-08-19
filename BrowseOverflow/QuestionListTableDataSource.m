@@ -20,12 +20,13 @@
 @synthesize topic;
 @synthesize summaryCell;
 @synthesize avatarStore;
+@synthesize tableView;
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     return [[topic recentQuestions] count] ?: 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     if ([topic.recentQuestions count]) {
         Question *question = [topic.recentQuestions objectAtIndex: indexPath.row];
@@ -61,5 +62,9 @@
 
 - (void)removeObservationOfUpdatesToAvatarStore: (AvatarStore *)store {
     [notificationCenter removeObserver: self name: AvatarStoreDidUpdateContentNotification object: store];
+}
+
+- (void)avatarStoreDidUpdateContent:(NSNotification *)notification {
+    [tableView reloadData];
 }
 @end

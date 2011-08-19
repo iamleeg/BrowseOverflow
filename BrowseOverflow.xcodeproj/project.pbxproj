@@ -35,6 +35,7 @@
 		9850302E13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */; };
 		9850302F13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */; };
 		9850303213F41B4700BA7985 /* QuestionListTableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9850303113F41B4700BA7985 /* QuestionListTableDataSourceTests.m */; };
+		985264B313FEB72200A92A7D /* ReloadDataWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 985264B213FEB72200A92A7D /* ReloadDataWatcher.m */; };
 		9854500B13FA760100665C7A /* QuestionSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854500A13FA760100665C7A /* QuestionSummaryCell.m */; };
 		9854500C13FA760100665C7A /* QuestionSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9854500A13FA760100665C7A /* QuestionSummaryCell.m */; };
 		9854500E13FABE6400665C7A /* QuestionSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */; };
@@ -135,6 +136,8 @@
 		9850302D13F4014D00BA7985 /* QuestionListTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListTableDataSource.m; sourceTree = "<group>"; };
 		9850303013F41B4700BA7985 /* QuestionListTableDataSourceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionListTableDataSourceTests.h; sourceTree = "<group>"; };
 		9850303113F41B4700BA7985 /* QuestionListTableDataSourceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionListTableDataSourceTests.m; sourceTree = "<group>"; };
+		985264B113FEB72200A92A7D /* ReloadDataWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReloadDataWatcher.h; sourceTree = "<group>"; };
+		985264B213FEB72200A92A7D /* ReloadDataWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReloadDataWatcher.m; sourceTree = "<group>"; };
 		9854500913FA760100665C7A /* QuestionSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionSummaryCell.h; sourceTree = "<group>"; };
 		9854500A13FA760100665C7A /* QuestionSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionSummaryCell.m; sourceTree = "<group>"; };
 		9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionSummaryCell.xib; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				98BAC3E6138E577000B36163 /* FakeGravatarDelegate.m */,
 				98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */,
 				98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */,
+				985264B113FEB72200A92A7D /* ReloadDataWatcher.h */,
+				985264B213FEB72200A92A7D /* ReloadDataWatcher.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				9850302F13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */,
 				9850303213F41B4700BA7985 /* QuestionListTableDataSourceTests.m in Sources */,
 				9854500C13FA760100665C7A /* QuestionSummaryCell.m in Sources */,
+				985264B313FEB72200A92A7D /* ReloadDataWatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

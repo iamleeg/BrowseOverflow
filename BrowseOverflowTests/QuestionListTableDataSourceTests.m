@@ -15,6 +15,7 @@
 #import "AvatarStore.h"
 #import "AvatarStore+TestingExtensions.h"
 #import "FakeNotificationCenter.h"
+#import "ReloadDataWatcher.h"
 
 @implementation QuestionListTableDataSourceTests
 {
@@ -102,5 +103,12 @@
     [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
     [dataSource removeObservationOfUpdatesToAvatarStore: store];
     STAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source no should no longer listen to avatar store notifications");
+}
+
+- (void)testQuestionListCausesTableReloadOnAvatarNotification {
+    ReloadDataWatcher *fakeTableView = [[ReloadDataWatcher alloc] init];
+    dataSource.tableView = (UITableView *)fakeTableView;
+    [dataSource avatarStoreDidUpdateContent: nil];
+    STAssertTrue([fakeTableView didReceiveReloadData], @"Data source should get the table view to reload when new data is available");
 }
 @end
