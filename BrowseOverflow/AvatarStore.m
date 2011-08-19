@@ -36,12 +36,14 @@
     [dataCache removeAllObjects];
 }
 
-- (void)registerForMemoryWarnings:(NSNotificationCenter *)center {
+- (void)useNotificationCenter:(NSNotificationCenter *)center {
     [center addObserver: self selector: @selector(didReceiveMemoryWarning:) name: UIApplicationDidReceiveMemoryWarningNotification object: nil];
+    notificationCenter = center;
 }
 
-- (void)removeRegistrationForMemoryWarnings:(NSNotificationCenter *)center {
+- (void)stopUsingNotificationCenter:(NSNotificationCenter *)center {
     [center removeObserver: self];
+    notificationCenter = nil;
 }
 
 - (void)communicatorGotErrorForURL:(NSURL *)url {
@@ -51,6 +53,8 @@
 - (void)communicatorReceivedData:(NSData *)data forURL:(NSURL *)url {
     [dataCache setObject: data forKey: [url absoluteString]];
     [communicators removeObjectForKey: [url absoluteString]];
+    NSNotification *note = [NSNotification notificationWithName: AvatarStoreDidUpdateContentNotification object: self];
+    [notificationCenter postNotification: note];
 }
 
 @end

@@ -33,13 +33,13 @@
 }
 
 - (void)testStoreSubscribesToLowMemoryNotification {
-    [store registerForMemoryWarnings: (NSNotificationCenter *)center];
+    [store useNotificationCenter: (NSNotificationCenter *)center];
     STAssertTrue([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"store should have registered for the notification");
 }
 
 - (void)testStoreRemovesSubscriptionFromLowMemoryNotification {
-    [store registerForMemoryWarnings: (NSNotificationCenter *)center];
-    [store removeRegistrationForMemoryWarnings: (NSNotificationCenter *)center];
+    [store useNotificationCenter: (NSNotificationCenter *)center];
+    [store stopUsingNotificationCenter: (NSNotificationCenter *)center];
     STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
 }
 
@@ -56,6 +56,13 @@
     NSURL *otherURL = [NSURL URLWithString: otherLocation];
     [store communicatorReceivedData: sampleData forURL: otherURL];
     STAssertEqualObjects([store dataForURL: otherURL], sampleData, @"The store should keep the data it receives");
+}
+
+- (void)testStoreSendsDataUpdateNotificationWhenDataRetrieved {
+    [store useNotificationCenter: (NSNotificationCenter *)center];
+    [store communicatorReceivedData: sampleData forURL: [NSURL URLWithString: otherLocation]];
+    STAssertTrue([center didReceiveNotification: AvatarStoreDidUpdateContentNotification fromObject: store], @"When data is received, interested parties should be told");
+    [store stopUsingNotificationCenter: (NSNotificationCenter *)center];
 }
 
 - (void)testStoreDiscardsCommunicatorOnCompletion {

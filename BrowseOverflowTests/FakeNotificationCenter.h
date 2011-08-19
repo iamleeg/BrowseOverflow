@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FakeNotificationCenter : NSObject {
-    NSMutableDictionary *dictionary;
-}
+@interface FakeNotificationCenter : NSObject 
 
 - (void)addObserver: (id)observer selector:(SEL)aSelector name:(NSString *)aName object:(id)anObject;
 - (void)removeObserver: (id)observer;
+- (void)postNotification: (NSNotification *)notification;
+
 - (BOOL)hasObject: (id)observer forNotification: (NSString *)aName;
+- (BOOL)didReceiveNotification: (NSString *)name fromObject: (id)obj;
 
 @end
