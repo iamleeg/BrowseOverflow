@@ -96,4 +96,11 @@
     [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
     STAssertTrue([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source should know when new images have been downloaded");
 }
+
+- (void)testQuestionListStopsRegisteringForAvatarNotifications {
+    FakeNotificationCenter *center = [[FakeNotificationCenter alloc] init];
+    [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
+    [dataSource removeObservationOfUpdatesToAvatarStore: store];
+    STAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source no should no longer listen to avatar store notifications");
+}
 @end

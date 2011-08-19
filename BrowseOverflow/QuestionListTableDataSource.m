@@ -59,4 +59,7 @@
     [center addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: AvatarStoreDidUpdateContentNotification object: store];
 }
 
+- (void)removeObservationOfUpdatesToAvatarStore: (AvatarStore *)store {
+    [notificationCenter removeObserver: self name: AvatarStoreDidUpdateContentNotification object: store];
+}
 @end

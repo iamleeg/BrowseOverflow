@@ -19,4 +19,5 @@
 @property (strong) AvatarStore *avatarStore;
 
 - (void)registerForUpdatesToAvatarStore: (AvatarStore *)store withNotificationCenter: (NSNotificationCenter *)center;
+- (void)removeObservationOfUpdatesToAvatarStore: (AvatarStore *)store;
 @end

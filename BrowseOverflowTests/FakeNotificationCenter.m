@@ -36,6 +36,10 @@
     }];
 }
 
+- (void)removeObserver:(id)observer name:(NSString *)aName object:(id)obj {
+    [self removeObserver: observer];
+}
+
 - (BOOL)hasObject:(id)observer forNotification:(NSString *)aName {
     return [[observers objectForKey: aName] isEqual: observer];
 }
