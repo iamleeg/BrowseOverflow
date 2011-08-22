@@ -107,6 +107,13 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     STAssertEqualObjects([tableView delegate], dataSource, @"View controller should have set the table view's delegate");
 }
 
+- (void)testViewControllerConnectsTableViewBacklinkInViewDidLoad {
+    QuestionListTableDataSource *questionDataSource = [[QuestionListTableDataSource alloc] init];
+    viewController.dataSource = questionDataSource;
+    [viewController viewDidLoad];
+    STAssertEqualObjects(questionDataSource.tableView, tableView, @"Back-link to table view should be set in data source");
+}
+
 - (void)testDefaultStateOfViewControllerDoesNotReceiveNotifications {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
     [[NSNotificationCenter defaultCenter] 
