@@ -18,8 +18,9 @@
 @property (weak) IBOutlet QuestionSummaryCell *summaryCell;
 @property (strong) AvatarStore *avatarStore;
 @property (weak) UITableView *tableView;
+@property (strong) NSNotificationCenter *notificationCenter;
 
-- (void)registerForUpdatesToAvatarStore: (AvatarStore *)store withNotificationCenter: (NSNotificationCenter *)center;
+- (void)registerForUpdatesToAvatarStore: (AvatarStore *)store;
 - (void)removeObservationOfUpdatesToAvatarStore: (AvatarStore *)store;
 - (void)avatarStoreDidUpdateContent: (NSNotification *)notification;
 

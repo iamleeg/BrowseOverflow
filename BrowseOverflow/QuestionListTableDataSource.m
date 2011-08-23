@@ -14,13 +14,12 @@
 #import "AvatarStore.h"
 
 @implementation QuestionListTableDataSource 
-{
-    NSNotificationCenter *notificationCenter;
-}
+
 @synthesize topic;
 @synthesize summaryCell;
 @synthesize avatarStore;
 @synthesize tableView;
+@synthesize notificationCenter;
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
     return [[topic recentQuestions] count] ?: 1;
@@ -55,9 +54,13 @@
     return cell;
 }
 
-- (void)registerForUpdatesToAvatarStore:(AvatarStore *)store withNotificationCenter:(NSNotificationCenter *)center {
-    notificationCenter = center;
-    [center addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: AvatarStoreDidUpdateContentNotification object: store];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNotification *notification = [NSNotification notificationWithName: @"QuestionListDidSelectQuestionNotification" object: [topic.recentQuestions objectAtIndex: indexPath.row]];
+    [notificationCenter postNotification: notification];
+}
+
+- (void)registerForUpdatesToAvatarStore:(AvatarStore *)store {
+    [notificationCenter addObserver: self selector: @selector(avatarStoreDidUpdateContent:) name: AvatarStoreDidUpdateContentNotification object: store];
 }
 
 - (void)removeObservationOfUpdatesToAvatarStore: (AvatarStore *)store {

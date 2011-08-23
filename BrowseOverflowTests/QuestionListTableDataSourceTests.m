@@ -25,6 +25,11 @@
     Question *question1, *question2;
     Person *asker1;
     AvatarStore *store;
+    NSNotification *receivedNotification;
+}
+
+- (void)didReceiveNotification: (NSNotification *)note {
+    receivedNotification = note;
 }
 
 - (void)setUp {
@@ -51,6 +56,7 @@
     question2 = nil;
     asker1 = nil;
     store = nil;
+    receivedNotification = nil;
 }
 
 - (void)testTopicWithNoQuestionsLeadsToOneRowInTheTable {
@@ -94,15 +100,17 @@
 
 - (void)testQuestionListRegistersForAvatarNotifications {
     FakeNotificationCenter *center = [[FakeNotificationCenter alloc] init];
-    [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
+    dataSource.notificationCenter = (NSNotificationCenter *)center;
+    [dataSource registerForUpdatesToAvatarStore: store];
     STAssertTrue([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source should know when new images have been downloaded");
 }
 
 - (void)testQuestionListStopsRegisteringForAvatarNotifications {
     FakeNotificationCenter *center = [[FakeNotificationCenter alloc] init];
-    [dataSource registerForUpdatesToAvatarStore: store withNotificationCenter: (NSNotificationCenter *)center];
+    dataSource.notificationCenter = (NSNotificationCenter *)center;
+    [dataSource registerForUpdatesToAvatarStore: store];
     [dataSource removeObservationOfUpdatesToAvatarStore: store];
-    STAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source no should no longer listen to avatar store notifications");
+    STAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source  should no longer listen to avatar store notifications");
 }
 
 - (void)testQuestionListCausesTableReloadOnAvatarNotification {
@@ -110,5 +118,15 @@
     dataSource.tableView = (UITableView *)fakeTableView;
     [dataSource avatarStoreDidUpdateContent: nil];
     STAssertTrue([fakeTableView didReceiveReloadData], @"Data source should get the table view to reload when new data is available");
+}
+
+- (void)testSelectingQuestionSendsSelectionNotification {
+    [iPhoneTopic addQuestion: question1];
+    dataSource.notificationCenter = [NSNotificationCenter defaultCenter];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(didReceiveNotification:) name: @"QuestionListDidSelectQuestionNotification" object: nil];
+    [dataSource tableView: nil didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+    STAssertEqualObjects([receivedNotification name], @"QuestionListDidSelectQuestionNotification", @"Question list should notify when a question is selected");
+    STAssertEqualObjects([receivedNotification object], question1, @"The selected question should be the object of the notification");
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 @end
