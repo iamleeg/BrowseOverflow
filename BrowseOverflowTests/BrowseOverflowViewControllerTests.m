@@ -114,7 +114,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     STAssertEqualObjects(questionDataSource.tableView, tableView, @"Back-link to table view should be set in data source");
 }
 
-- (void)testDefaultStateOfViewControllerDoesNotReceiveNotifications {
+- (void)testDefaultStateOfViewControllerDoesNotReceiveTopicSelectionNotifications {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
     [[NSNotificationCenter defaultCenter] 
      postNotificationName: TopicTableDidSelectTopicNotification
@@ -124,7 +124,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
 }
 
-- (void)testViewControllerReceivesTableSelectionNotificationAfterViewDidAppear {
+- (void)testViewControllerReceivesTopicSelectionNotificationAfterViewDidAppear {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
     [viewController viewDidAppear: NO];
     [[NSNotificationCenter defaultCenter] 
@@ -135,7 +135,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
 }
 
-- (void)testViewControllerDoesNotReceiveTableSelectNotificationAfterViewWillDisappear {
+- (void)testViewControllerDoesNotReceiveTopicSelectNotificationAfterViewWillDisappear {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
     [viewController viewDidAppear: NO];
     [viewController viewWillDisappear: NO];
