@@ -55,7 +55,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNotification *notification = [NSNotification notificationWithName: @"QuestionListDidSelectQuestionNotification" object: [topic.recentQuestions objectAtIndex: indexPath.row]];
+    NSNotification *notification = [NSNotification notificationWithName: QuestionListDidSelectQuestionNotification object: [topic.recentQuestions objectAtIndex: indexPath.row]];
     [notificationCenter postNotification: notification];
 }
 
@@ -72,3 +72,5 @@
 }
 
 @end
+
+NSString *QuestionListDidSelectQuestionNotification = @"QuestionListDidSelectQuestionNotification";

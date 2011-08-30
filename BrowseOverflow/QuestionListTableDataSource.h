@@ -25,3 +25,5 @@
 - (void)avatarStoreDidUpdateContent: (NSNotification *)notification;
 
 @end
+
+extern NSString *QuestionListDidSelectQuestionNotification;
