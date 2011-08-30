@@ -11,6 +11,8 @@
 #import "TopicTableDataSource.h"
 #import "Topic.h"
 #import "QuestionListTableDataSource.h"
+#import "QuestionDetailDataSource.h"
+#import "Question.h"
 #import <objc/runtime.h>
 
 static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociatedNotificationKey";
@@ -210,4 +212,19 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
 }
 
+- (void)testSelectingQuestionPushesNewViewController {
+    [viewController userDidSelectQuestionNotification: nil];
+    UIViewController *currentTopVC = navController.topViewController;
+    STAssertFalse([currentTopVC isEqual: viewController], @"New view controller should be pushed onto the stack");
+    STAssertTrue([currentTopVC isKindOfClass: [BrowseOverflowViewController class]], @"New view controller should be a BrowseOverflowViewController");
+}
+
+- (void)testViewControllerPushedOnQuestionSelectionHasQuestionDetailDataSourceForSelectedQuestion {
+    Question *sampleQuestion = [[Question alloc] init];
+    NSNotification *note = [NSNotification notificationWithName: QuestionListDidSelectQuestionNotification object: sampleQuestion];
+    [viewController userDidSelectQuestionNotification: note];
+    BrowseOverflowViewController *nextVC = (BrowseOverflowViewController *)navController.topViewController;
+    STAssertTrue([nextVC.dataSource isKindOfClass: [QuestionDetailDataSource class]], @"Selecting a question should show details of that question");
+    STAssertEqualObjects([(QuestionDetailDataSource *)nextVC.dataSource question], sampleQuestion, @"Details should be shown for the selected question");
+}
 @end

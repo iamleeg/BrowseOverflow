@@ -27,6 +27,8 @@
 		981F716813DD87A300061943 /* BrowseOverflowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 981F716513DD87A300061943 /* BrowseOverflowViewController.m */; };
 		981F716913DD87A300061943 /* BrowseOverflowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981F716613DD87A300061943 /* BrowseOverflowViewController.xib */; };
 		981F716A13DD87A300061943 /* BrowseOverflowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 981F716613DD87A300061943 /* BrowseOverflowViewController.xib */; };
+		9822D30D140D112A00396141 /* QuestionDetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9822D30C140D112A00396141 /* QuestionDetailDataSource.m */; };
+		9822D30E140D112A00396141 /* QuestionDetailDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9822D30C140D112A00396141 /* QuestionDetailDataSource.m */; };
 		982341EE1345D888005E14B5 /* QuestionBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 982341ED1345D888005E14B5 /* QuestionBuilderTests.m */; };
 		9829C11D1312B1570070C733 /* QuestionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C11C1312B1570070C733 /* QuestionTests.m */; };
 		9829C1211312B75A0070C733 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 9829C1201312B75A0070C733 /* Question.m */; };
@@ -124,6 +126,8 @@
 		981F716413DD87A300061943 /* BrowseOverflowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowViewController.h; sourceTree = "<group>"; };
 		981F716513DD87A300061943 /* BrowseOverflowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowViewController.m; sourceTree = "<group>"; };
 		981F716613DD87A300061943 /* BrowseOverflowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BrowseOverflowViewController.xib; sourceTree = "<group>"; };
+		9822D30B140D112A00396141 /* QuestionDetailDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDetailDataSource.h; sourceTree = "<group>"; };
+		9822D30C140D112A00396141 /* QuestionDetailDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDetailDataSource.m; sourceTree = "<group>"; };
 		982341EC1345D888005E14B5 /* QuestionBuilderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionBuilderTests.h; sourceTree = "<group>"; };
 		982341ED1345D888005E14B5 /* QuestionBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionBuilderTests.m; sourceTree = "<group>"; };
 		9829C11B1312B1570070C733 /* QuestionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTests.h; sourceTree = "<group>"; };
@@ -336,6 +340,8 @@
 				9854500913FA760100665C7A /* QuestionSummaryCell.h */,
 				9854500A13FA760100665C7A /* QuestionSummaryCell.m */,
 				9854500D13FABE6400665C7A /* QuestionSummaryCell.xib */,
+				9822D30B140D112A00396141 /* QuestionDetailDataSource.h */,
+				9822D30C140D112A00396141 /* QuestionDetailDataSource.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				98B76A9613E2FF1C0003AB77 /* TopicTableDataSource.m in Sources */,
 				9850302E13F4014D00BA7985 /* QuestionListTableDataSource.m in Sources */,
 				9854500B13FA760100665C7A /* QuestionSummaryCell.m in Sources */,
+				9822D30D140D112A00396141 /* QuestionDetailDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,6 +602,7 @@
 				9850303213F41B4700BA7985 /* QuestionListTableDataSourceTests.m in Sources */,
 				9854500C13FA760100665C7A /* QuestionSummaryCell.m in Sources */,
 				985264B313FEB72200A92A7D /* ReloadDataWatcher.m in Sources */,
+				9822D30E140D112A00396141 /* QuestionDetailDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
