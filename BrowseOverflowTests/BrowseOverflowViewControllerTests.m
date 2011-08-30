@@ -20,6 +20,9 @@ static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociate
     objc_setAssociatedObject(self, notificationKey, note, OBJC_ASSOCIATION_RETAIN);
 }
 
+- (void)browseOverflowControllerTests_userDidSelectQuestionNotification: (NSNotification *)note {
+    objc_setAssociatedObject(self, notificationKey, note, OBJC_ASSOCIATION_RETAIN);
+}
 @end
 
 static const char *viewDidAppearKey = "BrowseOverflowViewControllerTestsViewDidAppearKey";
@@ -46,6 +49,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     SEL realViewDidAppear, testViewDidAppear;
     SEL realViewWillDisappear, testViewWillDisappear;
     SEL realUserDidSelectTopic, testUserDidSelectTopic;
+    SEL realUserDidSelectQuestion, testUserDidSelectQuestion;
     UINavigationController *navController;
 }
 
@@ -73,6 +77,9 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     
     realUserDidSelectTopic = @selector(userDidSelectTopicNotification:);
     testUserDidSelectTopic = @selector(browseOverflowControllerTests_userDidSelectTopicNotification:);
+    
+    realUserDidSelectQuestion = @selector(userDidSelectQuestionNotification:);
+    testUserDidSelectQuestion = @selector(browseOverflowControllerTests_userDidSelectQuestionNotification:);
     
     navController = [[UINavigationController alloc] initWithRootViewController: viewController];
 }
@@ -171,6 +178,36 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     BrowseOverflowViewController *nextViewController = (BrowseOverflowViewController *)navController.topViewController;
     STAssertTrue([nextViewController.dataSource isKindOfClass: [QuestionListTableDataSource class]], @"Selecting a topic should push a list of questions");
     STAssertEqualObjects([(QuestionListTableDataSource *)[nextViewController dataSource] topic], iPhoneTopic, @"The questions to display should come from the selected topic");
+}
+
+- (void)testDefaultStateOfViewControllerDoesNotReceiveQuestionSelectionNotification {
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
+    [[NSNotificationCenter defaultCenter] postNotificationName: QuestionListDidSelectQuestionNotification object: nil userInfo: nil];
+    STAssertNil(objc_getAssociatedObject(viewController, notificationKey), @"View controller shouldn't receive question selection notifications by default");
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
+}
+
+- (void)testViewControllerReceivesQuestionSelectionNotificationAfterViewDidAppear {
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
+    [viewController viewDidAppear: NO];
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName: QuestionListDidSelectQuestionNotification
+     object: nil
+     userInfo: nil];
+    STAssertNotNil(objc_getAssociatedObject(viewController, notificationKey), @"After -viewDidAppear: the view controller should handle question selection notifications");
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
+}
+
+- (void)testViewControllerDoesNotReceiveQuestionSelectNotificationAfterViewWillDisappear {
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
+    [viewController viewDidAppear: NO];
+    [viewController viewWillDisappear: NO];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName: QuestionListDidSelectQuestionNotification
+     object: nil
+     userInfo: nil];
+    STAssertNil(objc_getAssociatedObject(viewController, notificationKey), @"After -viewWillDisappear: is called, the view controller should no longer respond to question selection notifications");
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
 }
 
 @end

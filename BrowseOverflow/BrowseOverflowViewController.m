@@ -66,6 +66,11 @@
      selector: @selector(userDidSelectTopicNotification:)
      name: TopicTableDidSelectTopicNotification
      object: nil];
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self 
+     selector: @selector(userDidSelectQuestionNotification:)
+     name: QuestionListDidSelectQuestionNotification
+     object: nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -85,4 +90,7 @@
     [[self navigationController] pushViewController: nextViewController animated: YES];
 }
 
+- (void)userDidSelectQuestionNotification: (NSNotification *)note {
+    
+}
 @end

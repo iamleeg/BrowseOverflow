@@ -14,4 +14,6 @@
 @property (strong) NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
 
 - (void)userDidSelectTopicNotification: (NSNotification *)note;
+- (void)userDidSelectQuestionNotification: (NSNotification *)note;
+
 @end
