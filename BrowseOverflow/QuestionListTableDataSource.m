@@ -70,4 +70,5 @@
 - (void)avatarStoreDidUpdateContent:(NSNotification *)notification {
     [tableView reloadData];
 }
+
 @end
