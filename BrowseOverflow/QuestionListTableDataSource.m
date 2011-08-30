@@ -55,8 +55,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNotification *notification = [NSNotification notificationWithName: QuestionListDidSelectQuestionNotification object: [topic.recentQuestions objectAtIndex: indexPath.row]];
-    [notificationCenter postNotification: notification];
+    if ([[topic recentQuestions] count] > 0) {
+        NSNotification *notification = [NSNotification notificationWithName: QuestionListDidSelectQuestionNotification object: [topic.recentQuestions objectAtIndex: indexPath.row]];
+        [notificationCenter postNotification: notification];
+    }
 }
 
 - (void)registerForUpdatesToAvatarStore:(AvatarStore *)store {

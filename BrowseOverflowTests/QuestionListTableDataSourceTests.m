@@ -120,11 +120,18 @@
     STAssertTrue([fakeTableView didReceiveReloadData], @"Data source should get the table view to reload when new data is available");
 }
 
+- (void)testSelectingPlaceholderDoesNotSendSelectionNotification {
+    dataSource.notificationCenter = [NSNotificationCenter defaultCenter];
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(didReceiveNotification:) name: @"QuestionListDidSelectQuestionNotification" object: nil];
+    [dataSource tableView: nil didSelectRowAtIndexPath: firstCell];
+    STAssertNil(receivedNotification, @"Shouldn't be notified of selecting the placeholder cell");
+}
+
 - (void)testSelectingQuestionSendsSelectionNotification {
     [iPhoneTopic addQuestion: question1];
     dataSource.notificationCenter = [NSNotificationCenter defaultCenter];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(didReceiveNotification:) name: @"QuestionListDidSelectQuestionNotification" object: nil];
-    [dataSource tableView: nil didSelectRowAtIndexPath: [NSIndexPath indexPathForRow: 0 inSection: 0]];
+    [dataSource tableView: nil didSelectRowAtIndexPath: firstCell];
     STAssertEqualObjects([receivedNotification name], @"QuestionListDidSelectQuestionNotification", @"Question list should notify when a question is selected");
     STAssertEqualObjects([receivedNotification object], question1, @"The selected question should be the object of the notification");
     [[NSNotificationCenter defaultCenter] removeObserver: self];
