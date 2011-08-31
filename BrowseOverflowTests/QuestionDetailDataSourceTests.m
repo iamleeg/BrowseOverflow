@@ -12,6 +12,8 @@
 #import "Question.h"
 #import "Person.h"
 #import "Answer.h"
+#import "AvatarStore.h"
+#import "AvatarStore+TestingExtensions.h"
 
 @implementation QuestionDetailDataSourceTests
 {
@@ -20,6 +22,7 @@
     Answer *answer1, *answer2;
     Person *asker;
     NSIndexPath *questionPath;
+    AvatarStore *store;
 }
 
 - (void)setUp {
@@ -36,6 +39,7 @@
     question.asker = asker;
     dataSource.question = question;
     questionPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
+    store = [[AvatarStore alloc] init];
 }
 
 - (void)tearDown {
@@ -44,6 +48,8 @@
     asker = nil;
     answer1 = nil;
     answer2 = nil;
+    store = nil;
+    questionPath = nil;
 }
 
 - (void)testTwoSectionsInTheTableView {
@@ -75,4 +81,14 @@
     STAssertEquals([cell.scoreLabel.text integerValue], question.score, @"Question's score should be displayed");
     STAssertEqualObjects(cell.nameLabel.text, asker.name, @"Person's name should be displayed");
 }
+
+- (void)testQuestionCellGetsImageFromAvatarStore {
+    dataSource.avatarStore = store;
+    NSURL *imageURL = [[NSBundle bundleForClass: [self class]] URLForResource: @"Graham_Lee" withExtension: @"jpg"];
+    NSData *imageData = [NSData dataWithContentsOfURL: imageURL];
+    [store setData: imageData forLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
+    QuestionDetailCell *cell = (QuestionDetailCell *)[dataSource tableView: nil cellForRowAtIndexPath: questionPath];
+    STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
+}
+
 @end

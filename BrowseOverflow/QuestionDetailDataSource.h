@@ -10,10 +10,12 @@
 
 @class Question;
 @class QuestionDetailCell;
+@class AvatarStore;
 
 @interface QuestionDetailDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong) Question *question;
 @property (weak) IBOutlet QuestionDetailCell *detailCell;
+@property (strong) AvatarStore *avatarStore;
 
 @end

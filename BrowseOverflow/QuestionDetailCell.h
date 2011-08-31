@@ -14,5 +14,6 @@
 @property (weak) IBOutlet UILabel *titleLabel;
 @property (weak) IBOutlet UILabel *scoreLabel;
 @property (weak) IBOutlet UILabel *nameLabel;
+@property (weak) IBOutlet UIImageView *avatarView;
 
 @end

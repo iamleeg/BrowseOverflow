@@ -10,6 +10,7 @@
 #import "QuestionDetailCell.h"
 #import "Question.h"
 #import "Person.h"
+#import "AvatarStore.h"
 
 enum {
     questionSection = 0,
@@ -27,6 +28,7 @@ enum {
 
 @synthesize question;
 @synthesize detailCell;
+@synthesize avatarStore;
 
 - (NSString *)HTMLStringForSnippet:(NSString *)snippet {
     NSLog(@"snippit: %@", snippet);
@@ -45,6 +47,7 @@ enum {
         detailCell.titleLabel.text = question.title;
         detailCell.scoreLabel.text = [NSString stringWithFormat: @"%i", question.score];
         detailCell.nameLabel.text = question.asker.name;
+        detailCell.avatarView.image = [UIImage imageWithData: [avatarStore dataForURL: question.asker.avatarURL]];
         cell = detailCell;
         self.detailCell = nil;
     }
