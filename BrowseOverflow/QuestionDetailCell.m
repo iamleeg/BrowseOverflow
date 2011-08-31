@@ -11,6 +11,9 @@
 @implementation QuestionDetailCell
 
 @synthesize bodyWebView;
+@synthesize titleLabel;
+@synthesize scoreLabel;
+@synthesize nameLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

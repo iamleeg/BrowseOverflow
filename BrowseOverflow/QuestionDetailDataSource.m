@@ -9,6 +9,7 @@
 #import "QuestionDetailDataSource.h"
 #import "QuestionDetailCell.h"
 #import "Question.h"
+#import "Person.h"
 
 enum {
     questionSection = 0,
@@ -41,6 +42,9 @@ enum {
     if (indexPath.section == questionSection) {
         [[NSBundle bundleForClass: [self class]] loadNibNamed: @"QuestionDetailCell" owner: self options: nil];
         [detailCell.bodyWebView loadHTMLString: [self HTMLStringForSnippet: question.body] baseURL: nil];
+        detailCell.titleLabel.text = question.title;
+        detailCell.scoreLabel.text = [NSString stringWithFormat: @"%i", question.score];
+        detailCell.nameLabel.text = question.asker.name;
         cell = detailCell;
         self.detailCell = nil;
     }

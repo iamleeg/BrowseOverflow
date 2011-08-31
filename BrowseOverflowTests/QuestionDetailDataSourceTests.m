@@ -18,6 +18,7 @@
     QuestionDetailDataSource *dataSource;
     Question *question;
     Answer *answer1, *answer2;
+    Person *asker;
     NSIndexPath *questionPath;
 }
 
@@ -31,6 +32,8 @@
     answer2 = [[Answer alloc] init];
     [question addAnswer: answer1];
     [question addAnswer: answer2];
+    asker = [[Person alloc] initWithName: @"Graham Lee" avatarLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
+    question.asker = asker;
     dataSource.question = question;
     questionPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
 }
@@ -38,6 +41,7 @@
 - (void)tearDown {
     dataSource = nil;
     question = nil;
+    asker = nil;
     answer1 = nil;
     answer2 = nil;
 }
@@ -64,8 +68,11 @@
      * the test back for a bit", which I've done explicitly here.
      * http://stackoverflow.com/questions/7255515/why-is-my-uiwebview-empty-in-my-unit-test
      */
-    [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.25]];
+    [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.5]];
     NSString *bodyHTML = [bodyView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
     STAssertEqualObjects(bodyHTML, question.body, @"Question body should be used for the cell's web view");
+    STAssertEqualObjects(cell.titleLabel.text, question.title, @"Question title used as cell title");
+    STAssertEquals([cell.scoreLabel.text integerValue], question.score, @"Question's score should be displayed");
+    STAssertEqualObjects(cell.nameLabel.text, asker.name, @"Person's name should be displayed");
 }
 @end
