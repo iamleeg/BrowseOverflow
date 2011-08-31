@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class Question;
+@class QuestionDetailCell;
+
 @interface QuestionDetailDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong) Question *question;
+@property (weak) IBOutlet QuestionDetailCell *detailCell;
 
 @end

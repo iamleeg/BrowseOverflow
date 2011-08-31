@@ -7,23 +7,50 @@
 //
 
 #import "QuestionDetailDataSource.h"
+#import "QuestionDetailCell.h"
 #import "Question.h"
 
 enum {
     questionSection = 0,
-    answerSection = 1
+    answerSection = 1,
+    sectionCount
     };
+
+@interface QuestionDetailDataSource ()
+
+- (NSString *)HTMLStringForSnippet: (NSString *)snippet;
+
+@end
 
 @implementation QuestionDetailDataSource
 
 @synthesize question;
+@synthesize detailCell;
+
+- (NSString *)HTMLStringForSnippet:(NSString *)snippet {
+    NSLog(@"snippit: %@", snippet);
+    return [NSString stringWithFormat: @"<html><head></head><body>%@</body></html>", snippet];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (section == answerSection) ? [question.answers count] : 1; 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    UITableViewCell *cell = nil;
+    if (indexPath.section == questionSection) {
+        [[NSBundle bundleForClass: [self class]] loadNibNamed: @"QuestionDetailCell" owner: self options: nil];
+        [detailCell.bodyWebView loadHTMLString: [self HTMLStringForSnippet: question.body] baseURL: nil];
+        cell = detailCell;
+        self.detailCell = nil;
+    }
+    else if (indexPath.section == answerSection) {
+        
+    }
+    else {
+        NSParameterAssert(indexPath.section < sectionCount);
+    }
+    return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
