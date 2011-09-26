@@ -8,6 +8,8 @@
 
 #import "QuestionDetailDataSource.h"
 #import "QuestionDetailCell.h"
+#import "AnswerCell.h"
+#import "Answer.h"
 #import "Question.h"
 #import "Person.h"
 #import "AvatarStore.h"
@@ -28,6 +30,7 @@ enum {
 
 @synthesize question;
 @synthesize detailCell;
+@synthesize answerCell;
 @synthesize avatarStore;
 
 - (NSString *)HTMLStringForSnippet:(NSString *)snippet {
@@ -52,7 +55,11 @@ enum {
         self.detailCell = nil;
     }
     else if (indexPath.section == answerSection) {
-        
+        Answer *thisAnswer = [question.answers objectAtIndex: indexPath.row];
+        [[NSBundle bundleForClass: [self class]] loadNibNamed: @"AnswerCell" owner: self options: nil];
+        answerCell.scoreLabel.text = [NSString stringWithFormat: @"%d", thisAnswer.score];
+        cell = answerCell;
+        self.answerCell = nil;
     }
     else {
         NSParameterAssert(indexPath.section < sectionCount);

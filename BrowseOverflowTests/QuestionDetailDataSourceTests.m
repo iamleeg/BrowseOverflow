@@ -12,6 +12,7 @@
 #import "Question.h"
 #import "Person.h"
 #import "Answer.h"
+#import "AnswerCell.h"
 #import "AvatarStore.h"
 #import "AvatarStore+TestingExtensions.h"
 
@@ -21,7 +22,7 @@
     Question *question;
     Answer *answer1, *answer2;
     Person *asker;
-    NSIndexPath *questionPath;
+    NSIndexPath *questionPath, *firstAnswerPath;
     AvatarStore *store;
 }
 
@@ -31,14 +32,22 @@
     question.title = @"Is this a dagger which I see before me, the handle toward my hand?";
     question.score = 2;
     question.body = @"<p>Come, let me clutch thee. I have thee not, and yet I see thee still. Art thou not, fatal vision, sensible to feeling as to sight?</p>";
+    /*note - answer1.score < answer2.score, but answer1 is accepted so should
+     *still be first in the list of answers.
+     */
     answer1 = [[Answer alloc] init];
+    answer1.score = 3;
+    answer1.accepted = YES;
     answer2 = [[Answer alloc] init];
+    answer2.score = 4;
+    answer2.accepted = NO;
     [question addAnswer: answer1];
     [question addAnswer: answer2];
     asker = [[Person alloc] initWithName: @"Graham Lee" avatarLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
     question.asker = asker;
     dataSource.question = question;
     questionPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
+    firstAnswerPath = [NSIndexPath indexPathForRow: 0 inSection: 1];
     store = [[AvatarStore alloc] init];
 }
 
@@ -50,6 +59,7 @@
     answer2 = nil;
     store = nil;
     questionPath = nil;
+    firstAnswerPath = nil;
 }
 
 - (void)testTwoSectionsInTheTableView {
@@ -91,4 +101,8 @@
     STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
 }
 
+- (void)testAnswerPropertiesAppearInAnswerCell {
+    AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
+    STAssertEqualObjects(answerCell.scoreLabel.text, @"3", @"Score from the first answer should appear in the score label");
+}
 @end
