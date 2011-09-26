@@ -11,6 +11,7 @@
 @implementation AnswerCell
 
 @synthesize scoreLabel;
+@synthesize acceptedIndicator;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

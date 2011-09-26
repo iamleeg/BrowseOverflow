@@ -58,6 +58,7 @@ enum {
         Answer *thisAnswer = [question.answers objectAtIndex: indexPath.row];
         [[NSBundle bundleForClass: [self class]] loadNibNamed: @"AnswerCell" owner: self options: nil];
         answerCell.scoreLabel.text = [NSString stringWithFormat: @"%d", thisAnswer.score];
+        answerCell.acceptedIndicator.hidden = !thisAnswer.accepted;
         cell = answerCell;
         self.answerCell = nil;
     }

@@ -22,7 +22,7 @@
     Question *question;
     Answer *answer1, *answer2;
     Person *asker;
-    NSIndexPath *questionPath, *firstAnswerPath;
+    NSIndexPath *questionPath, *firstAnswerPath, *secondAnswerPath;
     AvatarStore *store;
 }
 
@@ -48,6 +48,7 @@
     dataSource.question = question;
     questionPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
     firstAnswerPath = [NSIndexPath indexPathForRow: 0 inSection: 1];
+    secondAnswerPath = [NSIndexPath indexPathForRow: 1 inSection: 1];
     store = [[AvatarStore alloc] init];
 }
 
@@ -60,6 +61,7 @@
     store = nil;
     questionPath = nil;
     firstAnswerPath = nil;
+    secondAnswerPath = nil;
 }
 
 - (void)testTwoSectionsInTheTableView {
@@ -104,5 +106,12 @@
 - (void)testAnswerPropertiesAppearInAnswerCell {
     AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
     STAssertEqualObjects(answerCell.scoreLabel.text, @"3", @"Score from the first answer should appear in the score label");
+}
+
+- (void)testAcceptedLabelOnlyShownForAcceptedAnswer {
+    AnswerCell *firstAnswerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
+    AnswerCell *secondAnswerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: secondAnswerPath];
+    STAssertFalse(firstAnswerCell.acceptedIndicator.hidden, @"First answer is accepted, should display that");
+    STAssertTrue(secondAnswerCell.acceptedIndicator.hidden, @"Second answer not accepted, don't display accepted view");
 }
 @end
