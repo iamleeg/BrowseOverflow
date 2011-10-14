@@ -62,6 +62,7 @@ enum {
         Person *answerer = thisAnswer.person;
         answerCell.personName.text = answerer.name;
         answerCell.personAvatar.image = [UIImage imageWithData: [avatarStore dataForURL: answerer.avatarURL]];
+        [answerCell.bodyWebView loadHTMLString: [self HTMLStringForSnippet: thisAnswer.text] baseURL: nil];
         cell = answerCell;
         self.answerCell = nil;
     }
