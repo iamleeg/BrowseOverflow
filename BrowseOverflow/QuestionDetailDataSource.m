@@ -61,6 +61,7 @@ enum {
         answerCell.acceptedIndicator.hidden = !thisAnswer.accepted;
         Person *answerer = thisAnswer.person;
         answerCell.personName.text = answerer.name;
+        answerCell.personAvatar.image = [UIImage imageWithData: [avatarStore dataForURL: answerer.avatarURL]];
         cell = answerCell;
         self.answerCell = nil;
     }
