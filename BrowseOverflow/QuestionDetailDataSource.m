@@ -59,6 +59,8 @@ enum {
         [[NSBundle bundleForClass: [self class]] loadNibNamed: @"AnswerCell" owner: self options: nil];
         answerCell.scoreLabel.text = [NSString stringWithFormat: @"%d", thisAnswer.score];
         answerCell.acceptedIndicator.hidden = !thisAnswer.accepted;
+        Person *answerer = thisAnswer.person;
+        answerCell.personName.text = answerer.name;
         cell = answerCell;
         self.answerCell = nil;
     }

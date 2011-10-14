@@ -12,6 +12,7 @@
 
 @synthesize scoreLabel;
 @synthesize acceptedIndicator;
+@synthesize personName;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

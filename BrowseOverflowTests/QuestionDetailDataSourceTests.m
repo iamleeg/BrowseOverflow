@@ -21,7 +21,7 @@
     QuestionDetailDataSource *dataSource;
     Question *question;
     Answer *answer1, *answer2;
-    Person *asker;
+    Person *asker, *answerer;
     NSIndexPath *questionPath, *firstAnswerPath, *secondAnswerPath;
     AvatarStore *store;
 }
@@ -38,6 +38,8 @@
     answer1 = [[Answer alloc] init];
     answer1.score = 3;
     answer1.accepted = YES;
+    answerer = [[Person alloc] initWithName: @"Banquo" avatarLocation: @"http://example.com/avatar"];
+    answer1.person = answerer;
     answer2 = [[Answer alloc] init];
     answer2.score = 4;
     answer2.accepted = NO;
@@ -113,5 +115,10 @@
     AnswerCell *secondAnswerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: secondAnswerPath];
     STAssertFalse(firstAnswerCell.acceptedIndicator.hidden, @"First answer is accepted, should display that");
     STAssertTrue(secondAnswerCell.acceptedIndicator.hidden, @"Second answer not accepted, don't display accepted view");
+}
+
+- (void)testAnswererPropertiesInAnswerCell {
+  AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
+    STAssertEqualObjects(answerCell.personName.text, @"Banquo", @"The name of the person who wrote the answer should appear in the answer cell");
 }
 @end

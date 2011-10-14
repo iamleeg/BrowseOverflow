@@ -12,4 +12,5 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, weak) IBOutlet UILabel *acceptedIndicator;
+@property (nonatomic, weak) IBOutlet UILabel *personName;
 @end
