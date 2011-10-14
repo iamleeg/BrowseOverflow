@@ -71,7 +71,7 @@ enum {
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return sectionCount;
 }
 
 @end
