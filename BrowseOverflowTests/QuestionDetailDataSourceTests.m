@@ -24,6 +24,7 @@
     Person *asker, *answerer;
     NSIndexPath *questionPath, *firstAnswerPath, *secondAnswerPath;
     AvatarStore *store;
+    NSData *imageData;
 }
 
 - (void)setUp {
@@ -38,6 +39,7 @@
     answer1 = [[Answer alloc] init];
     answer1.score = 3;
     answer1.accepted = YES;
+    answer1.text = @"<p>Yes, it is.</p>";
     answerer = [[Person alloc] initWithName: @"Banquo" avatarLocation: @"http://example.com/avatar"];
     answer1.person = answerer;
     answer2 = [[Answer alloc] init];
@@ -52,12 +54,15 @@
     firstAnswerPath = [NSIndexPath indexPathForRow: 0 inSection: 1];
     secondAnswerPath = [NSIndexPath indexPathForRow: 1 inSection: 1];
     store = [[AvatarStore alloc] init];
+    NSURL *imageURL = [[NSBundle bundleForClass: [self class]] URLForResource: @"Graham_Lee" withExtension: @"jpg"];
+    imageData = [NSData dataWithContentsOfURL: imageURL];
 }
 
 - (void)tearDown {
     dataSource = nil;
     question = nil;
     asker = nil;
+    answerer = nil;
     answer1 = nil;
     answer2 = nil;
     store = nil;
@@ -98,8 +103,6 @@
 
 - (void)testQuestionCellGetsImageFromAvatarStore {
     dataSource.avatarStore = store;
-    NSURL *imageURL = [[NSBundle bundleForClass: [self class]] URLForResource: @"Graham_Lee" withExtension: @"jpg"];
-    NSData *imageData = [NSData dataWithContentsOfURL: imageURL];
     [store setData: imageData forLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
     QuestionDetailCell *cell = (QuestionDetailCell *)[dataSource tableView: nil cellForRowAtIndexPath: questionPath];
     STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
@@ -118,7 +121,17 @@
 }
 
 - (void)testAnswererPropertiesInAnswerCell {
-  AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
+    dataSource.avatarStore = store;
+    [store setData: imageData forLocation: @"http://example.com/avatar"];
+    AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
     STAssertEqualObjects(answerCell.personName.text, @"Banquo", @"The name of the person who wrote the answer should appear in the answer cell");
+    STAssertNotNil(answerCell.personAvatar.image, @"Use avatar store to get the answerer's avatar image");
+    UIWebView *bodyView = answerCell.bodyWebView;
+    /* NASTY HACK ALERT
+     * see above
+     */
+    [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.5]];
+    NSString *bodyHTML = [bodyView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
+    STAssertEqualObjects(bodyHTML, answer1.text, @"Answer text should be used for the cell's web view");
 }
 @end

@@ -13,6 +13,8 @@
 @synthesize scoreLabel;
 @synthesize acceptedIndicator;
 @synthesize personName;
+@synthesize personAvatar;
+@synthesize bodyWebView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

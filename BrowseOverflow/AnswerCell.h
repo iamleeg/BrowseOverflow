@@ -13,4 +13,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *scoreLabel;
 @property (nonatomic, weak) IBOutlet UILabel *acceptedIndicator;
 @property (nonatomic, weak) IBOutlet UILabel *personName;
+@property (nonatomic, weak) IBOutlet UIImageView *personAvatar;
+@property (nonatomic, weak) IBOutlet UIWebView *bodyWebView;
+
 @end
