@@ -7,6 +7,8 @@
 //
 
 #import "BrowseOverflowAppDelegate.h"
+#import "BrowseOverflowViewController.h"
+#import "TopicTableDataSource.h"
 
 @implementation BrowseOverflowAppDelegate
 
@@ -17,8 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    // Add the navigation controller's view to the window and display.
+    BrowseOverflowViewController *firstViewController = [[BrowseOverflowViewController alloc] initWithNibName: nil bundle: nil];
+    TopicTableDataSource *dataSource = [[TopicTableDataSource alloc] init];
+    firstViewController.dataSource = dataSource;
+    self.navigationController.viewControllers = [NSArray arrayWithObject: firstViewController];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
     return YES;
