@@ -9,18 +9,36 @@
 #import "BrowseOverflowAppDelegate.h"
 #import "BrowseOverflowViewController.h"
 #import "TopicTableDataSource.h"
+#import "Topic.h"
+
+@interface BrowseOverflowAppDelegate ()
+
+- (NSArray *)topics;
+
+@end
 
 @implementation BrowseOverflowAppDelegate
-
 
 @synthesize window=_window;
 
 @synthesize navigationController=_navigationController;
 
+- (NSArray *)topics {
+    NSString *tags[] = { @"iphone", @"cocoa-touch", @"uikit", @"objective-c", @"xcode" };
+    NSString *names[] = { @"iPhone", @"Cocoa Touch", @"UIKit", @"Objective-C", @"Xcode" };
+    NSMutableArray *topicList = [NSMutableArray array];
+    for (NSInteger i = 0; i < 5; i++) {
+        Topic *thisTopic = [[Topic alloc] initWithName: names[i] tag: tags[i]];
+        [topicList addObject: thisTopic];
+    }
+    return [topicList copy];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     BrowseOverflowViewController *firstViewController = [[BrowseOverflowViewController alloc] initWithNibName: nil bundle: nil];
     TopicTableDataSource *dataSource = [[TopicTableDataSource alloc] init];
+    [dataSource setTopics: [self topics]];
     firstViewController.dataSource = dataSource;
     self.navigationController.viewControllers = [NSArray arrayWithObject: firstViewController];
     self.window.rootViewController = self.navigationController;

@@ -59,4 +59,9 @@
     STAssertTrue([viewController.dataSource isKindOfClass: [TopicTableDataSource class]], @"First view should display a list of topics");
 }
 
+- (void)testTopicListIsNotEmptyOnAppLaunch {
+    [appDelegate application: nil didFinishLaunchingWithOptions: nil];
+    id <UITableViewDataSource> dataSource = [(BrowseOverflowViewController *)[appDelegate.navigationController topViewController] dataSource];
+    STAssertFalse([dataSource tableView: nil numberOfRowsInSection: 0] == 0, @"There should be some rows to display");
+}
 @end
