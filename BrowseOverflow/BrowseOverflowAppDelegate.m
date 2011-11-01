@@ -8,6 +8,7 @@
 
 #import "BrowseOverflowAppDelegate.h"
 #import "BrowseOverflowViewController.h"
+#import "BrowseOverflowObjectConfiguration.h"
 #import "TopicTableDataSource.h"
 #import "Topic.h"
 
@@ -37,6 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     BrowseOverflowViewController *firstViewController = [[BrowseOverflowViewController alloc] initWithNibName: nil bundle: nil];
+    firstViewController.objectConfiguration = [[BrowseOverflowObjectConfiguration alloc] init];
     TopicTableDataSource *dataSource = [[TopicTableDataSource alloc] init];
     [dataSource setTopics: [self topics]];
     firstViewController.dataSource = dataSource;

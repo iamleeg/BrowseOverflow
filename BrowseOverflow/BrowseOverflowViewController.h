@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class BrowseOverflowObjectConfiguration;
 @interface BrowseOverflowViewController : UIViewController
 
 @property (strong) IBOutlet UITableView *tableView;
 @property (strong) NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
+@property (strong) BrowseOverflowObjectConfiguration *objectConfiguration;
 
 - (void)userDidSelectTopicNotification: (NSNotification *)note;
 - (void)userDidSelectQuestionNotification: (NSNotification *)note;

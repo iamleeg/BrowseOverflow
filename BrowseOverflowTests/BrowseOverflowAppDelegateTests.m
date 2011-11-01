@@ -64,4 +64,11 @@
     id <UITableViewDataSource> dataSource = [(BrowseOverflowViewController *)[appDelegate.navigationController topViewController] dataSource];
     STAssertFalse([dataSource tableView: nil numberOfRowsInSection: 0] == 0, @"There should be some rows to display");
 }
+
+- (void)testFirstViewControllerHasAnObjectConfiguration {
+    [appDelegate application: nil didFinishLaunchingWithOptions: nil];
+    BrowseOverflowViewController *topicViewController = (BrowseOverflowViewController *)[appDelegate.navigationController topViewController];
+    STAssertNotNil(topicViewController.objectConfiguration, @"The view controller should have an object configuration instance");
+}
+
 @end

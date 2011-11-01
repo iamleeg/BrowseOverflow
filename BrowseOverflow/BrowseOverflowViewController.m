@@ -7,6 +7,7 @@
 //
 
 #import "BrowseOverflowViewController.h"
+#import "BrowseOverflowObjectConfiguration.h"
 #import "TopicTableDataSource.h"
 #import "QuestionListTableDataSource.h"
 #import "QuestionDetailDataSource.h"
@@ -16,6 +17,7 @@
 
 @synthesize tableView;
 @synthesize dataSource;
+@synthesize objectConfiguration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
