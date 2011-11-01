@@ -94,6 +94,9 @@
 		98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98E3AEB5138FD55B00E8407B /* FakeNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */; };
+		98E4ABB31460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E4ABB21460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m */; };
+		98E4ABB714609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E4ABB614609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m */; };
+		98E4ABB814609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E4ABB614609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m */; };
 		98EC97F6144CADFA001F074D /* BrowseOverflowAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98EC97F5144CADFA001F074D /* BrowseOverflowAppDelegateTests.m */; };
 		98EC97F8144CB11B001F074D /* BrowseOverflowAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 98A548DF130D3ABD003C4F0F /* BrowseOverflowAppDelegate.m */; };
 		98F82F2813E1863800668CAC /* TopicTableDataSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 98F82F2713E1863800668CAC /* TopicTableDataSourceTests.m */; };
@@ -227,6 +230,10 @@
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
 		98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNotificationCenter.h; sourceTree = "<group>"; };
 		98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FakeNotificationCenter.m; sourceTree = "<group>"; };
+		98E4ABB11460985700B5C95B /* BrowseOverflowObjectConfigurationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowObjectConfigurationTests.h; sourceTree = "<group>"; };
+		98E4ABB21460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowObjectConfigurationTests.m; sourceTree = "<group>"; };
+		98E4ABB514609AFE00B5C95B /* BrowseOverflowObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowObjectConfiguration.h; sourceTree = "<group>"; };
+		98E4ABB614609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowObjectConfiguration.m; sourceTree = "<group>"; };
 		98EAE5C813E06EE60010E9D8 /* TopicTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopicTableDataSource.h; path = BrowseOverflowTests/TopicTableDataSource.h; sourceTree = SOURCE_ROOT; };
 		98EC97F4144CADFA001F074D /* BrowseOverflowAppDelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowseOverflowAppDelegateTests.h; sourceTree = "<group>"; };
 		98EC97F5144CADFA001F074D /* BrowseOverflowAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowseOverflowAppDelegateTests.m; sourceTree = "<group>"; };
@@ -369,6 +376,8 @@
 				9862C2751430DF9800AF3A79 /* AnswerCell.h */,
 				9862C2761430DF9800AF3A79 /* AnswerCell.m */,
 				98BE817B1430E16C00CAC4E9 /* AnswerCell.xib */,
+				98E4ABB514609AFE00B5C95B /* BrowseOverflowObjectConfiguration.h */,
+				98E4ABB614609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m */,
 			);
 			path = BrowseOverflow;
 			sourceTree = "<group>";
@@ -426,6 +435,8 @@
 				9822D310140D180600396141 /* QuestionDetailDataSourceTests.m */,
 				98EC97F4144CADFA001F074D /* BrowseOverflowAppDelegateTests.h */,
 				98EC97F5144CADFA001F074D /* BrowseOverflowAppDelegateTests.m */,
+				98E4ABB11460985700B5C95B /* BrowseOverflowObjectConfigurationTests.h */,
+				98E4ABB21460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m */,
 			);
 			path = BrowseOverflowTests;
 			sourceTree = "<group>";
@@ -589,6 +600,7 @@
 				9822D30D140D112A00396141 /* QuestionDetailDataSource.m in Sources */,
 				9822D314140D480800396141 /* QuestionDetailCell.m in Sources */,
 				9862C2771430DF9800AF3A79 /* AnswerCell.m in Sources */,
+				98E4ABB714609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +657,8 @@
 				9822D315140D480800396141 /* QuestionDetailCell.m in Sources */,
 				9862C2781430DF9800AF3A79 /* AnswerCell.m in Sources */,
 				98EC97F6144CADFA001F074D /* BrowseOverflowAppDelegateTests.m in Sources */,
+				98E4ABB31460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m in Sources */,
+				98E4ABB814609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
