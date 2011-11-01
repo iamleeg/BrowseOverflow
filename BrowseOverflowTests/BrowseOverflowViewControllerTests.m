@@ -8,6 +8,7 @@
 
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
+#import "BrowseOverflowObjectConfiguration.h"
 #import "TopicTableDataSource.h"
 #import "Topic.h"
 #import "QuestionListTableDataSource.h"
@@ -53,6 +54,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     SEL realUserDidSelectTopic, testUserDidSelectTopic;
     SEL realUserDidSelectQuestion, testUserDidSelectQuestion;
     UINavigationController *navController;
+    BrowseOverflowObjectConfiguration *objectConfiguration;
 }
 
 + (void)swapInstanceMethodsForClass: (Class) cls selector: (SEL)sel1 andSelector: (SEL)sel2 {
@@ -84,6 +86,8 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     testUserDidSelectQuestion = @selector(browseOverflowControllerTests_userDidSelectQuestionNotification:);
     
     navController = [[UINavigationController alloc] initWithRootViewController: viewController];
+    objectConfiguration = [[BrowseOverflowObjectConfiguration alloc] init];
+    viewController.objectConfiguration = objectConfiguration;
 }
 
 - (void)tearDown {
@@ -91,6 +95,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     viewController = nil;
     tableView = nil;
     navController = nil;
+    objectConfiguration = nil;
     
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewDidAppear andSelector: testViewDidAppear];
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillDisappear andSelector: testViewWillDisappear];
@@ -226,5 +231,17 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     BrowseOverflowViewController *nextVC = (BrowseOverflowViewController *)navController.topViewController;
     STAssertTrue([nextVC.dataSource isKindOfClass: [QuestionDetailDataSource class]], @"Selecting a question should show details of that question");
     STAssertEqualObjects([(QuestionDetailDataSource *)nextVC.dataSource question], sampleQuestion, @"Details should be shown for the selected question");
+}
+
+- (void)testSelectingTopicNotificationPassesObjectConfigurationToNewViewController {
+    [viewController userDidSelectTopicNotification: nil];
+    BrowseOverflowViewController *newTopVC = (BrowseOverflowViewController *)navController.topViewController;
+    STAssertEqualObjects(newTopVC.objectConfiguration, objectConfiguration, @"The object configuration should be passed through to the new view controller");
+}
+
+- (void)testSelectingQuestionNotificationPassesObjectConfigurationToNewViewController {
+    [viewController userDidSelectQuestionNotification: nil];
+    BrowseOverflowViewController *newTopVC = (BrowseOverflowViewController *)navController.topViewController;
+    STAssertEqualObjects(newTopVC.objectConfiguration, objectConfiguration, @"The object configuration should be passed through to the new view controller");
 }
 @end

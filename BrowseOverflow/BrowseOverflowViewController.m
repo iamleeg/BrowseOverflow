@@ -90,6 +90,7 @@
     QuestionListTableDataSource *questionsDataSource = [[QuestionListTableDataSource alloc] init];
     questionsDataSource.topic = selectedTopic;
     nextViewController.dataSource = questionsDataSource;
+    nextViewController.objectConfiguration = self.objectConfiguration;
     [[self navigationController] pushViewController: nextViewController animated: YES];
 }
 
@@ -99,6 +100,7 @@
     QuestionDetailDataSource *detailDataSource = [[QuestionDetailDataSource alloc] init];
     detailDataSource.question = selectedQuestion;
     nextViewController.dataSource = detailDataSource;
+    nextViewController.objectConfiguration = self.objectConfiguration;
     [[self navigationController] pushViewController: nextViewController animated: YES];
 }
 @end
