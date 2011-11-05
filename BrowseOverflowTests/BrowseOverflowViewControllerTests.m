@@ -30,6 +30,8 @@ static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociate
 
 static const char *viewDidAppearKey = "BrowseOverflowViewControllerTestsViewDidAppearKey";
 static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsViewWillDisappearKey";
+static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWillAppearKey";
+
 @implementation UIViewController (TestSuperclassCalled)
 
 - (void)browseOverflowViewControllerTests_viewDidAppear: (BOOL)animated {
@@ -42,6 +44,10 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     objc_setAssociatedObject(self, viewWillDisappearKey, parameter, OBJC_ASSOCIATION_RETAIN);
 }
 
+- (void)browseOverflowViewControllerTests_viewWillAppear: (BOOL)animated {
+    NSNumber *parameter = [NSNumber numberWithBool: animated];
+    objc_setAssociatedObject(self, viewWillAppearKey, parameter, OBJC_ASSOCIATION_RETAIN);
+}
 @end
 
 @implementation BrowseOverflowViewControllerTests
@@ -51,6 +57,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     id <UITableViewDataSource, UITableViewDelegate> dataSource;
     SEL realViewDidAppear, testViewDidAppear;
     SEL realViewWillDisappear, testViewWillDisappear;
+    SEL realViewWillAppear, testViewWillAppear;
     SEL realUserDidSelectTopic, testUserDidSelectTopic;
     SEL realUserDidSelectQuestion, testUserDidSelectQuestion;
     UINavigationController *navController;
@@ -79,6 +86,10 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     testViewWillDisappear = @selector(browseOverflowViewControllerTests_viewWillDisappear:);
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillDisappear andSelector: testViewWillDisappear];
     
+    realViewWillAppear = @selector(viewWillAppear:);
+    testViewWillAppear = @selector(browseOverflowViewControllerTests_viewWillAppear:);
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillAppear andSelector: testViewWillAppear];
+    
     realUserDidSelectTopic = @selector(userDidSelectTopicNotification:);
     testUserDidSelectTopic = @selector(browseOverflowControllerTests_userDidSelectTopicNotification:);
     
@@ -99,6 +110,7 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewDidAppear andSelector: testViewDidAppear];
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillDisappear andSelector: testViewWillDisappear];
+    [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillAppear andSelector: testViewWillAppear];
 }
 
 - (void)testViewControllerHasATableViewProperty {
@@ -244,4 +256,15 @@ static const char *viewWillDisappearKey = "BrowseOverflowViewControllerTestsView
     BrowseOverflowViewController *newTopVC = (BrowseOverflowViewController *)navController.topViewController;
     STAssertEqualObjects(newTopVC.objectConfiguration, objectConfiguration, @"The object configuration should be passed through to the new view controller");
 }
+
+- (void)testViewWillAppearCreatesAStackOverflowManager {
+    [viewController viewWillAppear: YES];
+    STAssertNotNil(viewController.manager, @"Set up a stack overflow manager before the view appears");
+}
+
+- (void)testViewWillAppearCallsSuper {
+    [viewController viewWillAppear: YES];
+    STAssertNotNil(objc_getAssociatedObject(viewController, viewWillAppearKey), @"-viewWillAppear: is documented to require a call to super");
+}
+
 @end

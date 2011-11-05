@@ -11,6 +11,7 @@
 #import "TopicTableDataSource.h"
 #import "QuestionListTableDataSource.h"
 #import "QuestionDetailDataSource.h"
+#import "StackOverflowManager.h"
 #import <objc/runtime.h>
 
 @implementation BrowseOverflowViewController
@@ -18,6 +19,7 @@
 @synthesize tableView;
 @synthesize dataSource;
 @synthesize objectConfiguration;
+@synthesize manager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,6 +82,11 @@
     [super viewWillDisappear: animated];
     [[NSNotificationCenter defaultCenter]
      removeObserver: self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+    self.manager = [objectConfiguration stackOverflowManager];
 }
 
 #pragma mark - Notification handling
