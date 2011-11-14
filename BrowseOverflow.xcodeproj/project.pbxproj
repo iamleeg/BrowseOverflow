@@ -91,6 +91,7 @@
 		98BAC3F2138EABA200B36163 /* AvatarStore+TestingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */; };
 		98BE817C1430E16C00CAC4E9 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BE817B1430E16C00CAC4E9 /* AnswerCell.xib */; };
 		98BE817D1430E16C00CAC4E9 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98BE817B1430E16C00CAC4E9 /* AnswerCell.xib */; };
+		98BF4DEA1471ABAF008A2D66 /* TestObjectConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 98BF4DE91471ABAF008A2D66 /* TestObjectConfiguration.m */; };
 		98DDCCF61377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98DDCCF71377F41D007E9A50 /* UserBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 98DDCCF51377F41D007E9A50 /* UserBuilder.m */; };
 		98E3AEB5138FD55B00E8407B /* FakeNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */; };
@@ -226,6 +227,8 @@
 		98BAC3F0138EABA200B36163 /* AvatarStore+TestingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AvatarStore+TestingExtensions.h"; sourceTree = "<group>"; };
 		98BAC3F1138EABA200B36163 /* AvatarStore+TestingExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AvatarStore+TestingExtensions.m"; sourceTree = "<group>"; };
 		98BE817B1430E16C00CAC4E9 /* AnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
+		98BF4DE81471ABAF008A2D66 /* TestObjectConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObjectConfiguration.h; sourceTree = "<group>"; };
+		98BF4DE91471ABAF008A2D66 /* TestObjectConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObjectConfiguration.m; sourceTree = "<group>"; };
 		98DDCCF41377F41D007E9A50 /* UserBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserBuilder.h; sourceTree = "<group>"; };
 		98DDCCF51377F41D007E9A50 /* UserBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserBuilder.m; sourceTree = "<group>"; };
 		98E3AEB3138FD55B00E8407B /* FakeNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FakeNotificationCenter.h; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 				98E3AEB4138FD55B00E8407B /* FakeNotificationCenter.m */,
 				985264B113FEB72200A92A7D /* ReloadDataWatcher.h */,
 				985264B213FEB72200A92A7D /* ReloadDataWatcher.m */,
+				98BF4DE81471ABAF008A2D66 /* TestObjectConfiguration.h */,
+				98BF4DE91471ABAF008A2D66 /* TestObjectConfiguration.m */,
 			);
 			name = "Mocks, Fakes Stubs";
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 				98EC97F6144CADFA001F074D /* BrowseOverflowAppDelegateTests.m in Sources */,
 				98E4ABB31460985700B5C95B /* BrowseOverflowObjectConfigurationTests.m in Sources */,
 				98E4ABB814609AFE00B5C95B /* BrowseOverflowObjectConfiguration.m in Sources */,
+				98BF4DEA1471ABAF008A2D66 /* TestObjectConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

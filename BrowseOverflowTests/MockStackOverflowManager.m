@@ -7,7 +7,7 @@
 //
 
 #import "MockStackOverflowManager.h"
-
+#import "Topic.h"
 
 @implementation MockStackOverflowManager
 
@@ -59,4 +59,11 @@
     return answerListString;
 }
 
+- (BOOL)didFetchQuestions {
+    return wasAskedToFetchQuestions;
+}
+
+- (void)fetchQuestionsOnTopic:(Topic *)topic {
+    wasAskedToFetchQuestions = YES;
+}
 @end

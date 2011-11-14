@@ -9,11 +9,13 @@
 #import "BrowseOverflowViewControllerTests.h"
 #import "BrowseOverflowViewController.h"
 #import "BrowseOverflowObjectConfiguration.h"
+#import "TestObjectConfiguration.h"
 #import "TopicTableDataSource.h"
 #import "Topic.h"
 #import "QuestionListTableDataSource.h"
 #import "QuestionDetailDataSource.h"
 #import "Question.h"
+#import "MockStackOverflowManager.h"
 #import <objc/runtime.h>
 
 static const char *notificationKey = "BrowseOverflowViewControllerTestsAssociatedNotificationKey";
@@ -267,4 +269,13 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     STAssertNotNil(objc_getAssociatedObject(viewController, viewWillAppearKey), @"-viewWillAppear: is documented to require a call to super");
 }
 
+- (void)testViewWillAppearOnQuestionListInitiatesLoadingOfQuestions {
+    TestObjectConfiguration *configuration = [[TestObjectConfiguration alloc] init];
+    MockStackOverflowManager *manager = [[MockStackOverflowManager alloc] init];
+    configuration.objectToReturn = manager;
+    viewController.objectConfiguration = configuration;
+    viewController.dataSource = [[QuestionListTableDataSource alloc] init];
+    [viewController viewWillAppear: YES];
+    STAssertTrue([manager didFetchQuestions], @"View controller should have arranged for question content to be downloaded");
+}
 @end

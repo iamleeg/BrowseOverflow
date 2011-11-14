@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "StackOverflowCommunicatorDelegate.h"
 
+@class Topic;
+
 @interface MockStackOverflowManager : NSObject <StackOverflowCommunicatorDelegate> {
     NSInteger topicFailureErrorCode;
     NSInteger bodyFailureErrorCode;
@@ -16,6 +18,7 @@
     NSString *topicSearchString;
     NSString *questionBodyString;
     NSString *answerListString;
+    BOOL wasAskedToFetchQuestions;
 }
 
 - (NSInteger)topicFailureErrorCode;
@@ -26,4 +29,6 @@
 - (NSString *)questionBodyString;
 - (NSString *)answerListString;
 
+- (BOOL)didFetchQuestions;
+- (void)fetchQuestionsOnTopic: (Topic *)topic;
 @end

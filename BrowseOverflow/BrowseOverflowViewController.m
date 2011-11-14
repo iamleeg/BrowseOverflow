@@ -87,6 +87,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
     self.manager = [objectConfiguration stackOverflowManager];
+    if ([self.dataSource isKindOfClass: [QuestionListTableDataSource class]]) {
+        Topic *selectedTopic = [(QuestionListTableDataSource *)self.dataSource topic];
+        [self.manager fetchQuestionsOnTopic: selectedTopic];
+    }
 }
 
 #pragma mark - Notification handling
