@@ -9,6 +9,7 @@
 #import "MockStackOverflowManager.h"
 #import "Topic.h"
 
+
 @implementation MockStackOverflowManager
 
 - (NSInteger)topicFailureErrorCode {
@@ -66,4 +67,21 @@
 - (void)fetchQuestionsOnTopic:(Topic *)topic {
     wasAskedToFetchQuestions = YES;
 }
+
+- (BOOL)didFetchAnswers {
+    return wasAskedToFetchAnswers;
+}
+
+- (void)fetchAnswersForQuestion: (Question *)question {
+    wasAskedToFetchAnswers = YES;
+}
+
+- (BOOL)didFetchQuestionBody {
+    return wasAskedToFetchBody;
+}
+
+- (void)fetchBodyForQuestion:(Question *)question {
+    wasAskedToFetchBody = YES;
+}
+
 @end

@@ -64,6 +64,8 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     SEL realUserDidSelectQuestion, testUserDidSelectQuestion;
     UINavigationController *navController;
     BrowseOverflowObjectConfiguration *objectConfiguration;
+    TestObjectConfiguration *testConfiguration;
+    MockStackOverflowManager *manager;
 }
 
 + (void)swapInstanceMethodsForClass: (Class) cls selector: (SEL)sel1 andSelector: (SEL)sel2 {
@@ -101,6 +103,9 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     navController = [[UINavigationController alloc] initWithRootViewController: viewController];
     objectConfiguration = [[BrowseOverflowObjectConfiguration alloc] init];
     viewController.objectConfiguration = objectConfiguration;
+    testConfiguration = [[TestObjectConfiguration alloc] init];
+    manager = [[MockStackOverflowManager alloc] init];
+    testConfiguration.objectToReturn = manager;
 }
 
 - (void)tearDown {
@@ -109,6 +114,8 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     tableView = nil;
     navController = nil;
     objectConfiguration = nil;
+    testConfiguration = nil;
+    manager = nil;
     
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewDidAppear andSelector: testViewDidAppear];
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [UIViewController class] selector: realViewWillDisappear andSelector: testViewWillDisappear];
@@ -270,12 +277,17 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
 }
 
 - (void)testViewWillAppearOnQuestionListInitiatesLoadingOfQuestions {
-    TestObjectConfiguration *configuration = [[TestObjectConfiguration alloc] init];
-    MockStackOverflowManager *manager = [[MockStackOverflowManager alloc] init];
-    configuration.objectToReturn = manager;
-    viewController.objectConfiguration = configuration;
+    viewController.objectConfiguration = testConfiguration;
     viewController.dataSource = [[QuestionListTableDataSource alloc] init];
     [viewController viewWillAppear: YES];
     STAssertTrue([manager didFetchQuestions], @"View controller should have arranged for question content to be downloaded");
+}
+
+- (void)testViewWillAppearOnQuestionDetailInitiatesLoadingOfAnswersAndBody {
+    viewController.objectConfiguration = testConfiguration;
+    viewController.dataSource = [[QuestionDetailDataSource alloc] init];
+    [viewController viewWillAppear: YES];
+    STAssertTrue([manager didFetchQuestionBody], @"View controller should arrange for question detail to be loaded");
+    STAssertTrue([manager didFetchAnswers], @"View controller should arrange for answers to be loaded");
 }
 @end

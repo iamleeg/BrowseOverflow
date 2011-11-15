@@ -91,6 +91,11 @@
         Topic *selectedTopic = [(QuestionListTableDataSource *)self.dataSource topic];
         [self.manager fetchQuestionsOnTopic: selectedTopic];
     }
+    else if ([self.dataSource isKindOfClass: [QuestionDetailDataSource class]]) {
+        Question *selectedQuestion = [(QuestionDetailDataSource *)self.dataSource question];
+        [self.manager fetchBodyForQuestion: selectedQuestion];
+        [self.manager fetchAnswersForQuestion: selectedQuestion];
+    }
 }
 
 #pragma mark - Notification handling
