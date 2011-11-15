@@ -120,4 +120,31 @@
     nextViewController.objectConfiguration = self.objectConfiguration;
     [[self navigationController] pushViewController: nextViewController animated: YES];
 }
+
+#pragma mark - StackOverflowManagerDelegate
+
+- (void)fetchingQuestionsFailedWithError:(NSError *)error {
+    
+}
+
+- (void)didReceiveQuestions:(NSArray *)questions {
+    
+}
+
+- (void)fetchingQuestionBodyFailedWithError:(NSError *)error {
+    
+}
+
+- (void)retrievingAnswersFailedWithError:(NSError *)error {
+    
+}
+
+- (void)answersReceivedForQuestion:(Question *)question {
+    
+}
+
+- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
+    
+}
+
 @end
