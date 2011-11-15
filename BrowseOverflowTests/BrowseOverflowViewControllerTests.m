@@ -290,4 +290,27 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     STAssertTrue([manager didFetchQuestionBody], @"View controller should arrange for question detail to be loaded");
     STAssertTrue([manager didFetchAnswers], @"View controller should arrange for answers to be loaded");
 }
+
+- (void)testQuestionsNotLoadedForDetailView {
+    viewController.objectConfiguration = testConfiguration;
+    viewController.dataSource = [[QuestionDetailDataSource alloc] init];
+    [viewController viewWillAppear: YES];
+    STAssertFalse([manager didFetchQuestions], @"Don't load question when displaying answers");
+}
+
+- (void)testDetailsNotLoadedForQuestionListView {
+    viewController.objectConfiguration = testConfiguration;
+    viewController.dataSource = [[QuestionListTableDataSource alloc] init];
+    [viewController viewWillAppear: YES];
+    STAssertFalse([manager didFetchQuestionBody], @"View controller should not arrange for question detail to be loaded");
+    STAssertFalse([manager didFetchAnswers], @"View controller should not arrange for answers to be loaded");
+}
+
+- (void)testNoDataLoadedForTopicListView {
+    viewController.objectConfiguration = testConfiguration;
+    STAssertFalse([manager didFetchQuestions], @"Don't load question when displaying topics");
+    STAssertFalse([manager didFetchQuestionBody], @"View controller should not arrange for question detail to be loaded");
+    STAssertFalse([manager didFetchAnswers], @"View controller should not arrange for answers to be loaded");
+}
+
 @end
