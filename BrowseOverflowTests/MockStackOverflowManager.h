@@ -38,4 +38,7 @@
 - (void)fetchQuestionsOnTopic: (Topic *)topic;
 - (void)fetchAnswersForQuestion: (Question *)question;
 - (void)fetchBodyForQuestion: (Question *)question;
+
+@property (strong) id delegate;
+
 @end

@@ -12,6 +12,8 @@
 
 @implementation MockStackOverflowManager
 
+@synthesize delegate;
+
 - (NSInteger)topicFailureErrorCode {
     return topicFailureErrorCode;
 }

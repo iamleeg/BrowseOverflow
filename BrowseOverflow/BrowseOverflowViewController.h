@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StackOverflowManagerDelegate.h"
 
 @class BrowseOverflowObjectConfiguration;
 @class StackOverflowManager;
 
-@interface BrowseOverflowViewController : UIViewController
+@interface BrowseOverflowViewController : UIViewController <StackOverflowManagerDelegate>
 
 @property (strong) IBOutlet UITableView *tableView;
 @property (strong) NSObject <UITableViewDataSource, UITableViewDelegate> *dataSource;
