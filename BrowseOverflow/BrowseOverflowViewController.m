@@ -145,7 +145,7 @@
 }
 
 - (void)answersReceivedForQuestion:(Question *)question {
-    
+    [tableView reloadData];
 }
 
 @end
