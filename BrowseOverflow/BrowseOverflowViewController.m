@@ -148,8 +148,4 @@
     
 }
 
-- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
-    
-}
-
 @end

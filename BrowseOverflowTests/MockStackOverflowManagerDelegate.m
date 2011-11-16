@@ -36,8 +36,4 @@
     self.successQuestion = question;
 }
 
-- (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
-    
-}
-
 @end
