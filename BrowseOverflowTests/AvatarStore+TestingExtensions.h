@@ -14,5 +14,6 @@
 - (void)setData: (NSData *)data forLocation: (NSString *)location;
 - (NSUInteger)dataCacheSize;
 - (NSDictionary *)communicators;
+- (NSNotificationCenter *)notificationCenter;
 
 @end

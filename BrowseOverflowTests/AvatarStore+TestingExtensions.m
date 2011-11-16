@@ -23,4 +23,8 @@
     return communicators;
 }
 
+- (NSNotificationCenter *)notificationCenter {
+    return notificationCenter;
+}
+
 @end
