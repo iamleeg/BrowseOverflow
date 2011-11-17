@@ -152,6 +152,13 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     STAssertEqualObjects(questionDataSource.tableView, tableView, @"Back-link to table view should be set in data source");
 }
 
+- (void)testViewControllerHooksUpQuestionListNotificationCenterInViewDidAppear {
+    QuestionListTableDataSource *questionDataSource = [[QuestionListTableDataSource alloc] init];
+    viewController.dataSource = questionDataSource;
+    [viewController viewDidAppear: YES];
+    STAssertEqualObjects(questionDataSource.notificationCenter, [NSNotificationCenter defaultCenter], @"");
+}
+
 - (void)testDefaultStateOfViewControllerDoesNotReceiveTopicSelectionNotifications {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectTopic andSelector: testUserDidSelectTopic];
     [[NSNotificationCenter defaultCenter] 
