@@ -69,6 +69,7 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     BrowseOverflowObjectConfiguration *objectConfiguration;
     TestObjectConfiguration *testConfiguration;
     MockStackOverflowManager *manager;
+    Question *question;
 }
 
 + (void)swapInstanceMethodsForClass: (Class) cls selector: (SEL)sel1 andSelector: (SEL)sel2 {
@@ -109,10 +110,13 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     testConfiguration = [[TestObjectConfiguration alloc] init];
     manager = [[MockStackOverflowManager alloc] init];
     testConfiguration.objectToReturn = manager;
+    
+    question = [[Question alloc] init];
 }
 
 - (void)tearDown {
     objc_removeAssociatedObjects(viewController);
+    question = nil;
     viewController = nil;
     tableView = nil;
     navController = nil;
@@ -220,7 +224,7 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
 
 - (void)testDefaultStateOfViewControllerDoesNotReceiveQuestionSelectionNotification {
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
-    [[NSNotificationCenter defaultCenter] postNotificationName: QuestionListDidSelectQuestionNotification object: nil userInfo: nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName: QuestionListDidSelectQuestionNotification object: question userInfo: nil];
     STAssertNil(objc_getAssociatedObject(viewController, notificationKey), @"View controller shouldn't receive question selection notifications by default");
     [BrowseOverflowViewControllerTests swapInstanceMethodsForClass: [BrowseOverflowViewController class] selector: realUserDidSelectQuestion andSelector: testUserDidSelectQuestion];
 }
