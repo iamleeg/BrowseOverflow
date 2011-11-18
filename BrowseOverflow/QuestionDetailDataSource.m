@@ -34,7 +34,6 @@ enum {
 @synthesize avatarStore;
 
 - (NSString *)HTMLStringForSnippet:(NSString *)snippet {
-    NSLog(@"snippit: %@", snippet);
     return [NSString stringWithFormat: @"<html><head></head><body>%@</body></html>", snippet];
 }
 
