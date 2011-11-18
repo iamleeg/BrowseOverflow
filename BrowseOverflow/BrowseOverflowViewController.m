@@ -72,6 +72,9 @@
      selector: @selector(userDidSelectTopicNotification:)
      name: TopicTableDidSelectTopicNotification
      object: nil];
+    if ([self.dataSource isKindOfClass: [QuestionListTableDataSource class]]) {
+        ((QuestionListTableDataSource *)dataSource).notificationCenter = [NSNotificationCenter defaultCenter];
+    }
     [[NSNotificationCenter defaultCenter]
      addObserver: self 
      selector: @selector(userDidSelectQuestionNotification:)
