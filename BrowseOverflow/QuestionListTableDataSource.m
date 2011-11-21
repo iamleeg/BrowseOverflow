@@ -73,6 +73,10 @@
     [tableView reloadData];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 132.0f;
+}
+
 @end
 
 NSString *QuestionListDidSelectQuestionNotification = @"QuestionListDidSelectQuestionNotification";
