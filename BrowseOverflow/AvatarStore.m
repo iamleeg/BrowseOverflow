@@ -22,6 +22,9 @@
 
 
 - (NSData *)dataForURL:(NSURL *)url {
+    if (url == nil) {
+        return nil;
+    }
     NSData *avatarData = [dataCache objectForKey: [url absoluteString]];
     if (!avatarData) {
         GravatarCommunicator *communicator = [[GravatarCommunicator alloc] init];

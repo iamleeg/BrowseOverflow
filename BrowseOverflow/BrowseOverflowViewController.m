@@ -95,11 +95,13 @@
     if ([self.dataSource isKindOfClass: [QuestionListTableDataSource class]]) {
         Topic *selectedTopic = [(QuestionListTableDataSource *)self.dataSource topic];
         [self.manager fetchQuestionsOnTopic: selectedTopic];
+        [(QuestionListTableDataSource *)self.dataSource setAvatarStore: [objectConfiguration avatarStore]];
     }
     else if ([self.dataSource isKindOfClass: [QuestionDetailDataSource class]]) {
         Question *selectedQuestion = [(QuestionDetailDataSource *)self.dataSource question];
         [self.manager fetchBodyForQuestion: selectedQuestion];
         [self.manager fetchAnswersForQuestion: selectedQuestion];
+        [(QuestionDetailDataSource *)self.dataSource setAvatarStore: [objectConfiguration avatarStore]];
     }
 }
 

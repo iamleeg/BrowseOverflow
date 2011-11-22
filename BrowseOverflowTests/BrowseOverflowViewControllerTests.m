@@ -363,4 +363,19 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     [viewController answersReceivedForQuestion: nil];
     STAssertTrue([watcher didReceiveReloadData], @"Table view data was reloaded after fetching new answers");
 }
+
+- (void)testQuestionListViewIsGivenAnAvatarStore {
+    QuestionListTableDataSource *listDataSource = [[QuestionListTableDataSource alloc] init];
+    viewController.dataSource = listDataSource;
+    [viewController viewWillAppear: YES];
+    STAssertNotNil(listDataSource.avatarStore, @"The avatarStore property should be configured in -viewWillAppear:");
+}
+
+- (void)testQuestionDetailViewIsGivenAnAvatarStore {
+    QuestionDetailDataSource *detailDataSource = [[QuestionDetailDataSource alloc] init];
+    viewController.dataSource = detailDataSource;
+    [viewController viewWillAppear: YES];
+    STAssertNotNil(detailDataSource.avatarStore, @"The avatarStore property should be configured in -viewWillAppear:");
+}
+
 @end

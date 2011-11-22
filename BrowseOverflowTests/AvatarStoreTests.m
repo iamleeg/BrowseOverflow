@@ -86,4 +86,8 @@
     STAssertEquals([store dataCacheSize], initialCacheSize, @"No data should be added on error");
 }
 
+- (void)testNilDataReturnedWhenNilURLPassed {
+    STAssertNil([store dataForURL: nil], @"Don't return data when passed a nil URL");
+}
+
 @end
