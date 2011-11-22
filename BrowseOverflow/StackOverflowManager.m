@@ -58,6 +58,7 @@
 
 - (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
     [questionBuilder fillInDetailsForQuestion: self.questionToFill fromJSON: objectNotation];
+    [delegate bodyReceivedForQuestion: self.questionToFill];
     self.questionToFill = nil;
 }
 

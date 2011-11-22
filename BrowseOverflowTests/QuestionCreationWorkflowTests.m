@@ -128,4 +128,11 @@
     [mgr receivedQuestionBodyJSON: @"Fake JSON"];
     STAssertEqualObjects(questionBuilder.questionToFill, questionToFetch, @"The question should have been passed to the builder");
 }
+
+- (void)testManagerNotifiesDelegateWhenQuestionBodyIsReceived {
+    [mgr fetchBodyForQuestion: questionToFetch];
+    [mgr receivedQuestionBodyJSON: @"Fake JSON"];
+    STAssertEqualObjects(delegate.bodyQuestion, questionToFetch, @"Update delegate when question body filled");
+}
+
 @end

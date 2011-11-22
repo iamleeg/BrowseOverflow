@@ -43,4 +43,9 @@
  */
 - (void)answersReceivedForQuestion: (Question *)question;
 
+/**
+ * The manager got the body of a question.
+ */
+- (void)bodyReceivedForQuestion: (Question *)question;
+
 @end

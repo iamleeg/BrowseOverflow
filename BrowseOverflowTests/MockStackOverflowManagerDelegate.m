@@ -15,6 +15,7 @@
 @synthesize fetchError;
 @synthesize fetchedQuestions;
 @synthesize successQuestion;
+@synthesize bodyQuestion;
 
 - (void)fetchingQuestionsFailedWithError: (NSError *)error {
     self.fetchError = error;
@@ -34,6 +35,10 @@
 
 - (void)answersReceivedForQuestion:(Question *)question {
     self.successQuestion = question;
+}
+
+- (void)bodyReceivedForQuestion:(Question *)question {
+    self.bodyQuestion = question;
 }
 
 @end

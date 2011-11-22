@@ -15,5 +15,6 @@
 @property (strong) NSError *fetchError;
 @property (strong) NSArray *fetchedQuestions;
 @property (strong) Question *successQuestion;
+@property (strong) Question *bodyQuestion;
 
 @end
