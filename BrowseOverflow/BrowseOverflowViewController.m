@@ -153,4 +153,8 @@
     [tableView reloadData];
 }
 
+- (void)bodyReceivedForQuestion:(Question *)question {
+    [tableView reloadData];
+}
+
 @end

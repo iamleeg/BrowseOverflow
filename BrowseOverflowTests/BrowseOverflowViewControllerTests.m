@@ -378,4 +378,13 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     STAssertNotNil(detailDataSource.avatarStore, @"The avatarStore property should be configured in -viewWillAppear:");
 }
 
+- (void)testTableReloadedWhenQuestionBodyReceived {
+    QuestionDetailDataSource *detailDataSource = [[QuestionDetailDataSource alloc] init];
+    viewController.dataSource = detailDataSource;
+    ReloadDataWatcher *watcher = [[ReloadDataWatcher alloc] init];
+    viewController.tableView = (UITableView *)watcher;
+    [viewController bodyReceivedForQuestion: nil];
+    STAssertTrue([watcher didReceiveReloadData], @"Table reloaded when question body received");
+}
+
 @end
