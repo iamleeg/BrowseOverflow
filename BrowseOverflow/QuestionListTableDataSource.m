@@ -49,7 +49,7 @@
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault reuseIdentifier: @"placeholder"];
         }
-        cell.textLabel.text = @"There was a problem connecting to the network.";
+        cell.textLabel.text = @"There was a problem.";
     }
     return cell;
 }

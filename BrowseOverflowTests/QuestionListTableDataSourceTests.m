@@ -71,13 +71,13 @@
 
 - (void)testContentOfPlaceholderCell {
     UITableViewCell *placeholderCell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertEqualObjects(placeholderCell.textLabel.text, @"There was a problem connecting to the network.", @"The placeholder cell ought to display a placeholder message");
+    STAssertEqualObjects(placeholderCell.textLabel.text, @"There was a problem.", @"The placeholder cell ought to display a placeholder message");
 }
 
 - (void)testPlaceholderCellNotReturnedWhenQuestionsExist {
     [iPhoneTopic addQuestion: question1];
     UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertFalse([cell.textLabel.text isEqualToString: @"There was a problem connecting to the network."], @"Placeholder should only be shown when there's no content");
+    STAssertFalse([cell.textLabel.text isEqualToString: @"There was a problem."], @"Placeholder should only be shown when there's no content");
 }
 
 - (void)testCellPropertiesAreTheSameAsTheQuestion {
