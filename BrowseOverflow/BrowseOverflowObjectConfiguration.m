@@ -19,6 +19,8 @@
     StackOverflowManager *manager = [[StackOverflowManager alloc] init];
     manager.communicator = [[StackOverflowCommunicator alloc] init];
     manager.communicator.delegate = manager;
+    manager.bodyCommunicator = [[StackOverflowCommunicator alloc] init];
+    manager.bodyCommunicator.delegate = manager;
     manager.questionBuilder = [[QuestionBuilder alloc] init];
     manager.answerBuilder = [[AnswerBuilder alloc] init];
     return manager;

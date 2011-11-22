@@ -23,9 +23,11 @@
 
 @synthesize delegate;
 @synthesize communicator;
+@synthesize bodyCommunicator;
 @synthesize questionBuilder;
 @synthesize answerBuilder;
 @synthesize questionToFill;
+@synthesize questionNeedingBody;
 
 - (void)setDelegate:(id<StackOverflowManagerDelegate>)newDelegate {
     if (newDelegate && ![newDelegate conformsToProtocol: @protocol(StackOverflowManagerDelegate)]) {
@@ -41,8 +43,8 @@
 }
 
 - (void)fetchBodyForQuestion: (Question *)question {
-    self.questionToFill = question;
-    [communicator downloadInformationForQuestionWithID: question.questionID];
+    self.questionNeedingBody = question;
+    [bodyCommunicator downloadInformationForQuestionWithID: question.questionID];
 }
 
 - (void)receivedQuestionsJSON:(NSString *)objectNotation {
@@ -57,13 +59,12 @@
 }
 
 - (void)receivedQuestionBodyJSON:(NSString *)objectNotation {
-    [questionBuilder fillInDetailsForQuestion: self.questionToFill fromJSON: objectNotation];
-    [delegate bodyReceivedForQuestion: self.questionToFill];
-    self.questionToFill = nil;
+    [questionBuilder fillInDetailsForQuestion: self.questionNeedingBody fromJSON: objectNotation];
+    [delegate bodyReceivedForQuestion: self.questionNeedingBody];
+    self.questionNeedingBody = nil;
 }
 
 - (void)searchingForQuestionsFailedWithError:(NSError *)error {
-    self.questionToFill = nil;
     [self tellDelegateAboutQuestionSearchError: error];
 }
 
@@ -74,6 +75,7 @@
     }
     NSError *reportableError = [NSError errorWithDomain: StackOverflowManagerError code: StackOverflowManagerErrorQuestionBodyFetchCode userInfo:errorInfo];
     [delegate fetchingQuestionBodyFailedWithError: reportableError];
+    self.questionNeedingBody = nil;
 }
 
 #pragma mark Answers

@@ -21,6 +21,7 @@
     MockStackOverflowManagerDelegate *delegate;
     FakeQuestionBuilder *questionBuilder;
     MockStackOverflowCommunicator *communicator;
+    MockStackOverflowCommunicator *bodyCommunicator;
     Question *questionToFetch;
     NSError *underlyingError;
     NSArray *questionArray;
@@ -39,6 +40,8 @@
     questionArray = [NSArray arrayWithObject: questionToFetch];
     communicator = [[MockStackOverflowCommunicator alloc] init];
     mgr.communicator = communicator;
+    bodyCommunicator = [[MockStackOverflowCommunicator alloc] init];
+    mgr.bodyCommunicator = bodyCommunicator;
 }
 
 - (void)tearDown {
@@ -48,6 +51,7 @@
     questionToFetch = nil;
     questionArray = nil;
     communicator = nil;
+    bodyCommunicator = nil;
     underlyingError = nil;
 }
 
@@ -110,7 +114,7 @@
 
 - (void)testAskingForQuestionBodyMeansRequestingData {
     [mgr fetchBodyForQuestion: questionToFetch];
-    STAssertTrue([communicator wasAskedToFetchBody], @"The communicator should need to retrieve data for the question body");
+    STAssertTrue([bodyCommunicator wasAskedToFetchBody], @"The communicator should need to retrieve data for the question body");
 }
 
 - (void)testDelegateNotifiedOfFailureToFetchQuestion {

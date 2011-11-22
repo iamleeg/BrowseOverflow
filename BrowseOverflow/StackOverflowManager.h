@@ -22,9 +22,12 @@
 @interface StackOverflowManager : NSObject <StackOverflowCommunicatorDelegate> 
 @property (weak, nonatomic) id <StackOverflowManagerDelegate> delegate;
 @property (strong) StackOverflowCommunicator *communicator;
+@property (strong) StackOverflowCommunicator *bodyCommunicator;
 @property (strong) QuestionBuilder *questionBuilder;
 @property (strong) AnswerBuilder *answerBuilder;
 @property (strong) Question *questionToFill;
+@property (strong) Question *questionNeedingBody;
+
 /**
  * Retrieve questions on a given topic from Stack Overflow.
  * @note The delegate will receive messages when new information

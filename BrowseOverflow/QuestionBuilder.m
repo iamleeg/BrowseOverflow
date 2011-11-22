@@ -58,7 +58,7 @@
     if (![parsedObject isKindOfClass: [NSDictionary class]]) {
         return;
     }
-    NSString *questionBody = [[[parsedObject objectForKey: @"questions"]  objectAtIndex: 0] objectForKey: @"body"];
+    NSString *questionBody = [[[parsedObject objectForKey: @"questions"] lastObject] objectForKey: @"body"];
     if (questionBody) {
         question.body = questionBody;
     }

@@ -32,9 +32,11 @@
     StackOverflowManager *manager = [configuration stackOverflowManager];
     STAssertNotNil(manager, @"The StackOverflowManager should exist");
     STAssertNotNil(manager.communicator, @"Manager should have a StackOverflowCommunicator");
+    STAssertNotNil(manager.bodyCommunicator, @"Manager needs a second StackOverflowCommunicator");
     STAssertNotNil(manager.questionBuilder, @"Manager should have a question builder");
     STAssertNotNil(manager.answerBuilder, @"Manager should have an answer builder");
     STAssertEqualObjects(manager.communicator.delegate, manager, @"The manager is the communicator's delegate");
+    STAssertEqualObjects(manager.bodyCommunicator.delegate, manager, @"The manager is the delegate of the body communicator");
 }
 
 - (void)testConfigurationOfCreatedAvatarStore {

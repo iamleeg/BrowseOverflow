@@ -51,6 +51,7 @@ static NSString *questionJSON = @"{"
 
 static NSString *stringIsNotJSON = @"Not JSON";
 static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
+static NSString *emptyQuestionsArray = @"{ \"questions\": [] }";
 
 @implementation QuestionBuilderTests
 
@@ -136,4 +137,9 @@ static NSString *noQuestionsJSONString = @"{ \"noquestions\": true }";
     [questionBuilder fillInDetailsForQuestion: question fromJSON:questionJSON];
     STAssertEqualObjects(question.body, @"<p>I've been trying to use persistent keychain references.</p>", @"The correct question body is added");
 }
+
+- (void)testEmptyQuestionsArrayDoesNotCrash {
+    STAssertNoThrow([questionBuilder fillInDetailsForQuestion: question fromJSON: emptyQuestionsArray], @"Don't throw if no questions are found");
+}
+
 @end
