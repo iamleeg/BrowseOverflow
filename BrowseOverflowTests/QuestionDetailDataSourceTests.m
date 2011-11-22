@@ -134,4 +134,16 @@
     NSString *bodyHTML = [bodyView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
     STAssertEqualObjects(bodyHTML, answer1.text, @"Answer text should be used for the cell's web view");
 }
+
+- (void)testQuestionRowIsAtLeastAsTallAsItsContent {
+    UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: questionPath];
+    CGFloat height = [dataSource tableView: nil heightForRowAtIndexPath: questionPath];
+    STAssertTrue(height >= cell.frame.size.height, @"The question row should be at least as tall as its content");
+}
+
+- (void)testAnswerRowIsAtLeastAsTallAsItsContent {
+    UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
+    CGFloat height = [dataSource tableView: nil heightForRowAtIndexPath: firstAnswerPath];
+    STAssertTrue(height >= cell.frame.size.height, @"The answer row should be at least as tall as its content");
+}
 @end

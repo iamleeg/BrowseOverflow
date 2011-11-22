@@ -75,4 +75,12 @@ enum {
     return sectionCount;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == questionSection) {
+        return 276.0f;
+    }
+    else {
+        return 201.0f;
+    }
+}
 @end
