@@ -85,7 +85,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear: animated];
     [[NSNotificationCenter defaultCenter]
-     removeObserver: self];
+     removeObserver: self name: TopicTableDidSelectTopicNotification object: nil];
+    [[NSNotificationCenter defaultCenter]
+     removeObserver: self name: QuestionListDidSelectQuestionNotification object: nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
