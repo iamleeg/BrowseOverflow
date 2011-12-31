@@ -118,6 +118,7 @@ static const char *viewWillAppearKey = "BrowseOverflowViewControllerTestsViewWil
     objc_removeAssociatedObjects(viewController);
     question = nil;
     viewController = nil;
+    dataSource = nil;
     tableView = nil;
     navController = nil;
     objectConfiguration = nil;
