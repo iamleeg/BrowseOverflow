@@ -47,9 +47,11 @@
 
 - (void)testQuestionsAreListedChronologically {
     Question *q1 = [[Question alloc] init];
+    q1.questionID = 1;
     q1.date = [NSDate distantPast];
     
     Question *q2 = [[Question alloc] init];
+    q2.questionID = 2;
     q2.date = [NSDate distantFuture];
     
     [topic addQuestion: q1];
@@ -76,7 +78,16 @@
     for (NSInteger i = 0; i < 2; i++) {
         [topic addQuestion: q1];
     }
-    STAssertEquals((NSUInteger)1, [[topic recentQuestions] count], @"Adding the same question twice should only yield one entry");
+    STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Adding the same question twice should only yield one entry");
 }
 
+- (void)testThatDifferentQuestionsWithTheSameValueCannotBothBeInTheList {
+    Question *q123 = [[Question alloc] init];
+    q123.questionID = 123;
+    Question *alsoQ123 = [[Question alloc] init];
+    alsoQ123.questionID = 123;
+    [topic addQuestion: q123];
+    [topic addQuestion: alsoQ123];
+    STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Adding questions with the same value should only yield one entry");
+}
 @end
