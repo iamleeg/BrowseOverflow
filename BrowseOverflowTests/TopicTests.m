@@ -11,9 +11,14 @@
 #import "Question.h"
 
 @implementation TopicTests
+{
+    Question *questionWithID123;
+}
 
 - (void)setUp {
     topic = [[Topic alloc] initWithName: @"iPhone" tag: @"iphone"];
+    questionWithID123 = [[Question alloc] init];
+    questionWithID123.questionID = 123;
 }
 
 - (void)tearDown {
@@ -40,8 +45,7 @@
 }
 
 - (void)testAddingAQuestionToTheList {
-    Question *question = [[Question alloc] init];
-    [topic addQuestion: question];
+    [topic addQuestion: questionWithID123];
     STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Add a question, and the count of questions should go up");
 }
 
@@ -65,28 +69,25 @@
 }
 
 - (void)testLimitOfTwentyQuestions {
-    Question *q1 = [[Question alloc] init];
     for (NSInteger i = 0; i < 25; i++) {
-        [topic addQuestion: q1];
+        Question *q = [[Question alloc] init];
+        q.questionID = i;
+        [topic addQuestion: q];
     }
     STAssertTrue([[topic recentQuestions] count] < 21, @"There should never be more than twenty questions");
 }
 
 - (void)testThatTheSameQuestionCannotBeAddedTwiceToTheList {
-    Question *q1 = [[Question alloc] init];
-    q1.questionID = 123;
     for (NSInteger i = 0; i < 2; i++) {
-        [topic addQuestion: q1];
+        [topic addQuestion: questionWithID123];
     }
     STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Adding the same question twice should only yield one entry");
 }
 
 - (void)testThatDifferentQuestionsWithTheSameValueCannotBothBeInTheList {
-    Question *q123 = [[Question alloc] init];
-    q123.questionID = 123;
     Question *alsoQ123 = [[Question alloc] init];
     alsoQ123.questionID = 123;
-    [topic addQuestion: q123];
+    [topic addQuestion: questionWithID123];
     [topic addQuestion: alsoQ123];
     STAssertEquals([[topic recentQuestions] count], (NSUInteger)1, @"Adding questions with the same value should only yield one entry");
 }
