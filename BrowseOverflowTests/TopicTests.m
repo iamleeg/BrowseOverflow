@@ -70,4 +70,13 @@
     STAssertTrue([[topic recentQuestions] count] < 21, @"There should never be more than twenty questions");
 }
 
+- (void)testThatTheSameQuestionCannotBeAddedTwiceToTheList {
+    Question *q1 = [[Question alloc] init];
+    q1.questionID = 123;
+    for (NSInteger i = 0; i < 2; i++) {
+        [topic addQuestion: q1];
+    }
+    STAssertEquals((NSUInteger)1, [[topic recentQuestions] count], @"Adding the same question twice should only yield one entry");
+}
+
 @end

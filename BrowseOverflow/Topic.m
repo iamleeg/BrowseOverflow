@@ -30,6 +30,7 @@
 
 
 - (void)addQuestion: (Question *)question {
+    if ([questions containsObject: question]) return;
     NSArray *newQuestions = [questions arrayByAddingObject: question];
     if ([newQuestions count] > 20) {
         newQuestions = [self sortQuestionsLatestFirst: newQuestions];
