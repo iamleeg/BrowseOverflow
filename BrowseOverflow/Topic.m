@@ -16,6 +16,9 @@
 @end
 
 @implementation Topic
+{
+    NSSet *questions;
+}
 @synthesize name;
 @synthesize tag;
 
@@ -23,7 +26,7 @@
     if ((self = [super init])) {
         name = [newName copy];
         tag = [newTag copy];
-        questions = [[NSArray alloc] init];
+        questions = [[NSSet alloc] init];
     }
     return self;
 }
@@ -31,16 +34,17 @@
 
 - (void)addQuestion: (Question *)question {
     if ([questions containsObject: question]) return;
-    NSArray *newQuestions = [questions arrayByAddingObject: question];
+    NSSet *newQuestions = [questions setByAddingObject: question];
+    NSArray *latestQuestions = [newQuestions allObjects];
     if ([newQuestions count] > 20) {
-        newQuestions = [self sortQuestionsLatestFirst: newQuestions];
-        newQuestions = [newQuestions subarrayWithRange: NSMakeRange(0, 20)];
+        latestQuestions = [self sortQuestionsLatestFirst: latestQuestions];
+        latestQuestions = [latestQuestions subarrayWithRange: NSMakeRange(0, 20)];
     }
-    questions = newQuestions;
+    questions = [NSSet setWithArray: latestQuestions];
 }
 
 - (NSArray *)recentQuestions {
-    return [self sortQuestionsLatestFirst: questions];
+    return [self sortQuestionsLatestFirst: [questions allObjects]];
 }
 
 - (NSArray *)sortQuestionsLatestFirst: (NSArray *)questionList {

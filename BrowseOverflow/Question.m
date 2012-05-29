@@ -41,4 +41,8 @@
         return [super isEqual: object];
     }
 }
+
+- (NSUInteger)hash {
+    return (NSUInteger)self.questionID;
+}
 @end
