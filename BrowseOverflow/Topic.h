@@ -12,9 +12,7 @@
 /**
  * A class representing a particular subject on Stack Overflow.
  */
-@interface Topic : NSObject {
-    NSArray *questions;
-}
+@interface Topic : NSObject
 /**
  * A name for this topic, suitable for displaying in the UI.
  */

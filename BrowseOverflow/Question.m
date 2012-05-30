@@ -33,5 +33,16 @@
     return [[answerSet allObjects] sortedArrayUsingSelector: @selector(compare:)];
 }
 
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass: [Question class]]) {
+        Question *other = (Question *)object;
+        return (self.questionID == other.questionID);
+    } else {
+        return [super isEqual: object];
+    }
+}
 
+- (NSUInteger)hash {
+    return (NSUInteger)self.questionID;
+}
 @end
