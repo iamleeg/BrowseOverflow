@@ -33,7 +33,6 @@
 
 
 - (void)addQuestion: (Question *)question {
-    if ([questions containsObject: question]) return;
     NSSet *newQuestions = [questions setByAddingObject: question];
     NSArray *latestQuestions = [newQuestions allObjects];
     if ([newQuestions count] > 20) {
