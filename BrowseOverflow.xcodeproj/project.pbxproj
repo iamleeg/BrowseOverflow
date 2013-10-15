@@ -194,7 +194,7 @@
 		98A548E4130D3ABE003C4F0F /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		98A548E5130D3ABE003C4F0F /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		98A548E8130D3ABE003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
-		98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowseOverflowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowseOverflowTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A548F7130D3ABF003C4F0F /* BrowseOverflowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BrowseOverflowTests-Info.plist"; sourceTree = "<group>"; };
 		98A548F9130D3ABF003C4F0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		98A548FB130D3ABF003C4F0F /* BrowseOverflowTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrowseOverflowTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				98A548CB130D3ABC003C4F0F /* BrowseOverflow.app */,
-				98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */,
+				98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -502,8 +502,8 @@
 			);
 			name = BrowseOverflowTests;
 			productName = BrowseOverflowTests;
-			productReference = 98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 98A548EF130D3ABF003C4F0F /* BrowseOverflowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -799,7 +799,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
@@ -809,14 +809,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -828,7 +823,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BrowseOverflowTests/BrowseOverflowTests-Prefix.pch";
@@ -838,14 +833,9 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)\"";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

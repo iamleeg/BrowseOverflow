@@ -60,32 +60,32 @@
 }
 
 - (void)testTopicWithNoQuestionsLeadsToOneRowInTheTable {
-    STAssertEquals([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)1, @"The table view needs a 'no data yet' placeholder cell");
+    XCTAssertEqual([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)1, @"The table view needs a 'no data yet' placeholder cell");
 }
 
 - (void)testTopicWithQuestionsResultsInOneRowPerQuestionInTheTable {
     [iPhoneTopic addQuestion: question1];
     [iPhoneTopic addQuestion: question2];
-    STAssertEquals([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)2, @"Two questions in the topic means two rows in the table");
+    XCTAssertEqual([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)2, @"Two questions in the topic means two rows in the table");
 }
 
 - (void)testContentOfPlaceholderCell {
     UITableViewCell *placeholderCell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertEqualObjects(placeholderCell.textLabel.text, @"There was a problem.", @"The placeholder cell ought to display a placeholder message");
+    XCTAssertEqualObjects(placeholderCell.textLabel.text, @"There was a problem.", @"The placeholder cell ought to display a placeholder message");
 }
 
 - (void)testPlaceholderCellNotReturnedWhenQuestionsExist {
     [iPhoneTopic addQuestion: question1];
     UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertFalse([cell.textLabel.text isEqualToString: @"There was a problem."], @"Placeholder should only be shown when there's no content");
+    XCTAssertFalse([cell.textLabel.text isEqualToString: @"There was a problem."], @"Placeholder should only be shown when there's no content");
 }
 
 - (void)testCellPropertiesAreTheSameAsTheQuestion {
     [iPhoneTopic addQuestion: question1];
     QuestionSummaryCell *cell = (QuestionSummaryCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertEqualObjects(cell.titleLabel.text, @"Question One", @"Question cells display the question's title");
-    STAssertEqualObjects(cell.scoreLabel.text, @"2", @"Question cells display the question's score");
-    STAssertEqualObjects(cell.nameLabel.text, @"Graham Lee", @"Question cells display the asker's name");
+    XCTAssertEqualObjects(cell.titleLabel.text, @"Question One", @"Question cells display the question's title");
+    XCTAssertEqualObjects(cell.scoreLabel.text, @"2", @"Question cells display the question's score");
+    XCTAssertEqualObjects(cell.nameLabel.text, @"Graham Lee", @"Question cells display the asker's name");
 }
 
 - (void)testCellGetsImageFromAvatarStore {
@@ -95,14 +95,14 @@
     [store setData: imageData forLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
     [iPhoneTopic addQuestion: question1];
     QuestionSummaryCell *cell = (QuestionSummaryCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstCell];
-    STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
+    XCTAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
 }
 
 - (void)testQuestionListRegistersForAvatarNotifications {
     FakeNotificationCenter *center = [[FakeNotificationCenter alloc] init];
     dataSource.notificationCenter = (NSNotificationCenter *)center;
     [dataSource registerForUpdatesToAvatarStore: store];
-    STAssertTrue([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source should know when new images have been downloaded");
+    XCTAssertTrue([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source should know when new images have been downloaded");
 }
 
 - (void)testQuestionListStopsRegisteringForAvatarNotifications {
@@ -110,21 +110,21 @@
     dataSource.notificationCenter = (NSNotificationCenter *)center;
     [dataSource registerForUpdatesToAvatarStore: store];
     [dataSource removeObservationOfUpdatesToAvatarStore: store];
-    STAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source  should no longer listen to avatar store notifications");
+    XCTAssertFalse([center hasObject: dataSource forNotification: AvatarStoreDidUpdateContentNotification], @"The data source  should no longer listen to avatar store notifications");
 }
 
 - (void)testQuestionListCausesTableReloadOnAvatarNotification {
     ReloadDataWatcher *fakeTableView = [[ReloadDataWatcher alloc] init];
     dataSource.tableView = (UITableView *)fakeTableView;
     [dataSource avatarStoreDidUpdateContent: nil];
-    STAssertTrue([fakeTableView didReceiveReloadData], @"Data source should get the table view to reload when new data is available");
+    XCTAssertTrue([fakeTableView didReceiveReloadData], @"Data source should get the table view to reload when new data is available");
 }
 
 - (void)testSelectingPlaceholderDoesNotSendSelectionNotification {
     dataSource.notificationCenter = [NSNotificationCenter defaultCenter];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(didReceiveNotification:) name: @"QuestionListDidSelectQuestionNotification" object: nil];
     [dataSource tableView: nil didSelectRowAtIndexPath: firstCell];
-    STAssertNil(receivedNotification, @"Shouldn't be notified of selecting the placeholder cell");
+    XCTAssertNil(receivedNotification, @"Shouldn't be notified of selecting the placeholder cell");
 }
 
 - (void)testSelectingQuestionSendsSelectionNotification {
@@ -132,8 +132,8 @@
     dataSource.notificationCenter = [NSNotificationCenter defaultCenter];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(didReceiveNotification:) name: @"QuestionListDidSelectQuestionNotification" object: nil];
     [dataSource tableView: nil didSelectRowAtIndexPath: firstCell];
-    STAssertEqualObjects([receivedNotification name], @"QuestionListDidSelectQuestionNotification", @"Question list should notify when a question is selected");
-    STAssertEqualObjects([receivedNotification object], question1, @"The selected question should be the object of the notification");
+    XCTAssertEqualObjects([receivedNotification name], @"QuestionListDidSelectQuestionNotification", @"Question list should notify when a question is selected");
+    XCTAssertEqualObjects([receivedNotification object], question1, @"The selected question should be the object of the notification");
     [[NSNotificationCenter defaultCenter] removeObserver: self];
 }
 
@@ -141,7 +141,7 @@
     [iPhoneTopic addQuestion: question1];
     UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstCell];
     CGFloat height = [dataSource tableView: nil heightForRowAtIndexPath: firstCell];
-    STAssertTrue(height >= cell.frame.size.height, @"Give the table enough space to draw the view.");
+    XCTAssertTrue(height >= cell.frame.size.height, @"Give the table enough space to draw the view.");
 }
 
 @end

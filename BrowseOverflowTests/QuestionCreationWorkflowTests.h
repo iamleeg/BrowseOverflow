@@ -6,8 +6,8 @@
 //  Copyright 2011 Fuzzy Aliens Ltd. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface QuestionCreationWorkflowTests : SenTestCase 
+@interface QuestionCreationWorkflowTests : XCTestCase 
 
 @end

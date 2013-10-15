@@ -54,50 +54,50 @@ static NSString *noAnswersJSONString = @"{ \"noanswers\": true }";
 }
 
 - (void)testThatSendingNilJSONIsNotAnOption {
-    STAssertThrows([answerBuilder addAnswersToQuestion: question fromJSON: nil error: NULL], @"Not having data should have already been handled");
+    XCTAssertThrows([answerBuilder addAnswersToQuestion: question fromJSON: nil error: NULL], @"Not having data should have already been handled");
 }
 
 - (void)testThatAddingAnswersToNilQuestionIsNotSupported {
-    STAssertThrows([answerBuilder addAnswersToQuestion: nil fromJSON: stringIsNotJSON error: NULL], @"Makes no sense to have answers without a question");
+    XCTAssertThrows([answerBuilder addAnswersToQuestion: nil fromJSON: stringIsNotJSON error: NULL], @"Makes no sense to have answers without a question");
 }
 
 - (void)testSendingNonJSONIsAnError {
     NSError *error = nil;
-    STAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: stringIsNotJSON error: &error], @"Can't successfully create answers without real data");
-    STAssertEqualObjects([error domain], AnswerBuilderErrorDomain, @"This should be an AnswerBuilder error");
+    XCTAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: stringIsNotJSON error: &error], @"Can't successfully create answers without real data");
+    XCTAssertEqualObjects([error domain], AnswerBuilderErrorDomain, @"This should be an AnswerBuilder error");
 }
 
 - (void)testErrorParameterMayBeNULL {
-    STAssertNoThrow([answerBuilder addAnswersToQuestion: question fromJSON: stringIsNotJSON error: NULL], @"AnswerBuilder should handle a NULL pointer gracefully");
+    XCTAssertNoThrow([answerBuilder addAnswersToQuestion: question fromJSON: stringIsNotJSON error: NULL], @"AnswerBuilder should handle a NULL pointer gracefully");
 }
 
 - (void)testSendingJSONWithIncorrectKeysIsAnError {
     NSError *error = nil;
-    STAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: noAnswersJSONString error: &error], @"There must be a collection of answers in the input data");
+    XCTAssertFalse([answerBuilder addAnswersToQuestion: question fromJSON: noAnswersJSONString error: &error], @"There must be a collection of answers in the input data");
 }
 
 - (void)testAddingRealAnswerJSONIsNotAnError {
-    STAssertTrue([answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL], @"Should be OK to actually want to add answers");
+    XCTAssertTrue([answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL], @"Should be OK to actually want to add answers");
 }
 
 - (void)testNumberOfAnswersAddedMatchNumberInData {
     [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
-    STAssertEquals([question.answers count], (NSUInteger)1, @"One answer added to zero should mean one answer");
+    XCTAssertEqual([question.answers count], (NSUInteger)1, @"One answer added to zero should mean one answer");
 }
 
 - (void)testAnswerPropertiesMatchDataReceived {
     [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
     Answer *answer = [question.answers objectAtIndex: 0];
-    STAssertEquals(answer.score, (NSInteger)1, @"Score property should be set from JSON");
-    STAssertTrue(answer.accepted, @"Answer should be accepted as in JSON data");
-    STAssertEqualObjects(answer.text, @"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>", @"Answer body should match fed data");
+    XCTAssertEqual(answer.score, (NSInteger)1, @"Score property should be set from JSON");
+    XCTAssertTrue(answer.accepted, @"Answer should be accepted as in JSON data");
+    XCTAssertEqualObjects(answer.text, @"<p>Turns out that using the kSecMatchItemList doesn't appear to work at all. </p>", @"Answer body should match fed data");
 }
 
 - (void)testAnswerIsProvidedByExpectedPerson {
     [answerBuilder addAnswersToQuestion: question fromJSON: realAnswerJSON error: NULL];
     Answer *answer = [question.answers objectAtIndex: 0];
     Person *answerer = answer.person;
-    STAssertEqualObjects(answerer.name, @"dmaclach", @"The provided person name was used");
-    STAssertEqualObjects([answerer.avatarURL absoluteString], @"http://www.gravatar.com/avatar/d96ae876eac0075727243a10fab823b3", @"The provided email hash was converted to an avatar URL");
+    XCTAssertEqualObjects(answerer.name, @"dmaclach", @"The provided person name was used");
+    XCTAssertEqualObjects([answerer.avatarURL absoluteString], @"http://www.gravatar.com/avatar/d96ae876eac0075727243a10fab823b3", @"The provided email hash was converted to an avatar URL");
 }
 @end

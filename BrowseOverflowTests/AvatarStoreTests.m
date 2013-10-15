@@ -24,58 +24,58 @@
 
 - (void)testLookupDataInCacheDictionary {
     NSData *retrievedData = [store dataForURL: [NSURL URLWithString: sampleLocation]];
-    STAssertEqualObjects(retrievedData, sampleData, @"If the data's already in the dictionary ");
+    XCTAssertEqualObjects(retrievedData, sampleData, @"If the data's already in the dictionary ");
 }
 
 - (void)testLowMemoryWarningRemovesCache {
     [store didReceiveMemoryWarning: nil];
-    STAssertEquals([store dataCacheSize], (NSUInteger)0, @"Cache should be purged");
+    XCTAssertEqual([store dataCacheSize], (NSUInteger)0, @"Cache should be purged");
 }
 
 - (void)testStoreSubscribesToLowMemoryNotification {
     [store useNotificationCenter: (NSNotificationCenter *)center];
-    STAssertTrue([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"store should have registered for the notification");
+    XCTAssertTrue([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"store should have registered for the notification");
 }
 
 - (void)testStoreRemovesSubscriptionFromLowMemoryNotification {
     [store useNotificationCenter: (NSNotificationCenter *)center];
     [store stopUsingNotificationCenter: (NSNotificationCenter *)center];
-    STAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
+    XCTAssertFalse([center hasObject: store forNotification: UIApplicationDidReceiveMemoryWarningNotification], @"Object should no longer be registered for low memory warnings");
 }
 
 - (void)testCacheMissReturnsNoData {
-    STAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"There shouldn't be any data for this location");
+    XCTAssertNil([store dataForURL: [NSURL URLWithString: otherLocation]], @"There shouldn't be any data for this location");
 }
 
 - (void)testCacheMissCreatesNewCommunicator {
     [store dataForURL: [NSURL URLWithString: otherLocation]];
-    STAssertNotNil([[store communicators] objectForKey: otherLocation], @"Store tries to fetch data from the network");
+    XCTAssertNotNil([[store communicators] objectForKey: otherLocation], @"Store tries to fetch data from the network");
 }
 
 - (void)testStoreRetrievedDataFromCommunicator {
     NSURL *otherURL = [NSURL URLWithString: otherLocation];
     [store communicatorReceivedData: sampleData forURL: otherURL];
-    STAssertEqualObjects([store dataForURL: otherURL], sampleData, @"The store should keep the data it receives");
+    XCTAssertEqualObjects([store dataForURL: otherURL], sampleData, @"The store should keep the data it receives");
 }
 
 - (void)testStoreSendsDataUpdateNotificationWhenDataRetrieved {
     [store useNotificationCenter: (NSNotificationCenter *)center];
     [store communicatorReceivedData: sampleData forURL: [NSURL URLWithString: otherLocation]];
-    STAssertTrue([center didReceiveNotification: AvatarStoreDidUpdateContentNotification fromObject: store], @"When data is received, interested parties should be told");
+    XCTAssertTrue([center didReceiveNotification: AvatarStoreDidUpdateContentNotification fromObject: store], @"When data is received, interested parties should be told");
     [store stopUsingNotificationCenter: (NSNotificationCenter *)center];
 }
 
 - (void)testStoreDiscardsCommunicatorOnCompletion {
     [store dataForURL: [NSURL URLWithString: otherLocation]];
     [store communicatorReceivedData: sampleData forURL: [NSURL URLWithString: otherLocation]];
-    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should have thrown away its communicator");
+    XCTAssertNil([[store communicators] objectForKey: otherLocation], @"Store should have thrown away its communicator");
 }
 
 - (void)testStoreDiscardsCommunicatorOnFailure {
     NSURL *otherURL = [NSURL URLWithString: otherLocation];
     [store dataForURL: otherURL];
     [store communicatorGotErrorForURL: otherURL];
-    STAssertNil([[store communicators] objectForKey: otherLocation], @"Store should throw away its communicator on error");
+    XCTAssertNil([[store communicators] objectForKey: otherLocation], @"Store should throw away its communicator on error");
 }
 
 - (void)testStoreDoesNotUseAnyDataOnError {
@@ -83,11 +83,11 @@
     NSURL *otherURL = [NSURL URLWithString: otherLocation];
     [store dataForURL: otherURL];
     [store communicatorGotErrorForURL: otherURL];
-    STAssertEquals([store dataCacheSize], initialCacheSize, @"No data should be added on error");
+    XCTAssertEqual([store dataCacheSize], initialCacheSize, @"No data should be added on error");
 }
 
 - (void)testNilDataReturnedWhenNilURLPassed {
-    STAssertNil([store dataForURL: nil], @"Don't return data when passed a nil URL");
+    XCTAssertNil([store dataForURL: nil], @"Don't return data when passed a nil URL");
 }
 
 @end

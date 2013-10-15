@@ -72,15 +72,15 @@
 }
 
 - (void)testTwoSectionsInTheTableView {
-    STAssertEquals([dataSource numberOfSectionsInTableView: nil], (NSInteger)2, @"Always two sections in the table view");
+    XCTAssertEqual([dataSource numberOfSectionsInTableView: nil], (NSInteger)2, @"Always two sections in the table view");
 }
 
 - (void)testOneRowInTheFirstSection {
-    STAssertEquals([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)1, @"Always one row in section 0");
+    XCTAssertEqual([dataSource tableView: nil numberOfRowsInSection: 0], (NSInteger)1, @"Always one row in section 0");
 }
 
 - (void)testOneRowPerAnswerInTheSecondSection {
-    STAssertEquals([dataSource tableView: nil numberOfRowsInSection: 1], (NSInteger)2, @"One row per answer in section 1");
+    XCTAssertEqual([dataSource tableView: nil numberOfRowsInSection: 1], (NSInteger)2, @"One row per answer in section 1");
 }
 
 - (void)testQuestionPropertiesAppearInQuestionCell {
@@ -95,55 +95,55 @@
      */
     [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.5]];
     NSString *bodyHTML = [bodyView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
-    STAssertEqualObjects(bodyHTML, question.body, @"Question body should be used for the cell's web view");
-    STAssertEqualObjects(cell.titleLabel.text, question.title, @"Question title used as cell title");
-    STAssertEquals([cell.scoreLabel.text integerValue], question.score, @"Question's score should be displayed");
-    STAssertEqualObjects(cell.nameLabel.text, asker.name, @"Person's name should be displayed");
+    XCTAssertEqualObjects(bodyHTML, question.body, @"Question body should be used for the cell's web view");
+    XCTAssertEqualObjects(cell.titleLabel.text, question.title, @"Question title used as cell title");
+    XCTAssertEqual([cell.scoreLabel.text integerValue], question.score, @"Question's score should be displayed");
+    XCTAssertEqualObjects(cell.nameLabel.text, asker.name, @"Person's name should be displayed");
 }
 
 - (void)testQuestionCellGetsImageFromAvatarStore {
     dataSource.avatarStore = store;
     [store setData: imageData forLocation: @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c"];
     QuestionDetailCell *cell = (QuestionDetailCell *)[dataSource tableView: nil cellForRowAtIndexPath: questionPath];
-    STAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
+    XCTAssertNotNil(cell.avatarView.image, @"The avatar store should supply the avatar images");
 }
 
 - (void)testAnswerPropertiesAppearInAnswerCell {
     AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
-    STAssertEqualObjects(answerCell.scoreLabel.text, @"3", @"Score from the first answer should appear in the score label");
+    XCTAssertEqualObjects(answerCell.scoreLabel.text, @"3", @"Score from the first answer should appear in the score label");
 }
 
 - (void)testAcceptedLabelOnlyShownForAcceptedAnswer {
     AnswerCell *firstAnswerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
     AnswerCell *secondAnswerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: secondAnswerPath];
-    STAssertFalse(firstAnswerCell.acceptedIndicator.hidden, @"First answer is accepted, should display that");
-    STAssertTrue(secondAnswerCell.acceptedIndicator.hidden, @"Second answer not accepted, don't display accepted view");
+    XCTAssertFalse(firstAnswerCell.acceptedIndicator.hidden, @"First answer is accepted, should display that");
+    XCTAssertTrue(secondAnswerCell.acceptedIndicator.hidden, @"Second answer not accepted, don't display accepted view");
 }
 
 - (void)testAnswererPropertiesInAnswerCell {
     dataSource.avatarStore = store;
     [store setData: imageData forLocation: @"http://example.com/avatar"];
     AnswerCell *answerCell = (AnswerCell *)[dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
-    STAssertEqualObjects(answerCell.personName.text, @"Banquo", @"The name of the person who wrote the answer should appear in the answer cell");
-    STAssertNotNil(answerCell.personAvatar.image, @"Use avatar store to get the answerer's avatar image");
+    XCTAssertEqualObjects(answerCell.personName.text, @"Banquo", @"The name of the person who wrote the answer should appear in the answer cell");
+    XCTAssertNotNil(answerCell.personAvatar.image, @"Use avatar store to get the answerer's avatar image");
     UIWebView *bodyView = answerCell.bodyWebView;
     /* NASTY HACK ALERT
      * see above
      */
-    [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 0.5]];
+    [[NSRunLoop currentRunLoop] runUntilDate: [NSDate dateWithTimeIntervalSinceNow: 1.0]];
     NSString *bodyHTML = [bodyView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
-    STAssertEqualObjects(bodyHTML, answer1.text, @"Answer text should be used for the cell's web view");
+    XCTAssertEqualObjects(bodyHTML, answer1.text, @"Answer text should be used for the cell's web view");
 }
 
 - (void)testQuestionRowIsAtLeastAsTallAsItsContent {
     UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: questionPath];
     CGFloat height = [dataSource tableView: nil heightForRowAtIndexPath: questionPath];
-    STAssertTrue(height >= cell.frame.size.height, @"The question row should be at least as tall as its content");
+    XCTAssertTrue(height >= cell.frame.size.height, @"The question row should be at least as tall as its content");
 }
 
 - (void)testAnswerRowIsAtLeastAsTallAsItsContent {
     UITableViewCell *cell = [dataSource tableView: nil cellForRowAtIndexPath: firstAnswerPath];
     CGFloat height = [dataSource tableView: nil heightForRowAtIndexPath: firstAnswerPath];
-    STAssertTrue(height >= cell.frame.size.height, @"The answer row should be at least as tall as its content");
+    XCTAssertTrue(height >= cell.frame.size.height, @"The answer row should be at least as tall as its content");
 }
 @end

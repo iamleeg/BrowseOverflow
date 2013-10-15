@@ -66,80 +66,80 @@ static NSString *emptyQuestionsArray = @"{ \"questions\": [] }";
 }
 
 - (void)testThatNilIsNotAnAcceptableParameter {
-    STAssertThrows([questionBuilder questionsFromJSON: nil error: NULL], @"Lack of data should have been handled elsewhere");
+    XCTAssertThrows([questionBuilder questionsFromJSON: nil error: NULL], @"Lack of data should have been handled elsewhere");
 }
 
 - (void)testNilReturnedWhenStringIsNotJSON {
-    STAssertNil([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"This parameter should not be parsable");
+    XCTAssertNil([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"This parameter should not be parsable");
 }
 
 - (void)testErrorSetWhenStringIsNotJSON {
     NSError *error = nil;
     [questionBuilder questionsFromJSON: stringIsNotJSON error: &error];
-    STAssertNotNil(error, @"An error occurred, we should be told");
+    XCTAssertNotNil(error, @"An error occurred, we should be told");
 }
 
 - (void)testPassingNullErrorDoesNotCauseCrash {
-    STAssertNoThrow([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"Using a NULL error parameter should not be a problem");
+    XCTAssertNoThrow([questionBuilder questionsFromJSON: stringIsNotJSON error: NULL], @"Using a NULL error parameter should not be a problem");
 }
 
 - (void)testRealJSONWithoutQuestionsArrayIsError {
-    STAssertNil([questionBuilder questionsFromJSON: noQuestionsJSONString error: NULL], @"No questions to parse in this JSON");
+    XCTAssertNil([questionBuilder questionsFromJSON: noQuestionsJSONString error: NULL], @"No questions to parse in this JSON");
 }
 
 - (void)testRealJSONWithoutQuestionsReturnsMissingDataError {
     NSError *error = nil;
     [questionBuilder questionsFromJSON: noQuestionsJSONString error: &error];
-    STAssertEquals([error code], QuestionBuilderMissingDataError, @"This case should not be an invalid JSON error");
+    XCTAssertEqual([error code], QuestionBuilderMissingDataError, @"This case should not be an invalid JSON error");
 }
 
 - (void)testJSONWithOneQuestionReturnsOneQuestionObject {
     NSError *error = nil;
     NSArray *questions = [questionBuilder questionsFromJSON: questionJSON error: &error];
-    STAssertEquals([questions count], (NSUInteger)1, @"The builder should have created a question");
+    XCTAssertEqual([questions count], (NSUInteger)1, @"The builder should have created a question");
 }
 
 - (void)testQuestionCreatedFromJSONHasPropertiesPresentedInJSON {
-    STAssertEquals(question.questionID, 2817980, @"The question ID should match the data we sent");
-    STAssertEquals([question.date timeIntervalSince1970], (NSTimeInterval)1273660706, @"The date of the question should match the data");
-    STAssertEqualObjects(question.title, @"Why does Keychain Services return the wrong keychain content?", @"Title should match the provided data");
-    STAssertEquals(question.score, 2, @"Score should match the data");
+    XCTAssertEqual(question.questionID, 2817980, @"The question ID should match the data we sent");
+    XCTAssertEqual([question.date timeIntervalSince1970], (NSTimeInterval)1273660706, @"The date of the question should match the data");
+    XCTAssertEqualObjects(question.title, @"Why does Keychain Services return the wrong keychain content?", @"Title should match the provided data");
+    XCTAssertEqual(question.score, 2, @"Score should match the data");
     Person *asker = question.asker;
-    STAssertEqualObjects(asker.name, @"Graham Lee", @"Looks like I should have asked this question");
-    STAssertEqualObjects([asker.avatarURL absoluteString], @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c", @"The avatar URL should be based on the supplied email hash");
+    XCTAssertEqualObjects(asker.name, @"Graham Lee", @"Looks like I should have asked this question");
+    XCTAssertEqualObjects([asker.avatarURL absoluteString], @"http://www.gravatar.com/avatar/563290c0c1b776a315b36e863b388a0c", @"The avatar URL should be based on the supplied email hash");
 }
 
 - (void)testQuestionCreatedFromEmptyObjectIsStillValidObject {
     NSString *emptyQuestion = @"{ \"questions\": [ {} ] }";
     NSArray *questions = [questionBuilder questionsFromJSON: emptyQuestion error: NULL];
-    STAssertEquals([questions count], (NSUInteger)1, @"QuestionBuilder must handle partial input");
+    XCTAssertEqual([questions count], (NSUInteger)1, @"QuestionBuilder must handle partial input");
 }
 
 - (void)testBuildingQuestionBodyWithNoDataCannotBeTried {
-    STAssertThrows([questionBuilder fillInDetailsForQuestion: question fromJSON: nil], @"Not receiving data should have been handled earlier");
+    XCTAssertThrows([questionBuilder fillInDetailsForQuestion: question fromJSON: nil], @"Not receiving data should have been handled earlier");
 }
 
 - (void)testBuildingQuestionBodyWithNoQuestionCannotBeTried {
-    STAssertThrows([questionBuilder fillInDetailsForQuestion: nil fromJSON: questionJSON], @"No reason to expect that a nil question is passed");
+    XCTAssertThrows([questionBuilder fillInDetailsForQuestion: nil fromJSON: questionJSON], @"No reason to expect that a nil question is passed");
 }
 
 - (void)testNonJSONDataDoesNotCauseABodyToBeAddedToAQuestion {
     [questionBuilder fillInDetailsForQuestion: question fromJSON: stringIsNotJSON];
-    STAssertNil(question.body, @"Body should not have been added");
+    XCTAssertNil(question.body, @"Body should not have been added");
 }
 
 - (void)testJSONWhichDoesNotContainABodyDoesNotCauseBodyToBeAdded {
     [questionBuilder fillInDetailsForQuestion: question fromJSON: noQuestionsJSONString];
-    STAssertNil(question.body, @"There was no body to add");
+    XCTAssertNil(question.body, @"There was no body to add");
 }
 
 - (void)testBodyContainedInJSONIsAddedToQuestion {
     [questionBuilder fillInDetailsForQuestion: question fromJSON:questionJSON];
-    STAssertEqualObjects(question.body, @"<p>I've been trying to use persistent keychain references.</p>", @"The correct question body is added");
+    XCTAssertEqualObjects(question.body, @"<p>I've been trying to use persistent keychain references.</p>", @"The correct question body is added");
 }
 
 - (void)testEmptyQuestionsArrayDoesNotCrash {
-    STAssertNoThrow([questionBuilder fillInDetailsForQuestion: question fromJSON: emptyQuestionsArray], @"Don't throw if no questions are found");
+    XCTAssertNoThrow([questionBuilder fillInDetailsForQuestion: question fromJSON: emptyQuestionsArray], @"Don't throw if no questions are found");
 }
 
 @end

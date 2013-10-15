@@ -7,7 +7,7 @@
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 
 @class StackOverflowManager;
@@ -16,7 +16,7 @@
 @class Question;
 @class FakeAnswerBuilder;
 
-@interface AnswerCreationWorkflowTests : SenTestCase {
+@interface AnswerCreationWorkflowTests : XCTestCase {
     StackOverflowManager *manager;
     MockStackOverflowCommunicator *communicator;
     MockStackOverflowManagerDelegate *delegate;

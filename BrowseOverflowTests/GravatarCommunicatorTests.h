@@ -7,13 +7,13 @@
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 
 @class GravatarCommunicator;
 @class FakeGravatarDelegate;
 
-@interface GravatarCommunicatorTests : SenTestCase {
+@interface GravatarCommunicatorTests : XCTestCase {
     GravatarCommunicator *communicator;
     FakeGravatarDelegate *delegate;
     NSData *fakeData;

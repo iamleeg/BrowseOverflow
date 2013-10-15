@@ -38,8 +38,8 @@
 - (void)testDelegatePostsNotificationOnSelectionShowingWhichTopicWasSelected {
     NSIndexPath *selection = [NSIndexPath indexPathForRow: 0 inSection: 0];
     [dataSource tableView: nil didSelectRowAtIndexPath: selection];
-    STAssertEqualObjects([receivedNotification name], @"TopicTableDidSelectTopicNotification", @"The delegate should notify that a topic was selected");
-    STAssertEqualObjects([receivedNotification object], iPhoneTopic, @"The notification should indicate which topic was selected");
+    XCTAssertEqualObjects([receivedNotification name], @"TopicTableDidSelectTopicNotification", @"The delegate should notify that a topic was selected");
+    XCTAssertEqualObjects([receivedNotification object], iPhoneTopic, @"The notification should indicate which topic was selected");
 }
 
 @end

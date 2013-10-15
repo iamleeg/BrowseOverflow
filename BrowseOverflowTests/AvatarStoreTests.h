@@ -7,13 +7,13 @@
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 
 @class AvatarStore;
 @class FakeNotificationCenter;
 
-@interface AvatarStoreTests : SenTestCase {
+@interface AvatarStoreTests : XCTestCase {
     FakeNotificationCenter *center;
     AvatarStore *store;
     NSData *sampleData;

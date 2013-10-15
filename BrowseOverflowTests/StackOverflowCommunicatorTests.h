@@ -7,7 +7,7 @@
 //
 //  See Also: http://developer.apple.com/iphone/library/documentation/Xcode/Conceptual/iphone_development/135-Unit_Testing_Applications/unit_testing_applications.html
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 
 @class InspectableStackOverflowCommunicator;
@@ -15,7 +15,7 @@
 @class MockStackOverflowManager;
 @class FakeURLResponse;
 
-@interface StackOverflowCommunicatorTests : SenTestCase {
+@interface StackOverflowCommunicatorTests : XCTestCase {
     InspectableStackOverflowCommunicator *communicator;
     NonNetworkedStackOverflowCommunicator *nnCommunicator;
     MockStackOverflowManager *manager;

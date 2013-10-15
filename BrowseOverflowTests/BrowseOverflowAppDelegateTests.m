@@ -36,35 +36,35 @@
 }
 
 - (void)testWindowIsKeyAfterApplicationLaunch {
-    STAssertTrue(window.keyWindow, @"App delegate's window should be key");
+    XCTAssertTrue(window.keyWindow, @"App delegate's window should be key");
 }
 
 - (void)testWindowHasRootNavigationControllerAfterApplicationLaunch {
-    STAssertEqualObjects(window.rootViewController, navigationController, @"App delegate's navigation controller should be the root VC");
+    XCTAssertEqualObjects(window.rootViewController, navigationController, @"App delegate's navigation controller should be the root VC");
 }
 
 - (void)testAppDidFinishLaunchingReturnsYES {
-    STAssertTrue(didFinishLaunchingWithOptionsReturn, @"Method should return YES");
+    XCTAssertTrue(didFinishLaunchingWithOptionsReturn, @"Method should return YES");
 }
 
 - (void)testNavigationControllerShowsABrowseOverflowViewController {
     id visibleViewController = appDelegate.navigationController.topViewController;
-    STAssertTrue([visibleViewController isKindOfClass: [BrowseOverflowViewController class]], @"Views in this app are supplied by BrowseOverflowViewControllers");
+    XCTAssertTrue([visibleViewController isKindOfClass: [BrowseOverflowViewController class]], @"Views in this app are supplied by BrowseOverflowViewControllers");
 }
 
 - (void)testFirstViewControllerHasATopicTableDataSource {
     BrowseOverflowViewController *viewController = (BrowseOverflowViewController *)appDelegate.navigationController.topViewController;
-    STAssertTrue([viewController.dataSource isKindOfClass: [TopicTableDataSource class]], @"First view should display a list of topics");
+    XCTAssertTrue([viewController.dataSource isKindOfClass: [TopicTableDataSource class]], @"First view should display a list of topics");
 }
 
 - (void)testTopicListIsNotEmptyOnAppLaunch {
     id <UITableViewDataSource> dataSource = [(BrowseOverflowViewController *)[appDelegate.navigationController topViewController] dataSource];
-    STAssertFalse([dataSource tableView: nil numberOfRowsInSection: 0] == 0, @"There should be some rows to display");
+    XCTAssertFalse([dataSource tableView: nil numberOfRowsInSection: 0] == 0, @"There should be some rows to display");
 }
 
 - (void)testFirstViewControllerHasAnObjectConfiguration {
     BrowseOverflowViewController *topicViewController = (BrowseOverflowViewController *)[appDelegate.navigationController topViewController];
-    STAssertNotNil(topicViewController.objectConfiguration, @"The view controller should have an object configuration instance");
+    XCTAssertNotNil(topicViewController.objectConfiguration, @"The view controller should have an object configuration instance");
 }
 
 @end

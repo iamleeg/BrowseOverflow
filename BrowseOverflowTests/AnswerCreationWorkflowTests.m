@@ -30,42 +30,42 @@
 
 - (void)testAskingForAnswersMeansCommunicatingWithSite {
     [manager fetchAnswersForQuestion: question];
-    STAssertEquals(question.questionID, [communicator askedForAnswersToQuestionID], @"Answers to questions are found by communicating with the web site");
+    XCTAssertEqual(question.questionID, [communicator askedForAnswersToQuestionID], @"Answers to questions are found by communicating with the web site");
 }
 
 - (void)testDelegateNotifiedOfFailureToGetAnswers {
     [manager fetchingAnswersFailedWithError: error];
-    STAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Delegate should be notified of failure to communicate");
+    XCTAssertEqualObjects([[[delegate fetchError] userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Delegate should be notified of failure to communicate");
 }
 
 - (void)testManagerRemembersWhichQuestionToAddAnswersTo {
     [manager fetchAnswersForQuestion: question];
-    STAssertEqualObjects(manager.questionToFill, question, @"Manager should know to fill this question in");
+    XCTAssertEqualObjects(manager.questionToFill, question, @"Manager should know to fill this question in");
 }
 
 - (void)testAnswerResponsePassedToAnswerBuilder {
     [manager receivedAnswerListJSON: @"Fake JSON"];
-    STAssertEqualObjects([answerBuilder receivedJSON], @"Fake JSON", @"Manager must pass response to builder to get answers constructed");
+    XCTAssertEqualObjects([answerBuilder receivedJSON], @"Fake JSON", @"Manager must pass response to builder to get answers constructed");
 }
 
 - (void)testQuestionPassedToAnwerBuilder {
     manager.questionToFill = question;
     [manager receivedAnswerListJSON: @"Fake JSON"];
-    STAssertEqualObjects(answerBuilder.questionToFill, question, @"Manager must pass the question into the answer builder");
+    XCTAssertEqualObjects(answerBuilder.questionToFill, question, @"Manager must pass the question into the answer builder");
 }
 
 - (void)testManagerNotifiesDelegateWhenAnswersAdded {
     answerBuilder.successful = YES;
     manager.questionToFill = question;
     [manager receivedAnswerListJSON: @"Fake JSON"];
-    STAssertEqualObjects(delegate.successQuestion, question, @"Manager should call the delegate method");
+    XCTAssertEqualObjects(delegate.successQuestion, question, @"Manager should call the delegate method");
 }
 
 - (void)testManagerNotifiesDelegateWhenAnswersNotAdded {
     answerBuilder.successful = NO;
     answerBuilder.error = error;
     [manager receivedAnswerListJSON: @"Fake JSON"];
-    STAssertEqualObjects([[delegate.fetchError userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Manager should pass an error on to the delegate");
+    XCTAssertEqualObjects([[delegate.fetchError userInfo] objectForKey: NSUnderlyingErrorKey], error, @"Manager should pass an error on to the delegate");
 }
 
 @end
